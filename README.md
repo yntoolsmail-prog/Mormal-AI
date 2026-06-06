@@ -1,37 +1,38 @@
 # Mormal AI
 
-A balance mod for **Crusader Kings III** (CK3 1.19.x) that makes the AI a more
-**competitive opponent** — quicker to go to war, smarter about army size, less
-timid about target selection, and less prone to hoarding gold it never spends.
+Мод на баланс для **Crusader Kings III** (CK3 1.19.x), который делает ИИ более
+**конкурентным противником** — быстрее идёт на войну, разумнее рассчитывает
+размер армии, меньше боится выбирать сильные цели и реже копит золото, которое
+никогда не тратит.
 
-It's a pure data/balance mod: no DLC required, no graphics, no new mechanics.
-It re-tunes values the game's AI already reads, so it stays lightweight and
-multiplayer-sync safe.
+Это чистый мод на данные/баланс: DLC не нужны, без графики и новых механик. Он
+лишь перенастраивает значения, которые ИИ игры уже читает, поэтому остаётся
+лёгким и безопасным для мультиплеерной синхронизации.
 
-## Status
+## Статус
 
-**v0.1 — scaffolding.** The mod structure, vanilla reference, and the tuning
-plan are in place. The actual balance changes are documented and staged but not
-yet enabled — see [`docs/AI_TUNING_PLAN.md`](docs/AI_TUNING_PLAN.md).
+**v0.1 — каркас.** Структура мода, ванильный эталон и план тюнинга на месте.
+Сами правки баланса задокументированы и подготовлены, но **пока не включены** —
+см. [`docs/AI_TUNING_PLAN.md`](docs/AI_TUNING_PLAN.md).
 
-## What it changes (planned v0.1 pass)
+## Что меняется (запланированный проход v0.1)
 
-- **War tempo** — shorter cooldown between offensive wars.
-- **Army sizing** — the AI aims to *outnumber*, and commits more of its warchest
-  to mercenaries to do it.
-- **Target selection** — willing to attack neighbours that are slightly stronger
-  instead of only weaker ones.
+- **Темп войн** — короче кулдаун между наступательными войнами.
+- **Размер армий** — ИИ стремится *превзойти числом* и вкладывает больше казны в
+  наёмников, чтобы этого добиться.
+- **Выбор целей** — готов нападать на соседей чуть сильнее себя, а не только на
+  заведомо слабых.
 
-The design principle is *make the AI play better with the resources it already
-has*, rather than handing it hidden cheats.
+Принцип дизайна — *пусть ИИ играет лучше теми ресурсами, что у него уже есть*, а
+не получает скрытые читы.
 
-## Install (from this repo)
+## Установка (из этого репозитория)
 
-The repository **is** the mod folder. To run it:
+Репозиторий **и есть** папка мода. Чтобы запустить:
 
-1. Copy/clone this folder into your CK3 `mod/` directory, e.g.
+1. Скопируй/клонируй эту папку в каталог `mod/` твоего CK3, например
    `Documents/Paradox Interactive/Crusader Kings III/mod/Mormal-AI/`.
-2. Create a launcher descriptor next to it,
+2. Рядом создай описатель для лаунчера
    `Documents/Paradox Interactive/Crusader Kings III/mod/Mormal-AI.mod`:
    ```
    version="0.1.0"
@@ -40,32 +41,32 @@ The repository **is** the mod folder. To run it:
    supported_version="1.19.*"
    path="mod/Mormal-AI"
    ```
-3. Launch CK3, enable **Mormal AI** in a playset, and play.
+3. Запусти CK3, включи **Mormal AI** в плейсете и играй.
 
-> If you place the folder somewhere else, change `path=` to match.
+> Если положишь папку в другое место — поменяй `path=` соответственно.
 
-## Repository layout
+## Структура репозитория
 
-| Path | Purpose |
+| Путь | Назначение |
 |---|---|
-| `common/defines/00_mormal_ai.txt` | Our AI tuning overrides (the main file). |
-| `common/modifiers/` | Reserved for character/skill modifier tweaks. |
-| `vanilla/` | Pristine copies of the original game files (reference only). |
-| `docs/AI_CURRENT_STATE.md` | How the stock AI behaves today (the baseline). |
-| `docs/AI_TUNING_PLAN.md` | The levers, their defaults, and the plan. |
-| `CLAUDE.md` | Contributor guide / how the mod is structured. |
-| `descriptor.mod`, `.metadata/metadata.json` | CK3 mod descriptors. |
+| `common/defines/00_mormal_ai.txt` | Наши переопределения тюнинга ИИ (главный файл). |
+| `common/modifiers/` | Зарезервировано под правки модификаторов персонажей/навыков. |
+| `vanilla/` | Эталонные копии оригинальных файлов игры (только для справки). |
+| `docs/AI_CURRENT_STATE.md` | Как ИИ ведёт себя сейчас (базлайн). |
+| `docs/AI_TUNING_PLAN.md` | Рычаги, их дефолты и план. |
+| `CLAUDE.md` | Гайд для контрибьюторов / как устроен мод. |
+| `descriptor.mod`, `.metadata/metadata.json` | Описатели мода CK3. |
 
-## Contributing / developing
+## Разработка / контрибьютинг
 
-Read [`CLAUDE.md`](CLAUDE.md) first — it explains the two-layer (vanilla vs.
-override) approach, the file syntax, and the conventions for documenting every
-change. Keep overrides slim, document the vanilla value and rationale inline,
-and change one theme at a time.
+Сначала прочитай [`CLAUDE.md`](CLAUDE.md) — там объяснён подход двух слоёв
+(ваниль против переопределения), синтаксис файлов и соглашения о документировании
+каждой правки. Держи переопределения тонкими, указывай ванильное значение и
+обоснование по месту, меняй по одной теме за раз.
 
-## Compatibility
+## Совместимость
 
-- **Game version:** CK3 1.19.x.
-- **DLC:** none required.
-- **Other mods:** conflicts with any mod that also overrides the same `NAI`
-  defines (load order decides the winner).
+- **Версия игры:** CK3 1.19.x.
+- **DLC:** не требуются.
+- **Другие моды:** конфликтует с любым модом, который тоже переопределяет те же
+  define `NAI` (победителя решает порядок загрузки).

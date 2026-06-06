@@ -1,85 +1,91 @@
-# AI Tuning Plan
+# План тюнинга ИИ
 
-Working notes for making the CK3 AI more competitive. This is the place to
-record *what* we change, *why*, and *what the playtest showed*.
+Рабочие заметки о том, как сделать ИИ CK3 более конкурентным. Здесь фиксируем
+*что* меняем, *зачем* и *что показал плейтест*.
 
-> Status legend: 🔲 candidate · 🔬 testing · ✅ kept · ❌ reverted
+> Легенда статусов: 🔲 кандидат · 🔬 тестируется · ✅ оставлено · ❌ откатано
 
-All levers live in `vanilla/00_ai.txt` (the `NAI` block). We override them in
-`common/defines/00_mormal_ai.txt`. Vanilla values are quoted from the shipped
-files (CK3 1.19.x).
+Все рычаги живут в `vanilla/00_ai.txt` (блок `NAI`). Мы переопределяем их в
+`common/defines/00_mormal_ai.txt`. Ванильные значения взяты из поставляемых
+файлов (CK3 1.19.x).
 
-## Diagnosis — where the vanilla AI is weak
+## Диагноз — где ванильный ИИ слаб
 
-Common, well-known shortcomings of the CK3 AI that a balance mod can address
-purely through defines:
+Известные слабости ИИ CK3, которые мод на баланс может закрыть чисто через
+define:
 
-1. **Too passive at war** — long cooldowns and conservative chance rolls leave
-   AI rulers idle for years when a player in their shoes would be expanding.
-2. **Under-sized armies** — the AI under-uses its gold/mercs and often commits
-   stacks that only just match the enemy, then loses attrition wars.
-3. **Timid target selection** — it avoids anyone even slightly stronger, so
-   strong AI blobs rarely get challenged and snowball unopposed.
-4. **Gold hoarding** — wealth sits unused instead of being converted into
-   mercenaries, buildings, or men-at-arms.
+1. **Слишком пассивен в войне** — длинные кулдауны и осторожные броски шанса
+   оставляют правителей ИИ простаивать годами там, где игрок на их месте уже бы
+   расширялся.
+2. **Недоразмеренные армии** — ИИ недоиспользует золото/наёмников и часто
+   выставляет стеки, лишь едва равные врагу, а затем проигрывает войны на износ.
+3. **Робкий выбор целей** — избегает любого даже чуть более сильного, поэтому
+   крупные «блобы» ИИ почти не получают вызова и снежным комом растут без помех.
+4. **Накопление золота** — богатство простаивает вместо того, чтобы
+   конвертироваться в наёмников, постройки или латников.
 
-The plan attacks these one theme at a time so each effect is measurable.
+План бьёт по этим темам по одной за раз, чтобы каждый эффект был измерим.
 
-## Levers by theme
+## Рычаги по темам
 
-### 1. War tempo
-| Key | Vanilla | Candidate | Rationale | Status |
+### 1. Темп войн
+| Ключ | Ваниль | Кандидат | Обоснование | Статус |
 |---|---|---|---|---|
-| `AI_WAR_BASE_COOLDOWN` | `50` | `40` | Less dead time between offensive wars. | 🔲 |
-| `AI_BASE_WAR_CHANCE` | `1` | `1` | Base roll; scaled by energy (x0.5 at 0). Hold for now. | 🔲 |
-| `AI_WAR_COOLDOWN_RATIO_FOR_FULL_CHANCE` | `0` | `0` | Already "always look for a CB once cooldown ends". Keep. | 🔲 |
+| `AI_WAR_BASE_COOLDOWN` | `50` | `40` | Меньше простоя между наступательными войнами. | 🔲 |
+| `AI_BASE_WAR_CHANCE` | `1` | `1` | Базовый бросок; масштабируется энергией (×0.5 при 0). Пока держим. | 🔲 |
+| `AI_WAR_COOLDOWN_RATIO_FOR_FULL_CHANCE` | `0` | `0` | Уже «всегда ищет CB после кулдауна». Оставляем. | 🔲 |
 
-### 2. Army sizing
-| Key | Vanilla | Candidate | Rationale | Status |
+### 2. Размер армий
+| Ключ | Ваниль | Кандидат | Обоснование | Статус |
 |---|---|---|---|---|
-| `MERC_OVERMATCHING_TARGET` | `1.25` | `1.4` | Aim to outnumber, not just match. | 🔲 |
-| `MAX_WEALTH_EXPENDITURE_MERCS` | `0.8` | `0.85` | Free up a little more gold for mercs. | 🔲 |
-| `MAX_WAR_CHEST_EXPENDITURE_MERC_OVERMATCHING` | `0.7` | `0.8` | Commit more warchest to a winning edge. | 🔲 |
-| `RAISE_TROOPS_MIN_RATIO_OF_ENEMY` | `0.5` | `0.5` | Threshold to bother raising. Hold. | 🔲 |
+| `MERC_OVERMATCHING_TARGET` | `1.25` | `1.4` | Стремиться превзойти числом, а не просто сравняться. | 🔲 |
+| `MAX_WEALTH_EXPENDITURE_MERCS` | `0.8` | `0.85` | Освободить чуть больше золота под наёмников. | 🔲 |
+| `MAX_WAR_CHEST_EXPENDITURE_MERC_OVERMATCHING` | `0.7` | `0.8` | Вложить больше казны в выигрышный перевес. | 🔲 |
+| `RAISE_TROOPS_MIN_RATIO_OF_ENEMY` | `0.5` | `0.5` | Порог, при котором вообще собирать. Держим. | 🔲 |
 
-### 3. Target selection
-| Key | Vanilla | Candidate | Rationale | Status |
+### 3. Выбор целей
+| Ключ | Ваниль | Кандидат | Обоснование | Статус |
 |---|---|---|---|---|
-| `CB_TARGET_AT_PEACE_POWER_RATIO_MAX` | `1.0` | `1.1` | Willing to attack slightly stronger targets. | 🔲 |
-| `CB_TARGET_POWER_RATIO_BOLDNESS` | `0.25` | `0.30` | Bold rulers reach a bit further up. | 🔲 |
-| `DESIRED_WAR_SIDE_POWER` | `1.25` | `1.25` | When the AI stops calling allies. Hold. | 🔲 |
+| `CB_TARGET_AT_PEACE_POWER_RATIO_MAX` | `1.0` | `1.1` | Готов нападать на чуть более сильные цели. | 🔲 |
+| `CB_TARGET_POWER_RATIO_BOLDNESS` | `0.25` | `0.30` | Смелые правители тянутся чуть выше. | 🔲 |
+| `DESIRED_WAR_SIDE_POWER` | `1.25` | `1.25` | Когда ИИ перестаёт звать союзников. Держим. | 🔲 |
 
-### 4. Economy
-| Key | Vanilla | Candidate | Rationale | Status |
+### 4. Экономика
+| Ключ | Ваниль | Кандидат | Обоснование | Статус |
 |---|---|---|---|---|
-| `PERCENTAGE_INTO_WAR_CHEST` | `0.6` | `0.6` | Share of income reserved for war. Watch before touching. | 🔲 |
+| `PERCENTAGE_INTO_WAR_CHEST` | `0.6` | `0.6` | Доля дохода в резерв на войну. Наблюдаем, пока не трогаем. | 🔲 |
 
-## Proposed v0.1 ("first competitive pass")
+## Предлагаемый v0.1 («первый конкурентный проход»)
 
-A small, conservative bundle to enable together and playtest as one step:
+Маленький консервативный набор, который включаем вместе и тестируем как один шаг:
 
-- War tempo: `AI_WAR_BASE_COOLDOWN` 50 → 40
-- Army sizing: `MERC_OVERMATCHING_TARGET` 1.25 → 1.4,
+- Темп войн: `AI_WAR_BASE_COOLDOWN` 50 → 40
+- Размер армий: `MERC_OVERMATCHING_TARGET` 1.25 → 1.4,
   `MAX_WAR_CHEST_EXPENDITURE_MERC_OVERMATCHING` 0.7 → 0.8
-- Target selection: `CB_TARGET_AT_PEACE_POWER_RATIO_MAX` 1.0 → 1.1
+- Выбор целей: `CB_TARGET_AT_PEACE_POWER_RATIO_MAX` 1.0 → 1.1
 
-Hypothesis: noticeably more (and more decisive) AI-vs-AI wars and map churn,
-without the AI bankrupting itself or suiciding into far-stronger neighbours.
+Гипотеза: заметно больше (и более решительных) войн ИИ против ИИ и передела
+карты, при этом ИИ не банкротится и не суицидится против заведомо более сильных
+соседей.
 
-> These are **not yet enabled** — they sit commented in
-> `common/defines/00_mormal_ai.txt` pending a go-ahead and a baseline playtest.
+> Эти правки **пока не включены** — они лежат закомментированными в
+> `common/defines/00_mormal_ai.txt` в ожидании отмашки и базового плейтеста.
 
-## Playtest protocol
+## Протокол плейтеста
 
-1. Pick a fixed start (e.g. 867 or 1066), run an **observer game** at max speed.
-2. Record at a fixed checkpoint (e.g. +50 in-game years): number of independent
-   realms, largest realm size, total active wars, notable blob formation.
-3. Compare unmodded baseline vs. each enabled theme. Keep the `error.log` open.
-4. Log results back into the tables above (status → 🔬/✅/❌ with a one-line note).
+1. Возьми фиксированный старт (например, 867 или 1066), запусти **observer-игру**
+   на максимальной скорости.
+2. Зафиксируй на контрольной точке (например, +50 игровых лет): число независимых
+   держав, размер крупнейшей, число активных войн, заметное образование блобов.
+3. Сравни немодный базлайн против каждой включённой темы. Держи `error.log`
+   открытым.
+4. Заноси результаты обратно в таблицы выше (статус → 🔬/✅/❌ с короткой пометкой).
 
-## Ideas parked for later (need more than define edits)
+## Идеи, отложенные на потом (нужно больше, чем правки define)
 
-- Skill-modifier buffs for AI characters (`common/modifiers/00_basic_modifiers.txt`)
-  to make high-skill rulers actually punch above their weight.
-- Council/scheme aggressiveness, marriage/alliance webs, succession planning.
-- Difficulty-gated bonuses (only if "play better" levers prove insufficient).
+- Баффы модификаторов навыков для персонажей ИИ
+  (`common/modifiers/00_basic_modifiers.txt`), чтобы высоконавыковые правители
+  реально били выше своего веса.
+- Агрессивность совета/схем, сети браков/союзов, планирование наследования.
+- Бонусы, привязанные к сложности (только если рычагов «играть лучше» окажется
+  недостаточно).

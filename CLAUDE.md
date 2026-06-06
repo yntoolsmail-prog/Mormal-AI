@@ -1,107 +1,114 @@
 # CLAUDE.md
 
-Guidance for Claude Code (and humans) working in this repository.
+Руководство для Claude Code (и для людей), работающих в этом репозитории.
 
-## What this project is
+## Что это за проект
 
-**Mormal AI** is a mod for **Crusader Kings III** (CK3 — written "КС3"/"KC3").
-The goal is a single, focused one: **make the AI a more competitive opponent**
-— better at waging war, sizing its armies, picking targets, and spending its
-gold — without turning it into an unfair cheat-bot.
+**Mormal AI** — мод для **Crusader Kings III** (CK3 — «КС3»/«KC3»).
+Цель одна и узкая: **сделать ИИ более конкурентным противником** — чтобы он
+лучше вёл войны, точнее рассчитывал размер армий, разумнее выбирал цели и
+тратил золото — но не превращался в нечестного чит-бота.
 
-This is a *data/balance* mod. CK3's AI behaviour is driven by tunable values in
-the game's script files (Clausewitz engine, plain-text `key = value` syntax).
-There is no compiling and no engine code here — we change numbers and rules the
-game already reads.
+Это мод *на данные/баланс*. Поведение ИИ в CK3 задаётся настраиваемыми
+значениями в скриптовых файлах игры (движок Clausewitz, простой текст вида
+`ключ = значение`). Здесь нет компиляции и нет кода движка — мы меняем числа и
+правила, которые игра уже читает.
 
-Target game version: **CK3 1.19.x**. The vanilla files include administrative
-government, the "Hegemony" tier, and nomad `herd` mechanics.
+Целевая версия игры: **CK3 1.19.x**. Ванильные файлы включают
+административное правительство, ярус «Гегемония» и кочевую механику `herd`.
 
-## Repository layout
+## Структура репозитория
 
 ```
-descriptor.mod                      # CK3 mod descriptor (legacy launcher)
-.metadata/metadata.json             # CK3 mod descriptor (current launcher / Paradox Mods)
+descriptor.mod                      # описатель мода CK3 (старый лаунчер)
+.metadata/metadata.json             # описатель мода CK3 (новый лаунчер / Paradox Mods)
 common/
   defines/
-    00_mormal_ai.txt                # OUR AI define overrides (the main editable file)
-  modifiers/                        # reserved for modifier overrides (skill buffs etc.)
-vanilla/                            # PRISTINE upstream reference - DO NOT EDIT
-  00_ai.txt                         #   -> vanilla common/defines/00_ai.txt   (NAI block)
-  00_defines.txt                    #   -> vanilla common/defines/00_defines.txt
-  00_basic_modifiers.txt            #   -> vanilla common/modifiers/00_basic_modifiers.txt
+    00_mormal_ai.txt                # НАШИ переопределения define ИИ (главный редактируемый файл)
+  modifiers/                        # зарезервировано под переопределения модификаторов (баффы навыков и т.п.)
+vanilla/                            # ЭТАЛОН из игры — НЕ РЕДАКТИРОВАТЬ
+  00_ai.txt                         #   -> ванильный common/defines/00_ai.txt   (блок NAI)
+  00_defines.txt                    #   -> ванильный common/defines/00_defines.txt
+  00_basic_modifiers.txt            #   -> ванильный common/modifiers/00_basic_modifiers.txt
 docs/
-  AI_CURRENT_STATE.md               # how the stock AI behaves today (baseline)
-  AI_TUNING_PLAN.md                 # the levers, current values, and the plan
-CLAUDE.md                           # this file
-README.md                           # player-facing install & overview
+  AI_CURRENT_STATE.md               # как ИИ ведёт себя сейчас (базлайн)
+  AI_TUNING_PLAN.md                 # рычаги, текущие значения и план
+CLAUDE.md                           # этот файл
+README.md                           # установка и обзор для игрока
 ```
 
-### The two-layer rule (important)
+### Правило двух слоёв (важно)
 
-- **`vanilla/`** is a read-only snapshot of the original game files. It exists
-  so we can diff, look up default values, and re-baseline when CK3 updates.
-  **Never edit files in `vanilla/`** — treat it like a vendored dependency.
-- **`common/`** is the mod itself. When the game loads, files here are merged on
-  top of vanilla. Filenames load alphabetically, so `00_mormal_ai.txt` loads
-  *after* `00_ai.txt` and any `NAI` key it sets overrides the default.
+- **`vanilla/`** — слепок оригинальных файлов игры, только для чтения. Нужен,
+  чтобы делать diff, смотреть дефолтные значения и ребейзлайнить при обновлении
+  CK3. **Никогда не редактируй файлы в `vanilla/`** — относись к ним как к
+  подключённой зависимости.
+- **`common/`** — это сам мод. При загрузке игры файлы отсюда накладываются
+  поверх ванильных. Имена файлов грузятся по алфавиту, поэтому `00_mormal_ai.txt`
+  загружается *после* `00_ai.txt`, и любой ключ `NAI`, который он задаёт,
+  перекрывает дефолт.
 
-This means our override files should be **slim**: list only the keys we change,
-never paste a whole vanilla file. Slim overrides survive game patches far better
-than full-file replacements (a full copy silently reverts any value Paradox
-changed in a patch).
+Значит, наши файлы-переопределения должны быть **тонкими**: только те ключи, что
+мы меняем, и никогда не копировать целый ванильный файл. Тонкие переопределения
+переживают патчи игры куда лучше, чем полная замена файла (полная копия молча
+откатывает любое значение, которое Paradox изменила в патче).
 
-## How CK3 reads these files
+## Как CK3 читает эти файлы
 
-- `common/defines/*.txt` — global constants grouped in named blocks
-  (`NAI = { ... }`, `NGame = { ... }`, etc.). Later files override earlier keys.
-  You can override a single key inside a block without repeating the rest.
-- `common/modifiers/00_basic_modifiers.txt` — per-skill modifier packages
-  (`diplomacy_modifier`, `martial_modifier`, …) applied to every character.
-  Overriding one of these **replaces the whole named block**, so copy the
-  vanilla block first, then edit — partial merge does not apply here.
-- Syntax: tabs for indentation, `#` for comments, `key = value`, lists in
-  `{ a b c }`. Fixed-point numbers (e.g. `0.6`), int32, and arrays-by-tier
-  (one value per government tier) all appear. The vanilla files carry
-  `### Brief:` comments above most keys — read them, they describe each lever.
+- `common/defines/*.txt` — глобальные константы, сгруппированные в именованные
+  блоки (`NAI = { ... }`, `NGame = { ... }` и т.д.). Файлы, загруженные позже,
+  перекрывают ключи. Можно переопределить один ключ внутри блока, не повторяя
+  остальные.
+- `common/modifiers/00_basic_modifiers.txt` — пакеты модификаторов по навыкам
+  (`diplomacy_modifier`, `martial_modifier`, …), применяемые к каждому персонажу.
+  Переопределение одного из них **заменяет весь именованный блок целиком**,
+  поэтому сначала скопируй ванильный блок, затем правь — частичное слияние тут не
+  работает.
+- Синтаксис: табы для отступов, `#` для комментариев, `ключ = значение`, списки в
+  `{ a b c }`. Встречаются числа с фиксированной точкой (например, `0.6`), int32 и
+  массивы по ярусам (одно значение на ярус правительства). В ванильных файлах над
+  большинством ключей есть комментарии `### Brief:` — читай их, они описывают
+  каждый рычаг.
 
-## Working conventions
+## Рабочие соглашения
 
-- **Document every change inline.** Use the format:
-  `KEY = <new>      # vanilla <old> | why this helps the AI compete`
-- **Keep the rationale in sync** in `docs/AI_TUNING_PLAN.md` (what changed, the
-  hypothesis, and the playtest result once known).
-- **Change one theme at a time** (war tempo, army sizing, target selection,
-  economy …) so playtesting can attribute effects.
-- **No invisible cheats.** Prefer making the AI *play better* (smarter
-  thresholds, fuller use of its real resources) over raw bonuses. If a bonus is
-  ever added, gate it and document it loudly.
-- **Multiplayer-safe.** Define/modifier changes are deterministic and MP-sync
-  safe; keep it that way (no `random`-based divergence in shared files).
+- **Документируй каждое изменение по месту.** Формат:
+  `КЛЮЧ = <новое>      # ваниль <старое> | чем это помогает ИИ конкурировать`
+- **Держи обоснование в синхроне** в `docs/AI_TUNING_PLAN.md` (что изменено,
+  гипотеза и результат плейтеста, когда станет известен).
+- **Меняй по одной теме за раз** (темп войн, размер армий, выбор целей,
+  экономика …), чтобы плейтест мог приписать эффект конкретной правке.
+- **Никаких скрытых читов.** Лучше заставить ИИ *играть лучше* (умные пороги,
+  полное использование реальных ресурсов), чем давать сырые бонусы. Если бонус
+  всё же добавляется — огради его условием и громко задокументируй.
+- **Безопасно для мультиплеера.** Изменения define/модификаторов детерминированы
+  и не ломают MP-синхронизацию; так и держим (никакого `random` в общих файлах).
 
-## Re-baselining on a CK3 update
+## Ребейзлайн при обновлении CK3
 
-1. Drop the new vanilla `00_ai.txt` / `00_defines.txt` / `00_basic_modifiers.txt`
-   into `vanilla/` (overwrite).
-2. `git diff` the `vanilla/` change to see what Paradox altered.
-3. Reconcile our overrides in `common/` against any moved/renamed/removed keys.
-4. Bump `supported_version` in `descriptor.mod` and `.metadata/metadata.json`.
+1. Положи новые ванильные `00_ai.txt` / `00_defines.txt` / `00_basic_modifiers.txt`
+   в `vanilla/` (перезаписав).
+2. Сделай `git diff` по изменению `vanilla/`, чтобы увидеть, что поменяла Paradox.
+3. Сверь наши переопределения в `common/` с перемещёнными/переименованными/
+   удалёнными ключами.
+4. Подними `supported_version` в `descriptor.mod` и `.metadata/metadata.json`.
 
-## Validation (no test harness exists)
+## Проверка (тестового стенда нет)
 
-There is no automated test suite — this is game script. To validate:
+Автотестов нет — это игровой скрипт. Чтобы проверить:
 
-1. Load the mod in CK3 with the **error log** open
+1. Загрузи мод в CK3 с открытым **логом ошибок**
    (`Documents/Paradox Interactive/Crusader Kings III/logs/error.log`).
-2. A clean `error.log` (no new entries pointing at our files) means the script
-   parses. Define typos usually surface there or as default-value fallbacks.
-3. Behavioural validation is **observational**: run observer/fast-forward games
-   and watch war frequency, army sizes, and map churn vs. an unmodded baseline.
+2. Чистый `error.log` (нет новых записей про наши файлы) означает, что скрипт
+   парсится. Опечатки в define обычно всплывают там или как откат к дефолту.
+3. Поведенческая проверка — **наблюдательная**: гоняй observer/ускоренные игры и
+   следи за частотой войн, размерами армий и переделом карты против немодного
+   базлайна.
 
-## Quick orientation for a new task
+## Быстрая ориентация для новой задачи
 
-- Want to change AI behaviour? → edit `common/defines/00_mormal_ai.txt`.
-- Need the default value or the meaning of a key? → grep `vanilla/00_ai.txt`
-  (the `### Brief:` comment above the key explains it).
-- Planning or recording tuning decisions? → `docs/AI_TUNING_PLAN.md`.
-- Need to understand how the stock AI already behaves? → `docs/AI_CURRENT_STATE.md`.
+- Хочешь поменять поведение ИИ? → правь `common/defines/00_mormal_ai.txt`.
+- Нужно дефолтное значение или смысл ключа? → грепай `vanilla/00_ai.txt`
+  (комментарий `### Brief:` над ключом объясняет его).
+- Планируешь или фиксируешь решения по тюнингу? → `docs/AI_TUNING_PLAN.md`.
+- Нужно понять, как ИИ ведёт себя сейчас? → `docs/AI_CURRENT_STATE.md`.

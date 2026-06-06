@@ -1,153 +1,162 @@
-# How the vanilla CK3 AI works today (1.19)
+# Как ванильный ИИ CK3 работает сейчас (1.19)
 
-Before changing anything, this is a map of what the stock AI actually does, read
-straight from `vanilla/00_ai.txt` (the `NAI` define block). Every value below is
-the shipped default. Use this as the baseline we measure against.
+Прежде чем что-то менять, вот карта того, что реально делает стоковый ИИ —
+прочитанная прямо из `vanilla/00_ai.txt` (блок define `NAI`). Каждое значение
+ниже — поставляемый дефолт. Это базлайн, с которым мы сравниваем.
 
-> These defines don't *contain* the AI logic — the engine does — but they are the
-> knobs that logic reads. Where a knob is the lever for a behaviour, it's the
-> thing we can change.
+> Эти define не *содержат* логику ИИ — её исполняет движок, — но это ручки,
+> которые логика читает. Где ручка является рычагом поведения, её мы и можем
+> менять.
 
-## 1. How often the AI thinks
+## 1. Как часто ИИ «думает»
 
-The AI re-evaluates "tasks" on staggered timers, **per government tier**
-(Unlanded · Baron · Count · Duke · King · Emperor · Hegemony):
+ИИ переоценивает «задачи» по разнесённым таймерам, **по ярусам правительства**
+(Безземельный · Барон · Граф · Герцог · Король · Император · Гегемония):
 
-| Task class | Count/Duke/King | Notes |
+| Класс задач | Граф/Герцог/Король | Примечание |
 |---|---|---|
-| `SHORT_TASK_TICK` | 7 days | fast reactions (Unlanded 30) |
-| `MEDIUM_TASK_TICK` | 30–60 days | |
-| `LONG_TASK_TICK` | 60–180 days | |
-| `RARE_TASK_TICK` | 180 days | |
-| `STRATEGY_TASK_TICK` | 180 days | long-horizon plans |
+| `SHORT_TASK_TICK` | 7 дней | быстрые реакции (Безземельный 30) |
+| `MEDIUM_TASK_TICK` | 30–60 дней | |
+| `LONG_TASK_TICK` | 60–180 дней | |
+| `RARE_TASK_TICK` | 180 дней | |
+| `STRATEGY_TASK_TICK` | 180 дней | планы на долгий горизонт |
 
-Higher tiers and the Hegemon tick **faster** on grants/revocations/tax. Takeaway:
-big realms react quickly; small fry deliberate slowly. This cadence caps how
-responsive the AI can be regardless of other tuning.
+Высшие ярусы и Гегемон тикают **быстрее** на выдачах/отзывах/налогах. Вывод:
+крупные державы реагируют быстро, мелочь думает медленно. Эта частота
+ограничивает отзывчивость ИИ независимо от прочего тюнинга.
 
-## 2. Deciding to go to war (the offensive-war gate)
+## 2. Решение начать войну (фильтр наступательной войны)
 
-A landed AI only considers a new offensive war after passing several gates:
+Земельный ИИ рассматривает новую наступательную войну только пройдя ряд
+фильтров:
 
-- **Cooldown:** `AI_WAR_BASE_COOLDOWN = 50` days minimum between offensive wars.
-  With `AI_WAR_COOLDOWN_RATIO_FOR_FULL_CHANCE = 0`, once those 50 days pass it
-  will *always* look for a CB — there's no extra ramp-up.
-- **Base chance × Energy:** `AI_BASE_WAR_CHANCE = 1`, then scaled by the ruler's
-  **Energy** trait: ×0 at −100, ×0.5 at 0, ×1 at +100. So a lethargic ruler is
-  roughly half as warlike as an energetic one; a deeply lethargic one barely
-  wars at all.
-- **Offensive-war penalty:** `AI_WAR_MAX_OFFENSIVE_WAR_PENALTY = 0.0` — if the
-  ruler has *any* offensive-war penalty (e.g. recent wars, tribal/feudal limits)
-  it won't declare, **unless** it's a faith warmonger or has Rationality ≤
+- **Кулдаун:** `AI_WAR_BASE_COOLDOWN = 50` дней минимум между наступательными
+  войнами. С `AI_WAR_COOLDOWN_RATIO_FOR_FULL_CHANCE = 0` сразу после этих 50 дней
+  он *всегда* ищет CB — без дополнительной раскачки.
+- **Базовый шанс × Энергия:** `AI_BASE_WAR_CHANCE = 1`, затем масштабируется
+  чертой **Энергия**: ×0 при −100, ×0.5 при 0, ×1 при +100. То есть вялый
+  правитель примерно вдвое менее воинственен, чем энергичный; глубоко вялый почти
+  не воюет.
+- **Штраф за наступательную войну:** `AI_WAR_MAX_OFFENSIVE_WAR_PENALTY = 0.0` —
+  если у правителя есть *любой* штраф за наступательную войну (например, недавние
+  войны, племенные/феодальные лимиты), он не объявит войну, **кроме** случая,
+  когда он религиозный милитарист или у него Рациональность ≤
   `AI_WAR_MIN_RATIONALITY_FOR_OFFENSIVE_WAR_PENALTY = −30`.
-- **Best-CB filter:** `MIN_SCORE_RATIO_FOR_CASUS_BELLI = 0.9` — it only declares
-  a war scoring within 90% of the best CB it currently has. It won't take
-  "okay" wars while a much better one exists.
+- **Фильтр лучшего CB:** `MIN_SCORE_RATIO_FOR_CASUS_BELLI = 0.9` — он объявляет
+  только войну с оценкой в пределах 90% от лучшего доступного CB. Он не возьмёт
+  «нормальную» войну, пока есть гораздо лучшая.
 
-**Net effect:** the stock AI is cautious and bursty — it waits out cooldowns,
-needs a clean offensive-war slate, and its appetite swings heavily with the
-Energy trait. This is the #1 reason AI realms can look passive.
+**Итог:** стоковый ИИ осторожен и действует рывками — пережидает кулдауны,
+требует чистого листа по наступательным войнам, и его аппетит сильно качается
+вместе с чертой Энергия. Это причина №1, почему державы ИИ кажутся пассивными.
 
-## 3. Picking a target (CB scoring + power gating)
+## 3. Выбор цели (оценка CB + фильтр по силе)
 
-Among valid CBs, score is dominated by **de jure / title** drivers:
+Среди валидных CB оценка определяется в основном **de jure / титульными**
+драйверами:
 
 - `CB_SCORE_DE_JURE_MULTIPLIER = 100`, `CB_SCORE_HIGHER_TITLE_MULTIPLIER = 100`,
   `CB_SCORE_MULT_NEIGHBOR_TITLE = 15`, `EXTRA_CB_SCORE_FOR_HOLY_SITES = 10`.
-- Opinion & claimant factors: `CB_OPINION_OF_TARGET_MULTIPLIER`,
-  `CB_OPINION_OF_CLAIMANT_MULTIPLIER`, `CB_CLAIMANT_GREED_MULTIPLIER`, etc.
+- Факторы мнения и претендента: `CB_OPINION_OF_TARGET_MULTIPLIER`,
+  `CB_OPINION_OF_CLAIMANT_MULTIPLIER`, `CB_CLAIMANT_GREED_MULTIPLIER` и т.д.
 
-So the AI strongly prefers grabbing **de jure / neighbouring** land — sensible,
-but it means it rarely reaches for opportunistic far targets.
+То есть ИИ сильно предпочитает захват **de jure / соседних** земель — разумно, но
+это значит, что он редко тянется к дальним «возможностям».
 
-**Power gating — who it dares attack:**
+**Фильтр по силе — на кого он смеет нападать:**
 
-- Hard ceiling: `CB_TARGET_MAX_POWER = 3.0` independent / `2.0` vassal — it won't
-  even look at anyone more than 3× (or 2×) its power.
-- At peace: `CB_TARGET_AT_PEACE_POWER_RATIO_MAX = 1.0` — **it will not attack
-  anyone stronger than itself** if that target is currently at peace.
-- Already at war: `CB_TARGET_AT_WAR_POWER_RATIO_MAX = 1.5`, plus
-  `+0.25` per extra war the target is in — it pounces on the over-extended.
-- Boldness nudge: `CB_TARGET_POWER_RATIO_BOLDNESS = 0.25` — a maximally bold
-  ruler (100) raises the ratio by +0.25.
+- Жёсткий потолок: `CB_TARGET_MAX_POWER = 3.0` для независимого / `2.0` для
+  вассала — он даже не смотрит на того, кто сильнее его более чем в 3 (или 2)
+  раза.
+- В мире: `CB_TARGET_AT_PEACE_POWER_RATIO_MAX = 1.0` — **он не нападёт ни на кого
+  сильнее себя**, если цель сейчас в мире.
+- Уже в войне: `CB_TARGET_AT_WAR_POWER_RATIO_MAX = 1.5`, плюс `+0.25` за каждую
+  лишнюю войну, в которой цель участвует — он набрасывается на перенапряжённых.
+- Поправка на смелость: `CB_TARGET_POWER_RATIO_BOLDNESS = 0.25` — максимально
+  смелый правитель (100) поднимает отношение на +0.25.
 
-**Net effect:** strong AI realms are almost never challenged while at peace
-(nobody attacks "up"), so the map snowballs — a leading blob keeps growing
-because its peers refuse to gang up on it until it's already fighting someone.
+**Итог:** сильные державы ИИ почти никогда не получают вызов, пока в мире (никто
+не нападает «вверх»), поэтому карта снежным комом — лидирующий блоб растёт,
+потому что соседи отказываются нападать на него скопом, пока он уже с кем-то не
+воюет.
 
-## 4. Sizing the army (raise + mercs)
+## 4. Размер армии (сбор + наёмники)
 
-- **Raise threshold:** raises levies/MAA when it can field ≥ `0.3` of its own max
-  (`RAISE_TROOPS_MIN_RATIO_OF_SELF`) **or** ≥ `0.5` of the enemy
-  (`RAISE_TROOPS_MIN_RATIO_OF_ENEMY`). Tops up in chunks of `0.1`
-  (`RAISE_ADDITIONAL_TROOPS_RATIO`) to avoid army spam.
-- **Mercs:** tries to **outnumber by 25%** (`MERC_OVERMATCHING_TARGET = 1.25`)
-  *if affordable*, spending at most `0.8` of wealth (`MAX_WEALTH_EXPENDITURE_MERCS`)
-  and `0.7` of the warchest (`MAX_WAR_CHEST_EXPENDITURE_MERC_OVERMATCHING`).
-  Pretends to be `100` gold poorer per merc hired (keeps a reserve),
-  rounds small gaps up to `MIN_HIRING_GOAL = 500`.
-- **War plans:** wants `WANTED_POWER_RATIO_AGAINST_ENEMY_FOR_WAR_PLAN = 1.25`
-  before committing a plan; stops pulling in allies once its side hits
+- **Порог сбора:** собирает левии/латников, когда может выставить ≥ `0.3` своего
+  максимума (`RAISE_TROOPS_MIN_RATIO_OF_SELF`) **или** ≥ `0.5` от врага
+  (`RAISE_TROOPS_MIN_RATIO_OF_ENEMY`). Доукомплектовывает порциями по `0.1`
+  (`RAISE_ADDITIONAL_TROOPS_RATIO`), чтобы не плодить армии.
+- **Наёмники:** пытается **превзойти числом на 25%**
+  (`MERC_OVERMATCHING_TARGET = 1.25`) *если по карману*, тратя максимум `0.8`
+  богатства (`MAX_WEALTH_EXPENDITURE_MERCS`) и `0.7` казны
+  (`MAX_WAR_CHEST_EXPENDITURE_MERC_OVERMATCHING`). Считает себя на `100` золота
+  беднее за каждого наёмника (держит резерв), округляет малые нехватки вверх до
+  `MIN_HIRING_GOAL = 500`.
+- **Военные планы:** хочет
+  `WANTED_POWER_RATIO_AGAINST_ENEMY_FOR_WAR_PLAN = 1.25` перед запуском плана;
+  перестаёт звать союзников, когда его сторона достигает
   `DESIRED_WAR_SIDE_POWER = 1.25`.
 
-**Net effect:** the AI only aims for a *modest* 25% edge and caps merc spend
-conservatively, so against a well-prepared opponent it often shows up "just
-barely ahead" and loses the attrition/quality battle.
+**Итог:** ИИ целится лишь на *скромный* перевес 25% и консервативно ограничивает
+траты на наёмников, поэтому против хорошо подготовленного противника часто
+приходит «впритык впереди» и проигрывает бой на износ/качество.
 
-## 5. Spending gold (the warchest)
+## 5. Траты золота (военная казна)
 
-- Reserves a warchest = max(`MIN_WAR_CHEST` by tier, `18` months of maintenance).
-  `MIN_WAR_CHEST` per tier: `25 / 25 / 50 / 100 / 200 / 300 / 400`.
-- While the chest isn't full, it diverts `PERCENTAGE_INTO_WAR_CHEST = 0.6` of
-  income into it.
+- Резервирует казну = max(`MIN_WAR_CHEST` по ярусу, `18` месяцев содержания).
+  `MIN_WAR_CHEST` по ярусам: `25 / 25 / 50 / 100 / 200 / 300 / 400`.
+- Пока казна не заполнена, отводит `PERCENTAGE_INTO_WAR_CHEST = 0.6` дохода в неё.
 
-**Net effect:** a lot of income is parked. The intent is "save up for war", but
-in practice mid-tier AIs sit on idle gold instead of compounding it into
-buildings / men-at-arms / mercs.
+**Итог:** много дохода паркуется. Замысел — «копить на войну», но на практике
+средние по ярусу ИИ сидят на простаивающем золоте вместо того, чтобы вложить его
+в постройки / латников / наёмников.
 
-## 6. Fighting the battle (tactical)
+## 6. Ведение боя (тактика)
 
-- MAA purchase weighting: `TOUGHNESS_SCORE_MULT = 10`, `ATTACK_SCORE_MULT = 10`,
-  `PURSUIT = 3`, `SCREEN = 1`, `SIEGE_VALUE = 1000` (siege weapons heavily
-  favoured when a siege is the goal).
-- Engagement nerves: asks allies for help below predicted win ratio
-  `ASK_FOR_HELP_COMBAT_PREDICTION_RATIO = 0.66`; retreats below
+- Веса покупки латников: `TOUGHNESS_SCORE_MULT = 10`, `ATTACK_SCORE_MULT = 10`,
+  `PURSUIT = 3`, `SCREEN = 1`, `SIEGE_VALUE = 1000` (осадные орудия сильно в
+  приоритете, когда цель — осада).
+- Нервы боя: просит помощи у союзников ниже прогноза победы
+  `ASK_FOR_HELP_COMBAT_PREDICTION_RATIO = 0.66`; отступает ниже
   `RETREAT_COMBAT_PREDICTION_RATIO = 0.45`; `COMBAT_RATIO_THRESHOLD = 0.5`.
 
-**Net effect:** tactically the AI is okay — it retreats from clearly-losing
-fights and values siege weapons — but its army-composition scoring is generic.
+**Итог:** тактически ИИ неплох — отступает из явно проигрышных боёв и ценит
+осадные орудия, — но его оценка состава армии шаблонна.
 
-## 7. Personality traits as global multipliers
+## 7. Черты личности как глобальные множители
 
-- **Energy** scales war chance (§2) and can only *amplify already-positive*
-  faction/scheme scores (`ENERGY_FACTOR = 1.0`).
-- **Rationality** can move an evaluation above *or* below 0 (`RATIONALITY_FACTOR
-  = 1.0`); also unlocks penalised wars when very low (§2).
-- **Boldness** raises the power ratio it dares attack (§3); **Dread** modifies
-  boldness for factions (`DREAD_MODIFIED_BOLDNESS_FACTOR = 1.0`).
+- **Энергия** масштабирует шанс войны (§2) и может только *усиливать уже
+  положительные* оценки фракций/схем (`ENERGY_FACTOR = 1.0`).
+- **Рациональность** может двигать оценку выше *или* ниже 0 (`RATIONALITY_FACTOR
+  = 1.0`); а также разблокирует штрафные войны при очень низком значении (§2).
+- **Смелость** поднимает отношение силы, на которое он смеет напасть (§3);
+  **Страх (Dread)** модифицирует смелость для фракций
+  (`DREAD_MODIFIED_BOLDNESS_FACTOR = 1.0`).
 
-**Net effect:** a single unlucky personality (lethargic / cowardly / very
-rational) can make an otherwise-powerful AI almost inert.
+**Итог:** одна неудачная личность (вялый / трусливый / очень рациональный) может
+сделать иначе мощного ИИ почти инертным.
 
-## Summary — the four weaknesses we can target
+## Итог — четыре слабости, по которым мы можем бить
 
-| # | Symptom | Primary knobs |
+| # | Симптом | Главные ручки |
 |---|---|---|
-| A | **Passive / bursty wars** | `AI_WAR_BASE_COOLDOWN`, Energy scaling, `AI_WAR_MAX_OFFENSIVE_WAR_PENALTY` |
-| B | **Never attacks "up" → blobs snowball** | `CB_TARGET_AT_PEACE_POWER_RATIO_MAX`, `CB_TARGET_POWER_RATIO_BOLDNESS`, `CB_TARGET_MAX_POWER` |
-| C | **Armies only just match the enemy** | `MERC_OVERMATCHING_TARGET`, `MAX_WAR_CHEST_EXPENDITURE_MERC_OVERMATCHING`, `MAX_WEALTH_EXPENDITURE_MERCS` |
-| D | **Idle gold hoarding** | `PERCENTAGE_INTO_WAR_CHEST`, `MONTHS_OF_MAINTENANCE_IN_WAR_CHEST`, `MIN_WAR_CHEST` |
+| A | **Пассивные / рваные войны** | `AI_WAR_BASE_COOLDOWN`, масштаб Энергии, `AI_WAR_MAX_OFFENSIVE_WAR_PENALTY` |
+| B | **Никогда не бьёт «вверх» → блобы снежком** | `CB_TARGET_AT_PEACE_POWER_RATIO_MAX`, `CB_TARGET_POWER_RATIO_BOLDNESS`, `CB_TARGET_MAX_POWER` |
+| C | **Армии лишь впритык равны врагу** | `MERC_OVERMATCHING_TARGET`, `MAX_WAR_CHEST_EXPENDITURE_MERC_OVERMATCHING`, `MAX_WEALTH_EXPENDITURE_MERCS` |
+| D | **Простаивающее золото копится** | `PERCENTAGE_INTO_WAR_CHEST`, `MONTHS_OF_MAINTENANCE_IN_WAR_CHEST`, `MIN_WAR_CHEST` |
 
-The proposed v0.1 pass in `AI_TUNING_PLAN.md` deliberately touches A, B and C
-with small steps so each effect is observable. D is noted but left alone until we
-see whether the AI actually *needs* more spendable gold or just better targets.
+Предлагаемый проход v0.1 в `AI_TUNING_PLAN.md` намеренно трогает A, B и C
+маленькими шагами, чтобы каждый эффект был наблюдаем. D отмечен, но оставлен в
+покое, пока не увидим, реально ли ИИ *нужно* больше тратимого золота или просто
+лучшие цели.
 
-## Open questions to resolve before tuning values
+## Открытые вопросы перед подкруткой значений
 
-1. **Baseline first.** We should run an unmodded observer game and record the
-   metrics in the playtest protocol, so "more competitive" has numbers behind it.
-2. **Where's the pain?** Is the complaint that AIs are too passive, that one blob
-   always snowballs, that the *player* is never threatened, or all three? Each
-   points at a different column above.
-3. **Cheats or not?** Decide whether we stay "play better with real resources"
-   only, or allow gated bonuses (skills/levies/gold) for a harder challenge.
+1. **Сначала базлайн.** Стоит прогнать немодную observer-игру и записать метрики
+   из протокола плейтеста, чтобы у «более конкурентного» были числа.
+2. **Где боль?** Жалоба в том, что ИИ слишком пассивны, что один блоб всегда
+   снежком, что *игроку* ничто не угрожает — или всё сразу? Каждое указывает на
+   свою колонку выше.
+3. **Читы или нет?** Решить, остаёмся ли мы только на «играть лучше реальными
+   ресурсами» или допускаем огороженные бонусы (навыки/левии/золото) для более
+   жёсткого вызова.

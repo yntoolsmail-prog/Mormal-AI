@@ -1,3 +1,3 @@
-# Reserved for character/skill modifier overrides (see CLAUDE.md).
-# Overriding a block here REPLACES the whole vanilla block - copy from
-# vanilla/00_basic_modifiers.txt first, then edit.
+# Зарезервировано под переопределения модификаторов персонажей/навыков (см. CLAUDE.md).
+# Переопределение блока здесь ЗАМЕНЯЕТ весь ванильный блок целиком — сначала
+# скопируй из vanilla/00_basic_modifiers.txt, затем правь.

@@ -3,7 +3,7 @@
 	"id": "",
 	"version": "0.1.0",
 	"supported_game_version": "1.19.*",
-	"short_description": "Makes the Crusader Kings III AI a more competitive, capable opponent.",
+	"short_description": "Делает ИИ Crusader Kings III более конкурентным и умелым противником.",
 	"tags": [
 		"Balance",
 		"Gameplay",
