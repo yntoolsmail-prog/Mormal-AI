@@ -14,8 +14,8 @@ the game's script files (Clausewitz engine, plain-text `key = value` syntax).
 There is no compiling and no engine code here — we change numbers and rules the
 game already reads.
 
-Target game version: **CK3 1.16.x** (the build these files came from — it has
-administrative government, the "Hegemony" tier, and nomad `herd` mechanics).
+Target game version: **CK3 1.19.x**. The vanilla files include administrative
+government, the "Hegemony" tier, and nomad `herd` mechanics.
 
 ## Repository layout
 
@@ -31,6 +31,7 @@ vanilla/                            # PRISTINE upstream reference - DO NOT EDIT
   00_defines.txt                    #   -> vanilla common/defines/00_defines.txt
   00_basic_modifiers.txt            #   -> vanilla common/modifiers/00_basic_modifiers.txt
 docs/
+  AI_CURRENT_STATE.md               # how the stock AI behaves today (baseline)
   AI_TUNING_PLAN.md                 # the levers, current values, and the plan
 CLAUDE.md                           # this file
 README.md                           # player-facing install & overview
@@ -103,3 +104,4 @@ There is no automated test suite — this is game script. To validate:
 - Need the default value or the meaning of a key? → grep `vanilla/00_ai.txt`
   (the `### Brief:` comment above the key explains it).
 - Planning or recording tuning decisions? → `docs/AI_TUNING_PLAN.md`.
+- Need to understand how the stock AI already behaves? → `docs/AI_CURRENT_STATE.md`.

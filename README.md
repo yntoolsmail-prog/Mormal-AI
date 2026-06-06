@@ -1,6 +1,6 @@
 # Mormal AI
 
-A balance mod for **Crusader Kings III** (CK3 1.16.x) that makes the AI a more
+A balance mod for **Crusader Kings III** (CK3 1.19.x) that makes the AI a more
 **competitive opponent** — quicker to go to war, smarter about army size, less
 timid about target selection, and less prone to hoarding gold it never spends.
 
@@ -37,7 +37,7 @@ The repository **is** the mod folder. To run it:
    version="0.1.0"
    tags={ "Balance" "Warfare" }
    name="Mormal AI"
-   supported_version="1.16.*"
+   supported_version="1.19.*"
    path="mod/Mormal-AI"
    ```
 3. Launch CK3, enable **Mormal AI** in a playset, and play.
@@ -51,6 +51,7 @@ The repository **is** the mod folder. To run it:
 | `common/defines/00_mormal_ai.txt` | Our AI tuning overrides (the main file). |
 | `common/modifiers/` | Reserved for character/skill modifier tweaks. |
 | `vanilla/` | Pristine copies of the original game files (reference only). |
+| `docs/AI_CURRENT_STATE.md` | How the stock AI behaves today (the baseline). |
 | `docs/AI_TUNING_PLAN.md` | The levers, their defaults, and the plan. |
 | `CLAUDE.md` | Contributor guide / how the mod is structured. |
 | `descriptor.mod`, `.metadata/metadata.json` | CK3 mod descriptors. |
@@ -64,7 +65,7 @@ and change one theme at a time.
 
 ## Compatibility
 
-- **Game version:** CK3 1.16.x.
+- **Game version:** CK3 1.19.x.
 - **DLC:** none required.
 - **Other mods:** conflicts with any mod that also overrides the same `NAI`
   defines (load order decides the winner).

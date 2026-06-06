@@ -7,7 +7,7 @@ record *what* we change, *why*, and *what the playtest showed*.
 
 All levers live in `vanilla/00_ai.txt` (the `NAI` block). We override them in
 `common/defines/00_mormal_ai.txt`. Vanilla values are quoted from the shipped
-files (CK3 1.16.x).
+files (CK3 1.19.x).
 
 ## Diagnosis — where the vanilla AI is weak
 

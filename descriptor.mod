@@ -6,4 +6,4 @@ tags={
 	"Fixes"
 }
 name="Mormal AI"
-supported_version="1.16.*"
+supported_version="1.19.*"
