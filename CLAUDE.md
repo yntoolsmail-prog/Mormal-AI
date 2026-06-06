@@ -31,10 +31,12 @@ vanilla/                            # ЭТАЛОН из игры — НЕ РЕД
   00_defines.txt                    #   -> ванильный common/defines/00_defines.txt
   00_basic_modifiers.txt            #   -> ванильный common/modifiers/00_basic_modifiers.txt
   scripted_values/                  #   -> ванильный common/scripted_values/* (справка для скриптовой фазы)
+    00_ai_values.txt                #      БЮДЖЕТ ИИ: war chest, расход на латников (min/ideal/max)
     00_interaction_values.txt       #      выкуп/вассализация/принятие интеракций
     00_war_values.txt               #      перемирия, сила сторон, ai_strength_multiplier, is_ai
     00_combat_values.txt            #      боевые вспомогательные значения
     01_character_weighting_values.txt #    веса важности персонажей (пленные/убитые)
+    03_dlc_fp2_script_values.txt    #      FP2: покупка перемирия, помощь в войне, прочее
     05_bp2_hostage_values.txt       #      ценность заложников, личностные множители ИИ
 docs/
   AI_CURRENT_STATE.md               # как ИИ ведёт себя сейчас (базлайн)
