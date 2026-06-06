@@ -1,0 +1,8 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# CK3 launcher artifacts (don't commit machine-local descriptors)
+/Mormal-AI.mod

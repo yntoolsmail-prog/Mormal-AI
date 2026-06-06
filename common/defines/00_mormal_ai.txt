@@ -1,0 +1,40 @@
+# =============================================================================
+#  Mormal AI - AI define overrides
+# =============================================================================
+#  This file is loaded AFTER vanilla common/defines/00_ai.txt (filenames load
+#  alphabetically; "00_mormal_ai" sorts after "00_ai"). Any NAI key set here
+#  REPLACES the vanilla value. You only need to list the keys you change - do
+#  NOT paste the whole vanilla file.
+#
+#  Vanilla reference (untouched): vanilla/00_ai.txt
+#  Rationale & playtesting notes:  docs/AI_TUNING_PLAN.md
+#
+#  CONVENTION for every change below:
+#    KEY = <new>      # vanilla <old> | why this makes the AI more competitive
+#
+#  v0.1 ships with NO active gameplay changes yet - only the documented
+#  candidate levers below, commented out. Enable them deliberately, one theme
+#  at a time, and playtest before stacking more. See the tuning plan.
+# =============================================================================
+
+NAI = {
+
+	# --- War tempo: declare wars more often, sit idle less ----------------
+	# AI_WAR_BASE_COOLDOWN = 40             # vanilla 50  | shorter peace between offensive wars
+	# AI_BASE_WAR_CHANCE   = 1              # vanilla 1   | base roll; combined with energy (x0.5 at 0)
+
+	# --- Army sizing: field decisive stacks, lean on mercs ----------------
+	# MERC_OVERMATCHING_TARGET            = 1.4   # vanilla 1.25 | aim to outnumber the enemy more
+	# MAX_WEALTH_EXPENDITURE_MERCS        = 0.85  # vanilla 0.8  | spend a bit more wealth on mercs
+	# MAX_WAR_CHEST_EXPENDITURE_MERC_OVERMATCHING = 0.8  # vanilla 0.7 | commit more warchest to overmatch
+	# RAISE_TROOPS_MIN_RATIO_OF_ENEMY     = 0.5   # vanilla 0.5  | threshold to bother raising vs enemy
+
+	# --- Target selection: be willing to punch up -------------------------
+	# CB_TARGET_AT_PEACE_POWER_RATIO_MAX  = 1.1   # vanilla 1.0  | attack targets up to 10% stronger
+	# CB_TARGET_POWER_RATIO_BOLDNESS      = 0.30  # vanilla 0.25 | bold rulers reach further up
+	# DESIRED_WAR_SIDE_POWER              = 1.25  # vanilla 1.25 | when to stop pulling in allies
+
+	# --- Economy: hoard less gold, convert it into power ------------------
+	# PERCENTAGE_INTO_WAR_CHEST           = 0.6   # vanilla 0.6  | share of income reserved for war
+
+}
