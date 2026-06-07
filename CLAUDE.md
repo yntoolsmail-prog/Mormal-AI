@@ -30,7 +30,9 @@ common/
 vanilla/                            # ЭТАЛОН из игры — НЕ РЕДАКТИРОВАТЬ
   00_ai.txt                         #   -> ванильный common/defines/00_ai.txt   (блок NAI)
   00_defines.txt                    #   -> ванильный common/defines/00_defines.txt   (блоки NMilitary, NDynasty и т.п.: цена/содержание солдат, престиж, размеры полков)
-  00_basic_modifiers.txt            #   -> ванильный common/modifiers/00_basic_modifiers.txt
+  00_basic_modifiers.txt            #   -> ванильный common/modifiers/00_basic_modifiers.txt (вкл. блоки сложности: скидки ИИ на латников/наёмников/постройки)
+  scripted_effects/
+    00_ai_budget_effects.txt        #   -> ванильный common/scripted_effects/* : ai_budget_manipulation_effect — КАК ИИ двигает золото между корзинами (war chest / long_term / short_term) по личности; ДОКАЗЫВАЕТ, что здания(слоты)+латники из short_term, новые холдинги+феодализация из long_term
   scripted_values/                  #   -> ванильный common/scripted_values/* (справка для скриптовой фазы)
     00_ai_values.txt                #      БЮДЖЕТ ИИ: war chest, расход на латников (min/ideal/max), «латники или здание»
     00_men_at_arms_values.txt       #      цены найма/содержания латников по типам, веса выбора типа, провизия
