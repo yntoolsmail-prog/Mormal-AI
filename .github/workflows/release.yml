@@ -7,6 +7,11 @@ on:
   push:
     tags:
       - 'v*'
+  # Чтобы кнопка "Create release" в UI сама запускала сборку.
+  # ВАЖНО: событие release срабатывает только если этот workflow лежит на
+  # дефолтной ветке (main). До слияния в main работает лишь push-тег и ручной запуск.
+  release:
+    types: [published]
   workflow_dispatch:
 
 permissions:
@@ -21,6 +26,19 @@ jobs:
       - name: Build mod zip
         run: bash tools/build_release.sh
 
+      # Любой запуск (в т.ч. ручной "Run workflow") оставляет готовый к установке
+      # мод на странице прогона: Actions → выбрать run → раздел Artifacts →
+      # скачать "Mormal-AI-mod". Внутри — папка Mormal-AI/ и Mormal-AI.mod,
+      # которые кладутся прямо в каталог mod/ игры (один распак, без вложенных zip).
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mormal-AI-mod
+          path: |
+            build/Mormal-AI
+            build/Mormal-AI.mod
+
+      # Релиз создаётся ТОЛЬКО при пуше тега vX.Y.Z (не при ручном запуске).
       - name: Attach zip to release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
