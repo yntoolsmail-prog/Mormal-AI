@@ -1,0 +1,3087 @@
+Ñòðóêòóðà ïàïîê
+Ñåðèéíûé íîìåð òîìà: 000000A9 32A6:5DDB
+C:.
+¦   achievement_groups.txt
+¦   tree.txt
+¦   
++---accolade_icons
+¦       00_accolade_icons.txt
+¦       _accolade_icon.info
+¦       
++---accolade_names
+¦       00_accolade_names.txt
+¦       _accolade_name.info
+¦       
++---accolade_types
+¦       00_accolade_categories.txt
+¦       04_ep2_common_attributes.txt
+¦       04_ep2_eminent_attributes.txt
+¦       04_ep2_maa_attributes.txt
+¦       04_ep2_skilled_attributes.txt
+¦       _accolade_type.info
+¦       
++---achievements
+¦       ce1_achievements.txt
+¦       ep1_achievements.txt
+¦       ep2_achievements.txt
+¦       ep3_achievements.txt
+¦       ep4_achievements.txt
+¦       fp1_achievements.txt
+¦       fp2_achievements.txt
+¦       fp3_achievements.txt
+¦       mpo_achievements.txt
+¦       msgrdk_achievements.json
+¦       standard_achievements.txt
+¦       _achievements.info
+¦       
++---activities
+¦   +---activity_group_types
+¦   ¦       00_activity_group_types.txt
+¦   ¦       _activity_group_types.info
+¦   ¦       
+¦   +---activity_locales
+¦   ¦       tournament_locales.txt
+¦   ¦       _activity_locales.info
+¦   ¦       
+¦   +---activity_types
+¦   ¦       camp_party.txt
+¦   ¦       chariot_race.txt
+¦   ¦       coronation.txt
+¦   ¦       debate.txt
+¦   ¦       feast.txt
+¦   ¦       festival.txt
+¦   ¦       funeral.txt
+¦   ¦       gruesome_festival.txt
+¦   ¦       hike.txt
+¦   ¦       hunt.txt
+¦   ¦       imperial_examination.txt
+¦   ¦       inspection.txt
+¦   ¦       local_examination.txt
+¦   ¦       monument_expedition.txt
+¦   ¦       pilgrimage.txt
+¦   ¦       playdate.txt
+¦   ¦       tour.txt
+¦   ¦       tournament.txt
+¦   ¦       university_visit.txt
+¦   ¦       wedding.txt
+¦   ¦       witch_ritual.txt
+¦   ¦       _activity_type.info
+¦   ¦       
+¦   +---guest_invite_rules
+¦   ¦       activity_invite_rules.txt
+¦   ¦       _invite_rules.info
+¦   ¦       
+¦   +---intents
+¦   ¦       camp_party_intents.txt
+¦   ¦       chariot_race_intents.txt
+¦   ¦       coronation_intents.txt
+¦   ¦       debate_intents.txt
+¦   ¦       education_intents.txt
+¦   ¦       festival_intents.txt
+¦   ¦       funeral_intents.txt
+¦   ¦       hunt_intents.txt
+¦   ¦       imperial_examination_intents.txt
+¦   ¦       journey_intents.txt
+¦   ¦       pilgrimage_intents.txt
+¦   ¦       roaming_intents.txt
+¦   ¦       shared_intents.txt
+¦   ¦       survey_intents.txt
+¦   ¦       tournament_intents.txt
+¦   ¦       tour_intents.txt
+¦   ¦       wedding_intents.txt
+¦   ¦       witch_ritual_intents.txt
+¦   ¦       _intents.info
+¦   ¦       
+¦   L---pulse_actions
+¦           camp_party_actions.txt
+¦           chariot_race_actions.txt
+¦           coronation_pulse_actions.txt
+¦           debate_pulse_actions.txt
+¦           education_actions.txt
+¦           feast_pulse_actions.txt
+¦           feast_pulse_actions_oltner.txt
+¦           festival_actions.txt
+¦           general_actions.txt
+¦           hunt_pulse_actions.txt
+¦           imperial_examination_actions.txt
+¦           journey_actions.txt
+¦           pilgrimage_actions.txt
+¦           playdate_actions.txt
+¦           roaming_actions.txt
+¦           survey_actions.txt
+¦           tournament_actions.txt
+¦           tour_actions.txt
+¦           wedding_pulse_actions.txt
+¦           witch_ritual_actions.txt
+¦           _pulse_actions.info
+¦           
++---ai_goaltypes
+¦       00_testgoals.txt
+¦       
++---ai_war_stances
+¦       00_ai_attacker_stances.txt
+¦       00_ai_defender_stances.txt
+¦       00_ai_war_stances.txt
+¦       _ai_war_stances.info
+¦       
++---artifacts
+¦   +---blueprints
+¦   ¦       00_reforge.txt
+¦   ¦       _blueprints.info
+¦   ¦       
+¦   +---features
+¦   ¦       00_features.txt
+¦   ¦       _features.info
+¦   ¦       
+¦   +---feature_groups
+¦   ¦       00_groups.txt
+¦   ¦       _feature_groups.info
+¦   ¦       
+¦   +---slots
+¦   ¦       00_default.txt
+¦   ¦       
+¦   +---templates
+¦   ¦       00_event_templates.txt
+¦   ¦       00_historical_artifacts_templates.txt
+¦   ¦       00_type_templates.txt
+¦   ¦       01_ep2_templates.txt
+¦   ¦       02_ep3_templates.txt
+¦   ¦       _templates.info
+¦   ¦       
+¦   +---types
+¦   ¦       00_types.txt
+¦   ¦       _types.info
+¦   ¦       
+¦   L---visuals
+¦           000_placeholder.txt
+¦           00_court_artifacts.txt
+¦           00_historical.txt
+¦           00_personal_misc.txt
+¦           00_weapon_visuals.txt
+¦           03_fp2_artifacts.txt
+¦           04_ep2_artifacts.txt
+¦           06_ce1_artifacts.txt
+¦           07_ep3_artifacts.txt
+¦           09_mpo_artifacts.txt
+¦           _visuals.info
+¦           
++---bookmarks
+¦   +---bookmarks
+¦   ¦       00_bookmarks.txt
+¦   ¦       _bookmarks.info
+¦   ¦       
+¦   +---challenge_characters
+¦   ¦       00_challenge_characters.txt
+¦   ¦       _challenge_characters.info
+¦   ¦       
+¦   L---groups
+¦           00_bookmark_groups.txt
+¦           _bookmark_groups.info
+¦           
++---bookmark_portraits
+¦       bookmark_adventurers_almos_arpad.txt
+¦       bookmark_adventurers_almos_arpad_alt_linutika.txt
+¦       bookmark_adventurers_almos_arpad_alt_son_arpad.txt
+¦       bookmark_adventurers_count_eudes.txt
+¦       bookmark_adventurers_count_eudes_alt_robert.txt
+¦       bookmark_adventurers_count_eudes_alt_uncle_eudes.txt
+¦       bookmark_adventurers_daurama_daura.txt
+¦       bookmark_adventurers_daurama_daura_alt_bawo.txt
+¦       bookmark_adventurers_jarl_haesteinn.txt
+¦       bookmark_adventurers_jarl_haesteinn_alt_ragnarr.txt
+¦       bookmark_adventurers_rurik_rurikid.txt
+¦       bookmark_adventurers_rurik_rurikid_alt_helgi.txt
+¦       bookmark_animation_test_dwarf_female.txt
+¦       bookmark_animation_test_dwarf_male.txt
+¦       bookmark_animation_test_fat_dwarf_female.txt
+¦       bookmark_animation_test_fat_dwarf_male.txt
+¦       bookmark_animation_test_fat_female.txt
+¦       bookmark_animation_test_fat_male.txt
+¦       bookmark_animation_test_female.txt
+¦       bookmark_animation_test_female_child.txt
+¦       bookmark_animation_test_female_pregnant.txt
+¦       bookmark_animation_test_hunchbacked_female.txt
+¦       bookmark_animation_test_hunchbacked_male.txt
+¦       bookmark_animation_test_male.txt
+¦       bookmark_animation_test_male_child.txt
+¦       bookmark_animation_test_muscular_female.txt
+¦       bookmark_animation_test_muscular_male.txt
+¦       bookmark_call_of_the_empire_angelos.txt
+¦       bookmark_call_of_the_empire_angelos_alexios.txt
+¦       bookmark_call_of_the_empire_angelos_ioannes.txt
+¦       bookmark_call_of_the_empire_ioannes_kantakouzenos.txt
+¦       bookmark_call_of_the_empire_ioannes_kantakouzenos_michael.txt
+¦       bookmark_call_of_the_empire_kilij_arslan.txt
+¦       bookmark_call_of_the_empire_kilij_arslan_kaykhusraw.txt
+¦       bookmark_call_of_the_empire_kilij_arslan_suleyman.txt
+¦       bookmark_call_of_the_empire_palaiologos.txt
+¦       bookmark_call_of_the_empire_palaiologos_eirene.txt
+¦       bookmark_call_of_the_empire_tamar.txt
+¦       bookmark_call_of_the_empire_tamar_giorgi.txt
+¦       bookmark_call_of_the_empire_tamar_rusudan.txt
+¦       bookmark_carolingians_charles_the_bald.txt
+¦       bookmark_carolingians_charles_the_bald_alt_judith.txt
+¦       bookmark_carolingians_charles_the_bald_alt_louis.txt
+¦       bookmark_carolingians_king_karlmann.txt
+¦       bookmark_carolingians_king_karlmann_alt_arnulf.txt
+¦       bookmark_carolingians_king_karlmann_alt_hemma.txt
+¦       bookmark_carolingians_king_lothaire.txt
+¦       bookmark_carolingians_king_lothaire_alt_teutberga.txt
+¦       bookmark_carolingians_king_lothaire_alt_waldrada.txt
+¦       bookmark_carolingians_king_louis.txt
+¦       bookmark_carolingians_king_louis_alt_engelberga.txt
+¦       bookmark_carolingians_king_louis_alt_ermengarde.txt
+¦       bookmark_carolingians_ludwig_the_german.txt
+¦       bookmark_carolingians_ludwig_the_german_alt_karl.txt
+¦       bookmark_carolingians_ludwig_the_german_alt_youngerludwig.txt
+¦       bookmark_china_1066_duan_silian.txt
+¦       bookmark_china_1066_empress_liang.txt
+¦       bookmark_china_1066_ly_thanh_tong.txt
+¦       bookmark_china_1066_qin_guan.txt
+¦       bookmark_china_1066_su_shi.txt
+¦       bookmark_china_1066_wang_anshi.txt
+¦       bookmark_china_1066_wang_shao.txt
+¦       bookmark_china_1178_li_renxiao.txt
+¦       bookmark_china_1178_tudan_xixian.txt
+¦       bookmark_china_1178_xin_qiji.txt
+¦       bookmark_china_1178_zhang_shi.txt
+¦       bookmark_china_1178_zhu_xi.txt
+¦       bookmark_china_867_gao_pian.txt
+¦       bookmark_china_867_he_quanhao.txt
+¦       bookmark_china_867_huang_chao.txt
+¦       bookmark_china_867_zhang_huaishen.txt
+¦       bookmark_china_867_zhuye_chixin.txt
+¦       bookmark_fp2_iberia_adanis_ibn_awsaga.txt
+¦       bookmark_fp2_iberia_bernat_of_gothia.txt
+¦       bookmark_fp2_iberia_ibn_awsaga_alt_masud.txt
+¦       bookmark_fp2_iberia_ibn_awsaga_alt_yahya.txt
+¦       bookmark_fp2_iberia_ibn_marwan.txt
+¦       bookmark_fp2_iberia_ibn_marwan_alt_rahman.txt
+¦       bookmark_fp2_iberia_ibn_marwan_alt_surunbaqi.txt
+¦       bookmark_fp2_iberia_ibn_marwan_alt_zaid.txt
+¦       bookmark_fp2_iberia_ibn_mendo_guterres_alt_ermesinda.txt
+¦       bookmark_fp2_iberia_lubb_ibn_musa_alt_mohamed.txt
+¦       bookmark_fp2_iberia_lubb_ibn_musa_alt_oria.txt
+¦       bookmark_fp2_iberia_lupp_ibn_musa.txt
+¦       bookmark_fp2_iberia_mendo_guterres.txt
+¦       bookmark_fp2_iberia_mendo_guterres_alt_arias.txt
+¦       bookmark_fp2_iberia_mendo_guterres_alt_ermesinda.txt
+¦       bookmark_fp2_iberia_sunyer.txt
+¦       bookmark_fp2_iberia_wilfred_the_hairy.txt
+¦       bookmark_genpei_hidehira.txt
+¦       bookmark_genpei_hidehira_hidehisa.txt
+¦       bookmark_genpei_hidehira_yasuhira.txt
+¦       bookmark_genpei_kiyomori.txt
+¦       bookmark_genpei_kiyomori_shigemori.txt
+¦       bookmark_genpei_kiyomori_tsunemori.txt
+¦       bookmark_genpei_motofusa.txt
+¦       bookmark_genpei_motofusa_kanezane.txt
+¦       bookmark_genpei_motofusa_takatada.txt
+¦       bookmark_genpei_takakura.txt
+¦       bookmark_genpei_takakura_noriko.txt
+¦       bookmark_genpei_takakura_shirakawa.txt
+¦       bookmark_genpei_yoritomo.txt
+¦       bookmark_genpei_yoritomo_noriyori.txt
+¦       bookmark_genpei_yoritomo_yoshitsune.txt
+¦       bookmark_genpei_yoshinaka.txt
+¦       bookmark_genpei_yoshinaka_tomoe.txt
+¦       bookmark_genpei_yoshinaka_yoshitaka.txt
+¦       bookmark_hastings_denmark.txt
+¦       bookmark_hastings_denmark_alt_harald.txt
+¦       bookmark_hastings_denmark_alt_knud.txt
+¦       bookmark_hastings_england.txt
+¦       bookmark_hastings_england_alt_eadgifu.txt
+¦       bookmark_hastings_england_alt_tostig.txt
+¦       bookmark_hastings_normandy.txt
+¦       bookmark_hastings_normandy_alt_robert.txt
+¦       bookmark_hastings_normandy_alt_william.txt
+¦       bookmark_hastings_norway.txt
+¦       bookmark_hastings_norway_alt_ingegerd.txt
+¦       bookmark_hastings_norway_alt_olaf.txt
+¦       bookmark_hastings_scotland.txt
+¦       bookmark_hastings_scotland_alt_donald.txt
+¦       bookmark_hastings_scotland_alt_duncan.txt
+¦       bookmark_iberia_infanta_urraca.txt
+¦       bookmark_iberia_infanta_urraca_alt_elvira.txt
+¦       bookmark_iberia_king_alfonso.txt
+¦       bookmark_iberia_king_alfonso_alt_nuno.txt
+¦       bookmark_iberia_king_alfonso_alt_sancha.txt
+¦       bookmark_iberia_king_antso.txt
+¦       bookmark_iberia_king_antso_alt_ramiro.txt
+¦       bookmark_iberia_king_antso_alt_sancho.txt
+¦       bookmark_iberia_king_garcia.txt
+¦       bookmark_iberia_king_sancho.txt
+¦       bookmark_iberia_king_sancho_alt_rodrigo.txt
+¦       bookmark_japan_go_reizei.txt
+¦       bookmark_japan_go_reizei_go_sanjo.txt
+¦       bookmark_japan_go_reizei_tameyuki.txt
+¦       bookmark_japan_morofusa.txt
+¦       bookmark_japan_morofusa_akifusa.txt
+¦       bookmark_japan_morofusa_toshifusa.txt
+¦       bookmark_japan_takenori.txt
+¦       bookmark_japan_takenori_mitsuyori.txt
+¦       bookmark_japan_takenori_takehira.txt
+¦       bookmark_japan_yorimichi.txt
+¦       bookmark_japan_yorimichi_morozane.txt
+¦       bookmark_japan_yorimichi_sadatsuna.txt
+¦       bookmark_japan_yoriyoshi.txt
+¦       bookmark_japan_yoriyoshi_yorisue.txt
+¦       bookmark_japan_yoriyoshi_yoshiie.txt
+¦       bookmark_laamps_alt_alp_arslan.txt
+¦       bookmark_laamps_alt_boudewijn_v.txt
+¦       bookmark_laamps_alt_konstantinos_x.txt
+¦       bookmark_laamps_alt_mensur_qutalmishoglu.txt
+¦       bookmark_laamps_alt_roussel_de_baeilleul.txt
+¦       bookmark_laamps_atsiz_ibn_uvak.txt
+¦       bookmark_laamps_el_cid.txt
+¦       bookmark_laamps_hassan_sabbah.txt
+¦       bookmark_laamps_hereweard_the_wake.txt
+¦       bookmark_laamps_robert_crispin.txt
+¦       bookmark_laamps_suleyman_qutalmishoglu.txt
+¦       bookmark_laamps_wallada_bint_al_mustakfi.txt
+¦       bookmark_mandalas_867_indra.txt
+¦       bookmark_mandalas_867_jayavarman_angkor.txt
+¦       bookmark_mandalas_867_lokapala.txt
+¦       bookmark_mandalas_867_padumaraja.txt
+¦       bookmark_mandalas_867_pyinbya.txt
+¦       bookmark_mandalas_867_saladu.txt
+¦       bookmark_mandalas_867_tanet.txt
+¦       bookmark_nomads_cumans.txt
+¦       bookmark_nomads_eastern_karakhanids.txt
+¦       bookmark_nomads_ghudayya.txt
+¦       bookmark_nomads_ghudayya_haditha.txt
+¦       bookmark_nomads_hamid.txt
+¦       bookmark_nomads_inanch_bilge.txt
+¦       bookmark_nomads_inanch_bilge_gurbesu.txt
+¦       bookmark_nomads_inanch_bilge_tayang.txt
+¦       bookmark_nomads_jamukha.txt
+¦       bookmark_nomads_keraits.txt
+¦       bookmark_nomads_keraits_hongji.txt
+¦       bookmark_nomads_keraits_margus.txt
+¦       bookmark_nomads_koncek.txt
+¦       bookmark_nomads_koncek_kotyan.txt
+¦       bookmark_nomads_koncek_svoboda.txt
+¦       bookmark_nomads_late_kirghiz.txt
+¦       bookmark_nomads_mihyu.txt
+¦       bookmark_nomads_mihyu_abd_al_haqq.txt
+¦       bookmark_nomads_pechenegs.txt
+¦       bookmark_nomads_qaraqush.txt
+¦       bookmark_nomads_temujin.txt
+¦       bookmark_nomads_temujin_borte.txt
+¦       bookmark_nomads_temujin_hoelun.txt
+¦       bookmark_nomads_togrul.txt
+¦       bookmark_nomads_togrul_oghuul.txt
+¦       bookmark_nomads_wolila.txt
+¦       bookmark_nomads_wolila_zhilugu.txt
+¦       bookmark_northmen_bjorn_ironside.txt
+¦       bookmark_northmen_bjorn_ironside_alt_eirikr.txt
+¦       bookmark_northmen_bjorn_ironside_alt_ingrid.txt
+¦       bookmark_northmen_earl_alfred.txt
+¦       bookmark_northmen_earl_alfred_alt_aethelred.txt
+¦       bookmark_northmen_halfdan_whiteshirt.txt
+¦       bookmark_northmen_halfdan_whiteshirt_alt_gudfrid.txt
+¦       bookmark_northmen_halfdan_whiteshirt_alt_saga.txt
+¦       bookmark_northmen_ivar_the_boneless.txt
+¦       bookmark_northmen_ivar_the_boneless_alt_barid.txt
+¦       bookmark_northmen_ivar_the_boneless_alt_sigfroth.txt
+¦       bookmark_northmen_sigurdr_snake_in_the_eye.txt
+¦       bookmark_northmen_sigurdr_snake_in_the_eye_alt_alof.txt
+¦       bookmark_northmen_sigurdr_snake_in_the_eye_alt_knud.txt
+¦       bookmark_persia_amir_yaqub.txt
+¦       bookmark_persia_ismail_alt_nasr.txt
+¦       bookmark_persia_ismail_samani.txt
+¦       bookmark_persia_muhammad_ibn_abdallah.txt
+¦       bookmark_persia_muhammad_ibn_abdallah_alt_caliph.txt
+¦       bookmark_persia_muhammad_ibn_abdallah_alt_muhammad_ibn_tahir.txt
+¦       bookmark_persia_rostam.txt
+¦       bookmark_persia_rostam_alt_hasan.txt
+¦       bookmark_persia_rostam_alt_shervin.txt
+¦       bookmark_persia_suri_of_mandesh.txt
+¦       bookmark_persia_suri_of_mandesh_alt_abdullah.txt
+¦       bookmark_persia_suri_of_mandesh_alt_farhana.txt
+¦       bookmark_persia_yaqub_alt_amr.txt
+¦       bookmark_persia_yaqub_alt_sebuk_eri.txt
+¦       bookmark_rags_to_riches_duchess_matilda.txt
+¦       bookmark_rags_to_riches_duke_robert.txt
+¦       bookmark_rags_to_riches_duke_robert_alt_bohemond.txt
+¦       bookmark_rags_to_riches_duke_robert_alt_roger.txt
+¦       bookmark_rags_to_riches_duke_vratislav.txt
+¦       bookmark_rags_to_riches_duke_vratislav_alt_judita.txt
+¦       bookmark_rags_to_riches_duke_vratislav_alt_ota.txt
+¦       bookmark_rags_to_riches_emir_yahya.txt
+¦       bookmark_rags_to_riches_emir_yahya_alt_yahya2.txt
+¦       bookmark_rags_to_riches_emir_yahya_alt_zahida.txt
+¦       bookmark_rags_to_riches_petty_king_murchad.txt
+¦       bookmark_rags_to_riches_petty_king_murchad_alt_bebinn.txt
+¦       bookmark_rags_to_riches_petty_king_murchad_alt_brian.txt
+¦       bookmark_swords_of_faith_gokbori.txt
+¦       bookmark_swords_of_faith_gokbori_ghazi.txt
+¦       bookmark_swords_of_faith_gokbori_yusuf.txt
+¦       bookmark_swords_of_faith_levon.txt
+¦       bookmark_swords_of_faith_levon_roupen.txt
+¦       bookmark_swords_of_faith_raimon.txt
+¦       bookmark_swords_of_faith_raimon_eschiva.txt
+¦       bookmark_swords_of_faith_saladin.txt
+¦       bookmark_swords_of_faith_saladin_ali.txt
+¦       bookmark_swords_of_faith_saladin_saphadin.txt
+¦       bookmark_swords_of_faith_sibylla.txt
+¦       bookmark_swords_of_faith_sibylla_baudouin.txt
+¦       bookmark_swords_of_faith_sibylla_baudouin_son.txt
+¦       challenge_character_aba_socotra.txt
+¦       challenge_character_aella_northumberland.txt
+¦       challenge_character_ahmad_egypt.txt
+¦       challenge_character_alfonsu_asturias.txt
+¦       challenge_character_algimantas_lithuanians.txt
+¦       challenge_character_ali_siracusa.txt
+¦       challenge_character_ali_taizz.txt
+¦       challenge_character_alusian_vidin.txt
+¦       challenge_character_amoghavarsha_karnata.txt
+¦       challenge_character_anawrahta_pagan.txt
+¦       challenge_character_ashot_armenia.txt
+¦       challenge_character_badr_acre.txt
+¦       challenge_character_berenguer_barcelona.txt
+¦       challenge_character_dawit_dembiya.txt
+¦       challenge_character_dumnarth_cornwall.txt
+¦       challenge_character_dyre_kiev.txt
+¦       challenge_character_eadgar_warwickshire.txt
+¦       challenge_character_erik_svealand.txt
+¦       challenge_character_fariburz_shirvan.txt
+¦       challenge_character_gregorios_napoli.txt
+¦       challenge_character_gudrod_western_isles.txt
+¦       challenge_character_gunda_orangallu.txt
+¦       challenge_character_haraldr_vestfold.txt
+¦       challenge_character_heinrich_angria.txt
+¦       challenge_character_henri_champagne.txt
+¦       challenge_character_herbert_vermandois.txt
+¦       challenge_character_ishaq_baalbek.txt
+¦       challenge_character_john_ulster.txt
+¦       challenge_character_khusraw_malik_punjab.txt
+¦       challenge_character_krutoj_nordmark.txt
+¦       challenge_character_kulin_bosna.txt
+¦       challenge_character_lambert_spoleto.txt
+¦       challenge_character_maghan_sibi.txt
+¦       challenge_character_mohammed_azerbaijan.txt
+¦       challenge_character_muhammad_africa.txt
+¦       challenge_character_nur_al_din_muhammed_nizari.txt
+¦       challenge_character_piarres_albarracin.txt
+¦       challenge_character_pierre_piedmonte.txt
+¦       challenge_character_prithviraja_rajputana.txt
+¦       challenge_character_raoul_valois.txt
+¦       challenge_character_renaud_kerak.txt
+¦       challenge_character_rhodri_gwynedd.txt
+¦       challenge_character_richard_capua.txt
+¦       challenge_character_richard_poitiers.txt
+¦       challenge_character_rogier_albi.txt
+¦       challenge_character_rostislav_tmutarakan.txt
+¦       challenge_character_sargis_greater_armenia.txt
+¦       challenge_character_shisnand_coimbra.txt
+¦       challenge_character_siemowit_wielkopolska.txt
+¦       challenge_character_vicayalaya_chola_nadu.txt
+¦       challenge_character_werner_aargau.txt
+¦       challenge_character_werner_worms.txt
+¦       historical_export_easteregg_alessandro_bragalini.txt
+¦       historical_export_easteregg_alexander_oltner.txt
+¦       historical_export_easteregg_alexander_windahl.txt
+¦       historical_export_easteregg_anton_holmqvist.txt
+¦       historical_export_easteregg_anton_leirnes.txt
+¦       historical_export_easteregg_anton_sorokin.txt
+¦       historical_export_easteregg_artur_kacprzak.txt
+¦       historical_export_easteregg_celine_jensen.txt
+¦       historical_export_easteregg_chad_uhl.txt
+¦       historical_export_easteregg_daan_broekhof.txt
+¦       historical_export_easteregg_david_drake.txt
+¦       historical_export_easteregg_emelie_verdugo.txt
+¦       historical_export_easteregg_emil_tisander.txt
+¦       historical_export_easteregg_fabian_franzen.txt
+¦       historical_export_easteregg_henrik_fahraeus.txt
+¦       historical_export_easteregg_henrik_lohmander.txt
+¦       historical_export_easteregg_jacopo_freddi.txt
+¦       historical_export_easteregg_jakob_jorstedt.txt
+¦       historical_export_easteregg_jason_cantalini.txt
+¦       historical_export_easteregg_joel_hansson.txt
+¦       historical_export_easteregg_joe_parkin.txt
+¦       historical_export_easteregg_johanna_hermansson.txt
+¦       historical_export_easteregg_johanna_uddstahl.txt
+¦       historical_export_easteregg_jonas_wickerstrom.txt
+¦       historical_export_easteregg_lucas_ribeiro.txt
+¦       historical_export_easteregg_max_collin.txt
+¦       historical_export_easteregg_nils_wadensten.txt
+¦       historical_export_easteregg_oscar_andersson.txt
+¦       historical_export_easteregg_petter_lundh.txt
+¦       historical_export_easteregg_riad_deneche.txt
+¦       historical_export_easteregg_samet_atasoy.txt
+¦       historical_export_easteregg_veronica_pazos.txt
+¦       
++---buildings
+¦       00_admin_buildings.txt
+¦       00_castle_buildings.txt
+¦       00_city_buildings.txt
+¦       00_common_buildings.txt
+¦       00_duchy_capital_buildings.txt
+¦       00_legendary_buildings.txt
+¦       00_nomad_buildings.txt
+¦       00_special_buildings.txt
+¦       00_special_mines.txt
+¦       00_standard_economy_buildings.txt
+¦       00_standard_fortification_buildings.txt
+¦       00_standard_military_buildings.txt
+¦       00_temple_buildings.txt
+¦       00_tribal_buildings.txt
+¦       99_ach_buildings.txt
+¦       99_background_graphics_buildings.txt
+¦       ccp3_special_buildings.txt
+¦       cp6_special_buildings.txt
+¦       cp8_special_buildings.txt
+¦       temple_citadel_buildings.txt
+¦       tgp_great_project_buildings.txt
+¦       _buildings.info
+¦       
++---casus_belli_groups
+¦       00_casus_belli_groups.txt
+¦       
++---casus_belli_types
+¦       00_casus_belli_types.txt
+¦       00_civil_war.txt
+¦       00_claim.txt
+¦       00_conquest.txt
+¦       00_dejure_war.txt
+¦       00_event_war.txt
+¦       00_invasion_war.txt
+¦       00_nomadic_conquest.txt
+¦       00_peasant_war_new.txt
+¦       00_religious_war.txt
+¦       00_struggle_war.txt
+¦       00_subjugation.txt
+¦       00_tributarize.txt
+¦       00_vassalization.txt
+¦       01_ep1_wars.txt
+¦       01_fp1_wars.txt
+¦       03_fp2_wars.txt
+¦       05_fp3_wars.txt
+¦       06_ce1_wars.txt
+¦       07_ep3_admin_cbs.txt
+¦       07_ep3_wars.txt
+¦       09_mpo_wars.txt
+¦       10_tgp_china_wars.txt
+¦       10_tgp_faction_wars.txt
+¦       10_tgp_japan_wars.txt
+¦       tgp_eastasia_wars.txt
+¦       _casus_belli.info
+¦       
++---character_backgrounds
+¦       00_character_backgrounds.txt
+¦       
++---character_interactions
+¦       00_adoption.txt
+¦       00_alliance.txt
+¦       00_artifact_interactions.txt
+¦       00_blackmail_interactions.txt
+¦       00_ce1_interactions.txt
+¦       00_character_interactions.txt
+¦       00_choose_favorite_interaction.txt
+¦       00_courtier_and_guest_interactions.txt
+¦       00_court_amenities_interactions.txt
+¦       00_culture_interactions.txt
+¦       00_debug_interactions.txt
+¦       00_diarch_interactions.txt
+¦       00_dynast_interactions.txt
+¦       00_education_interactions.txt
+¦       00_faction_interactions.txt
+¦       00_fp3_interactions.txt
+¦       00_gift.txt
+¦       00_grant_titles_interaction.txt
+¦       00_heir.txt
+¦       00_house_head_interactions.txt
+¦       00_invite_agent_to_scheme.txt
+¦       00_invite_to_activity.txt
+¦       00_lease_interactions.txt
+¦       00_lover_interactions.txt
+¦       00_marriage_interactions.txt
+¦       00_modifiy_vassal_contract.txt
+¦       00_mongol_interactions.txt
+¦       00_perk_interactions.txt
+¦       00_poetry_interactions.txt
+¦       00_prison_interactions.txt
+¦       00_religious_interactions.txt
+¦       00_revoke_title_interaction.txt
+¦       00_scheme_interactions.txt
+¦       00_test_interactions.txt
+¦       00_tradition_interactions.txt
+¦       00_trait_interactions.txt
+¦       00_tribal_interactions.txt
+¦       00_tributary_interactions.txt
+¦       00_vassal_interactions.txt
+¦       00_war.txt
+¦       00_witch_interactions.txt
+¦       01_fp1_interactions.txt
+¦       02_ep1_interactions.txt
+¦       03_fp2_interactions.txt
+¦       04_ep2_interactions.txt
+¦       05_bp2_interactions.txt
+¦       06_ep3_interactions.txt
+¦       06_ep3_laamp_interactions.txt
+¦       06_ep3_scheme_interactions.txt
+¦       06_ep3_test_interactions_.txt
+¦       09_mpo_interactions.txt
+¦       10_ach_interactions.txt
+¦       10_tgp_interactions.txt
+¦       10_tgp_japan_interactions.txt
+¦       10_tgp_test_interactions.txt
+¦       tgp_east_asia_interactions.txt
+¦       tgp_tribute_mission_interactions.txt
+¦       _character_interactions.info
+¦       
++---character_interaction_categories
+¦       00_character_interaction_categories.txt
+¦       
++---character_memory_types
+¦       ach_memories.txt
+¦       bp2_hostage_memories.txt
+¦       bp2_memories.txt
+¦       bp3_memories.txt
+¦       ce1_memories.txt
+¦       character_memories_1.txt
+¦       character_memories_events.txt
+¦       character_memories_events_jason_ep2.txt
+¦       character_memories_filippa_events.txt
+¦       character_memories_travel_events.txt
+¦       ep2_feast_memories.txt
+¦       ep2_hunt_memories.txt
+¦       ep2_memories_james.txt
+¦       ep2_tournament_memories.txt
+¦       ep2_wedding_memories.txt
+¦       ep3_memories.txt
+¦       jason_first_event_ep2_memories.txt
+¦       mpo_memories.txt
+¦       pilgrimage_memories.txt
+¦       tgp_memories.txt
+¦       _character_memories.info
+¦       
++---coat_of_arms
+¦   +---coat_of_arms
+¦   ¦       01_holy_order_coas.txt
+¦   ¦       01_landed_titles.txt
+¦   ¦       01_mercenary_coas.txt
+¦   ¦       01_random_templates.txt
+¦   ¦       03_religious_icons.txt
+¦   ¦       90_dynasties.txt
+¦   ¦       91_laamp_coas.txt
+¦   ¦       99_coa_designer_templates.txt
+¦   ¦       99_historical_character_coa.txt
+¦   ¦       default.txt
+¦   ¦       
+¦   +---dynamic_definitions
+¦   ¦       00_dynamic_coas.txt
+¦   ¦       00_norman_coas.txt
+¦   ¦       00_norse_coas.txt
+¦   ¦       _dynamic_definitions.info
+¦   ¦       
+¦   +---options
+¦   ¦       atlases.txt
+¦   ¦       
+¦   L---template_lists
+¦           coa_designer_templates.txt
+¦           coa_templates.txt
+¦           colored_emblem_lists.txt
+¦           color_lists.txt
+¦           pattern_lists.txt
+¦           textured_emblem_lists.txt
+¦           
++---combat_effects
+¦       00_combat_effects.txt
+¦       _combat_effects.info
+¦       
++---combat_phase_events
+¦       00_commander_phase_events.txt
+¦       00_knight_phase_events.txt
+¦       _combat_phase_events.info
+¦       
++---confederation_types
+¦       00_confederation_types.txt
+¦       10_house_bloc_types.txt
+¦       _confederation_types.info
+¦       
++---connection_arrows
+¦       silk_road_arrows.txt
+¦       
++---console_groups
+¦       00_groups.txt
+¦       
++---council_positions
+¦       00_council_positions.txt
+¦       01_ministry_positions.txt
+¦       _council_positions.info
+¦       
++---council_tasks
+¦       00_chancellor_tasks.txt
+¦       00_court_chaplain_tasks.txt
+¦       00_kurultai_tasks.txt
+¦       00_marshal_tasks.txt
+¦       00_spouse_tasks.txt
+¦       00_spymaster_tasks.txt
+¦       00_steward_tasks.txt
+¦       00_vizier_tasks.txt
+¦       01_ministry_tasks.txt
+¦       _council_tasks.info
+¦       
++---courtier_guest_management
+¦       courtier_management.txt
+¦       guest_management.txt
+¦       
++---court_amenities
+¦       00_court_amenities.txt
+¦       _court_amenities.info
+¦       
++---court_positions
+¦   +---tasks
+¦   ¦       00_antiquarian_tasks.txt
+¦   ¦       00_bookmaker_tasks.txt
+¦   ¦       00_boyan_tasks.txt
+¦   ¦       00_caravan_master_tasks.txt
+¦   ¦       00_charioteer_tasks.txt
+¦   ¦       00_cherbi_tasks.txt
+¦   ¦       00_chief_qadi_tasks.txt
+¦   ¦       00_chronicler_tasks.txt
+¦   ¦       00_court_artificer_tasks.txt
+¦   ¦       00_court_brahmin_tasks.txt
+¦   ¦       00_court_brewmaster_tasks.txt
+¦   ¦       00_court_guru_tasks.txt
+¦   ¦       00_court_jester_tasks.txt
+¦   ¦       00_court_musician_tasks.txt
+¦   ¦       00_court_physician_tasks.txt
+¦   ¦       00_court_poet_tasks.txt
+¦   ¦       00_court_tutor_tasks.txt
+¦   ¦       00_cupbearer_tasks.txt
+¦   ¦       00_executioner_tasks.txt
+¦   ¦       00_fire_dragon_engineer_tasks.txt
+¦   ¦       00_food_taster_tasks.txt
+¦   ¦       00_foreign_emissary_tasks.txt
+¦   ¦       00_grand_guardian_tasks.txt
+¦   ¦       00_grand_mentor_tasks.txt
+¦   ¦       00_grand_preceptor_tasks.txt
+¦   ¦       00_harem_manager_tasks.txt
+¦   ¦       00_high_almoner_tasks.txt
+¦   ¦       00_khlon_glan_tasks.txt
+¦   ¦       00_master_of_the_horse_tasks.txt
+¦   ¦       00_master_of_the_hunt_tasks.txt
+¦   ¦       00_personal_champion_tasks.txt
+¦   ¦       00_royal_architect_tasks.txt
+¦   ¦       00_seneschal_tasks.txt
+¦   ¦       00_siege_engineer_tasks.txt
+¦   ¦       00_stargazer_tasks.txt
+¦   ¦       00_wet_nurse_tasks.txt
+¦   ¦       00_yeke_jarquchi_tasks.txt
+¦   ¦       00_yurtchi_tasks.txt
+¦   ¦       01_eparch_tasks.txt
+¦   ¦       _court_position_tasks.info
+¦   ¦       
+¦   L---types
+¦           00_admin_court_position.txt
+¦           00_camp_officers.txt
+¦           00_celestial_court_positions.txt
+¦           00_court_positions.txt
+¦           00_mandala_court_positions.txt
+¦           00_mpo_court_positions.txt
+¦           _court_positions.info
+¦           
++---court_types
+¦       00_court_types.txt
+¦       _court_types.info
+¦       
++---culture
+¦   ¦   _cultural_traits.info
+¦   ¦   
+¦   +---aesthetics_bundles
+¦   ¦       00_aesthetics.txt
+¦   ¦       _aesthetics_bundles.info
+¦   ¦       
+¦   +---creation_names
+¦   ¦       00_names.txt
+¦   ¦       00_names_hybrid.txt
+¦   ¦       _creation_names.info
+¦   ¦       
+¦   +---cultures
+¦   ¦       00_akan.txt
+¦   ¦       00_amuric.txt
+¦   ¦       00_arabic.txt
+¦   ¦       00_baltic.txt
+¦   ¦       00_balto_finnic.txt
+¦   ¦       00_bantu.txt
+¦   ¦       00_berber.txt
+¦   ¦       00_brythonic.txt
+¦   ¦       00_burman.txt
+¦   ¦       00_byzantine.txt
+¦   ¦       00_caucasian.txt
+¦   ¦       00_central_african.txt
+¦   ¦       00_central_germanic.txt
+¦   ¦       00_cham.txt
+¦   ¦       00_chinese.txt
+¦   ¦       00_dead.txt
+¦   ¦       00_dravidian.txt
+¦   ¦       00_east_african.txt
+¦   ¦       00_east_slavic.txt
+¦   ¦       00_frankish.txt
+¦   ¦       00_goidelic.txt
+¦   ¦       00_hmongic.txt
+¦   ¦       00_iberian.txt
+¦   ¦       00_indo_aryan.txt
+¦   ¦       00_iranian.txt
+¦   ¦       00_israelite.txt
+¦   ¦       00_japonic.txt
+¦   ¦       00_khmer.txt
+¦   ¦       00_korean.txt
+¦   ¦       00_latin.txt
+¦   ¦       00_magyar.txt
+¦   ¦       00_malayic.txt
+¦   ¦       00_mongolic.txt
+¦   ¦       00_nakkavaram.txt
+¦   ¦       00_north_germanic.txt
+¦   ¦       00_qiangic.txt
+¦   ¦       00_sahelian.txt
+¦   ¦       00_sahelian_ibl.txt
+¦   ¦       00_senegambian.txt
+¦   ¦       00_somalian.txt
+¦   ¦       00_south_slavic.txt
+¦   ¦       00_syriac.txt
+¦   ¦       00_tai.txt
+¦   ¦       00_tibetan.txt
+¦   ¦       00_tujia.txt
+¦   ¦       00_tungusic.txt
+¦   ¦       00_turkic.txt
+¦   ¦       00_ugro_permian.txt
+¦   ¦       00_viet.txt
+¦   ¦       00_vlach.txt
+¦   ¦       00_volga_finnic.txt
+¦   ¦       00_west_african.txt
+¦   ¦       00_west_germanic.txt
+¦   ¦       00_west_slavic.txt
+¦   ¦       00_yoruba.txt
+¦   ¦       _cultures.info
+¦   ¦       
+¦   +---eras
+¦   ¦       00_culture_eras.txt
+¦   ¦       _culture_eras.info
+¦   ¦       
+¦   +---innovations
+¦   ¦       00_cultural_maa_innovations.txt
+¦   ¦       00_early_medieval_innovations.txt
+¦   ¦       00_fp3_innovations.txt
+¦   ¦       00_high_medieval_innovations.txt
+¦   ¦       00_late_medieval_innovations.txt
+¦   ¦       00_tribal_innovations.txt
+¦   ¦       01_fp1_innovations.txt
+¦   ¦       02_ce1_innovations.txt
+¦   ¦       tgp_innovations.txt
+¦   ¦       _culture_innovations.info
+¦   ¦       
+¦   +---name_equivalency
+¦   ¦       00_names.txt
+¦   ¦       _info.info
+¦   ¦       
+¦   +---name_lists
+¦   ¦       00_ainu.txt
+¦   ¦       00_akan.txt
+¦   ¦       00_arabic.txt
+¦   ¦       00_balhae.txt
+¦   ¦       00_baltic.txt
+¦   ¦       00_balto_finnic.txt
+¦   ¦       00_bantu.txt
+¦   ¦       00_berber.txt
+¦   ¦       00_brythonic.txt
+¦   ¦       00_burman.txt
+¦   ¦       00_byzantine.txt
+¦   ¦       00_central_african.txt
+¦   ¦       00_central_germanic.txt
+¦   ¦       00_chinese.txt
+¦   ¦       00_dead.txt
+¦   ¦       00_dravidian.txt
+¦   ¦       00_east_african.txt
+¦   ¦       00_east_slavic.txt
+¦   ¦       00_frankish.txt
+¦   ¦       00_goidelic.txt
+¦   ¦       00_iberian.txt
+¦   ¦       00_indo_aryan.txt
+¦   ¦       00_iranian.txt
+¦   ¦       00_israelite.txt
+¦   ¦       00_japanese.txt
+¦   ¦       00_khmer.txt
+¦   ¦       00_korean.txt
+¦   ¦       00_latin.txt
+¦   ¦       00_magyar.txt
+¦   ¦       00_malay.txt
+¦   ¦       00_mongolic.txt
+¦   ¦       00_nakkavaram.txt
+¦   ¦       00_nivkh.txt
+¦   ¦       00_north_germanic.txt
+¦   ¦       00_qiangic.txt
+¦   ¦       00_ryukyuan.txt
+¦   ¦       00_sahelian.txt
+¦   ¦       00_senegambian.txt
+¦   ¦       00_somalian.txt
+¦   ¦       00_south_slavic.txt
+¦   ¦       00_tai.txt
+¦   ¦       00_tibetan.txt
+¦   ¦       00_tungusic.txt
+¦   ¦       00_turkic.txt
+¦   ¦       00_ugro_permian.txt
+¦   ¦       00_vietnamese.txt
+¦   ¦       00_volga_finnic.txt
+¦   ¦       00_west_african.txt
+¦   ¦       00_west_germanic.txt
+¦   ¦       00_west_slavic.txt
+¦   ¦       00_yoruba.txt
+¦   ¦       _example.info
+¦   ¦       _name_lists.info
+¦   ¦       
+¦   +---pillars
+¦   ¦       00_ethos.txt
+¦   ¦       00_head_determination.txt
+¦   ¦       00_heritage.txt
+¦   ¦       00_language.txt
+¦   ¦       00_martial_custom.txt
+¦   ¦       _pillars.info
+¦   ¦       
+¦   L---traditions
+¦           00_combat_traditions.txt
+¦           00_debug_traditions.txt
+¦           00_maa_traditions.txt
+¦           00_realm_traditions.txt
+¦           00_regional_traditions.txt
+¦           00_ritual_traditions.txt
+¦           00_societal_traditions.txt
+¦           01_fp1_traditions.txt
+¦           03_fp2_traditions.txt
+¦           03_fp3_traditions.txt
+¦           04_ep2_traditions.txt
+¦           06_ce1_traditions.txt
+¦           07_ep3_traditions.txt
+¦           09_ach_traditions.txt
+¦           09_mpo_traditions.txt
+¦           tgp_traditions.txt
+¦           _traditions.info
+¦           
++---customizable_localization
+¦       00_activity_loc.txt
+¦       00_adventurer_names.txt
+¦       00_ai_value_custom_loc.txt
+¦       00_animal_custom_loc.txt
+¦       00_appropriate_generic_words.txt
+¦       00_artifact_court_custom_loc.txt
+¦       00_artifact_custom_loc.txt
+¦       00_bad_roomate_custom_loc.txt
+¦       00_board_game_custom_loc.txt
+¦       00_body_part_custom_loc.txt
+¦       00_bp3_wanderer_loc.txt
+¦       00_building_custom_localization.txt
+¦       00_camp_party_custom_loc.txt
+¦       00_casus_belli.txt
+¦       00_character_descriptions.txt
+¦       00_character_interaction_categories.txt
+¦       00_childhood_custom_localization.txt
+¦       00_compliment_custom_loc.txt
+¦       00_conversation_subjects.txt
+¦       00_councillor_custom_loc.txt
+¦       00_curses_custom_loc.txt
+¦       00_custom_loc_sp.txt
+¦       00_destination_custom_loc.txt
+¦       00_de_body_part_custom_loc.txt
+¦       00_de_custom_loc.txt
+¦       00_de_mottos.txt
+¦       00_de_regional_custom_localization.txt
+¦       00_de_signature_weapon_custom_localization.txt
+¦       00_de_single_combat_custom_loc.txt
+¦       00_de_special_gender_cases.txt
+¦       00_diarchy_custom_loc.txt
+¦       00_difficulty_custom_loc.txt
+¦       00_disability_custom_loc.txt
+¦       00_divinity_custom_loc.txt
+¦       00_dynasty_custom_loc.txt
+¦       00_education_custom_loc.txt
+¦       00_es_custom_loc.txt
+¦       00_event_custom_loc.txt
+¦       00_faction_custom_loc.txt
+¦       00_feast_custom_loc.txt
+¦       00_food_custom_loc.txt
+¦       00_friendly_custom_localization.txt
+¦       00_friendship_custom_localization.txt
+¦       00_generic_character_words.txt
+¦       00_governance_lifestyle_custom_loc.txt
+¦       00_government_custom_loc.txt
+¦       00_greeting_custom_loc.txt
+¦       00_health_custom_loc.txt
+¦       00_historical_character_loc.txt
+¦       00_hold_court_custom_joe.txt
+¦       00_incidental_details.txt
+¦       00_insult_custom_loc.txt
+¦       00_insult_poetry_custom_loc.txt
+¦       00_interactions_custom_loc.txt
+¦       00_interface_custom_loc.txt
+¦       00_journey_focus_custom_loc.txt
+¦       00_knight_culture.txt
+¦       00_kr_personality_quirks_custom_loc.txt
+¦       00_language_custom_loc.txt
+¦       00_lifestyle_custom_localization.txt
+¦       00_lover_custom_localization.txt
+¦       00_love_letter_custom_loc.txt
+¦       00_maa_custom_loc.txt
+¦       00_magic_custom_loc.txt
+¦       00_map_related_custom_loc.txt
+¦       00_martial_lifestyle_custom_loc.txt
+¦       00_mottos.txt
+¦       00_notification_custom_loc.txt
+¦       00_peasants.txt
+¦       00_personality_quirks_custom_loc.txt
+¦       00_personality_traits_custom_loc.txt
+¦       00_personal_details_custom_loc.txt
+¦       00_petition_liege_custom_loc.txt
+¦       00_pet_custom_loc.txt
+¦       00_pet_name_generic.txt
+¦       00_pilgrimage_custom_loc.txt
+¦       00_pl_custom_loc.txt
+¦       00_pl_custom_loc_extra.txt
+¦       00_pl_relations.txt
+¦       00_poetry_generation.txt
+¦       00_poetry_theme_words.txt
+¦       00_prison_custom_loc.txt
+¦       00_reaction_custom_loc.txt
+¦       00_regional_custom_localization.txt
+¦       00_relations.txt
+¦       00_religion_custom_loc.txt
+¦       00_rich_presence_flavor_status.txt
+¦       00_roaming_loc.txt
+¦       00_romance_custom_loc.txt
+¦       00_ruler_transition_loc.txt
+¦       00_scheme_custom_loc.txt
+¦       00_scholarship_lifestyle_custom_loc.txt
+¦       00_secrets_custom_loc.txt
+¦       00_secret_events_custom_loc.txt
+¦       00_seduction_custom_loc.txt
+¦       00_servants.txt
+¦       00_sex_scene_custom_localisation.txt
+¦       00_signature_weapon_custom_localization.txt
+¦       00_skills_custom_loc.txt
+¦       00_statecraft_lifestyle_custom_loc.txt
+¦       00_suitable_title_custom_loc.txt
+¦       00_sway_custom_loc.txt
+¦       00_task_contract_custom_loc.txt
+¦       00_terrain_custom_loc.txt
+¦       00_test.txt
+¦       00_title_custom_loc.txt
+¦       00_trait_custom_loc.txt
+¦       00_travel.txt
+¦       00_unfriendly_custom_loc.txt
+¦       00_vassal_custom_loc.txt
+¦       00_visit_settlement_custom_loc.txt
+¦       00_war_custom_loc.txt
+¦       00_weird_objects.txt
+¦       00_yearly_events_custom_loc.txt
+¦       01_bp1_custom_loc.txt
+¦       01_bp1_filippa_custom_loc.txt
+¦       01_ep1_custom_loc.txt
+¦       01_ep2_custom_loc.txt
+¦       01_fp1_custom_loc.txt
+¦       01_roco_custom_loc.txt
+¦       02_court_loc.txt
+¦       03_fp2_custom_loc.txt
+¦       04_bp2_custom_loc.txt
+¦       04_ep2_accolade_custom_loc.txt
+¦       04_ep2_custom_loc.txt
+¦       04_ep2_hunt_custom_loc.txt
+¦       05_bp2_custom_loc.txt
+¦       06_ce1_epidemics_custom_loc.txt
+¦       06_ce1_legends_custom_loc.txt
+¦       06_ce1_leg_b_custom_loc.txt
+¦       06_legitimacy_custom_loc.txt
+¦       07_ep3_custom_loc.txt
+¦       08_bp3_battle_poi_custom_loc.txt
+¦       08_bp3_experimental_brew_loc.txt
+¦       08_bp3_survey_loc.txt
+¦       09_de_custom_loc_suffixes.txt
+¦       09_mpo_custom_loc.txt
+¦       09_mpo_custom_loc_2.txt
+¦       10_ach_custom_loc.txt
+¦       10_tgp_custom_loc.txt
+¦       10_tgp_japan_custom_loc.txt
+¦       99_fr_custom_loc.txt
+¦       99_pl_custom_loc.txt
+¦       99_pl_relations.txt
+¦       99_ru_custom_loc.txt
+¦       ledger_custom_loc.txt
+¦       tgp_custom_loc.txt
+¦       tgp_imperial_examination_custom_loc.txt
+¦       tgp_mandala_custom_loc.txt
+¦       _custom_loc.info
+¦       
++---deathreasons
+¦       00_activity_deaths.txt
+¦       00_event_deaths.txt
+¦       00_natural_deaths.txt
+¦       _death_reasons.info
+¦       
++---decisions
+¦   ¦   00_artifact_decisions.txt
+¦   ¦   00_cultural_tradition_decisions.txt
+¦   ¦   00_diarchy_decisions.txt
+¦   ¦   00_dynasty_decisions.txt
+¦   ¦   00_fp3_decisions.txt
+¦   ¦   00_guest_decisions.txt
+¦   ¦   00_holy_order_decisions.txt
+¦   ¦   00_lifestyle_decisions.txt
+¦   ¦   00_major_decisions_east_europe.txt
+¦   ¦   00_major_decisions_iberia_north_africa.txt
+¦   ¦   00_trait_decisions.txt
+¦   ¦   00_unity_decisions.txt
+¦   ¦   04_ep2_decisions.txt
+¦   ¦   06_ce1_decisions.txt
+¦   ¦   10_ach_oath_decisions.txt
+¦   ¦   10_culture_conversion_decisions.txt
+¦   ¦   10_nomad_culture_and_faith_decisions.txt
+¦   ¦   10_nomad_other_decisions.txt
+¦   ¦   10_religious_decisions.txt
+¦   ¦   30_activity_decisions.txt
+¦   ¦   30_court_decisions.txt
+¦   ¦   30_mongol_invasion_decisions.txt
+¦   ¦   40_japan_decisions.txt
+¦   ¦   80_major_decisions.txt
+¦   ¦   80_major_decisions_british_isles.txt
+¦   ¦   80_major_decisions_central_asia.txt
+¦   ¦   80_major_decisions_east_asia.txt
+¦   ¦   80_major_decisions_middle_east.txt
+¦   ¦   80_major_decisions_middle_europe.txt
+¦   ¦   80_major_decisions_roman.txt
+¦   ¦   80_major_decisions_south_asia.txt
+¦   ¦   90_minor_decisions.txt
+¦   ¦   test_decision.txt
+¦   ¦   tutorial_decisions.txt
+¦   ¦   _decisions.info
+¦   ¦   
+¦   L---dlc_decisions
+¦       ¦   03_fp2_decisions.txt
+¦       ¦   ep3_decisions.txt
+¦       ¦   fp3_decisions.txt
+¦       ¦   
+¦       +---bp3
+¦       ¦       00_bp3_other_decisions.txt
+¦       ¦       
+¦       +---bp_2
+¦       ¦       00_bp2_other_decisions.txt
+¦       ¦       
+¦       +---ce_1
+¦       ¦       ce1_legendary_decisions.txt
+¦       ¦       
+¦       +---ep_1
+¦       ¦       00_ep1_court_grandeur_and_amenity_decisions.txt
+¦       ¦       00_ep1_other_decisions.txt
+¦       ¦       
+¦       +---ep_2
+¦       ¦       00_ep2_other_decisions.txt
+¦       ¦       
+¦       +---ep_3
+¦       ¦       06_ep3_admin_decisions.txt
+¦       ¦       06_ep3_hasan_story_cycle_decisions.txt
+¦       ¦       06_ep3_laamp_decisions.txt
+¦       ¦       06_ep3_separatist_uprising_decision.txt
+¦       ¦       
+¦       +---fp_1
+¦       ¦       00_fp1_major_decisions.txt
+¦       ¦       00_fp1_other_decisions.txt
+¦       ¦       
+¦       +---fp_3
+¦       ¦       fp3_dynasty_decisions.txt
+¦       ¦       fp3_islamic_decisions.txt
+¦       ¦       fp3_minor_decisions.txt
+¦       ¦       fp3_scholarship_decisions.txt
+¦       ¦       fp3_zoroastrian_decisions.txt
+¦       ¦       
+¦       +---mpo
+¦       ¦       09_mpo_decisions_2.txt
+¦       ¦       mpo_court_astrologer_decision.txt
+¦       ¦       mpo_decisions.txt
+¦       ¦       mpo_flavor_decision.txt
+¦       ¦       mpo_pax_mongolica_decision.txt
+¦       ¦       
+¦       L---tgp
+¦               tgp_china_decisions.txt
+¦               tgp_culture_decisions.txt
+¦               tgp_dynastic_cycle_decisions.txt
+¦               tgp_east_asia_decisions.txt
+¦               tgp_japan_decisions.txt
+¦               tgp_korea_decisions.txt
+¦               tgp_silk_road_decisions.txt
+¦               tgp_steppe_decisions.txt
+¦               tgp_tenet_decisions.txt
+¦               tgp_tribute_mission_decisions.txt
+¦               
++---decision_group_types
+¦       00_decision_group_types.txt
+¦       _decision_group_types.info
+¦       
++---defines
+¦   ¦   00_defines.txt
+¦   ¦   
+¦   +---ai
+¦   ¦       00_ai.txt
+¦   ¦       
+¦   +---audio
+¦   ¦       00_audio.txt
+¦   ¦       
+¦   +---graphic
+¦   ¦       00_coa.txt
+¦   ¦       00_graphics.txt
+¦   ¦       
+¦   L---jomini
+¦           adjacencies.txt
+¦           fog_of_war.txt
+¦           mapeditor.txt
+¦           portraits.txt
+¦           rivers.txt
+¦           text_coloring.txt
+¦           text_formatting.txt
+¦           
++---diarchies
+¦   +---diarchy_mandates
+¦   ¦       00_mandates.txt
+¦   ¦       _mandates.info
+¦   ¦       
+¦   L---diarchy_types
+¦           00_co_rulerships.txt
+¦           00_primeministerships.txt
+¦           00_regencies.txt
+¦           _diarchies.info
+¦           
++---dna_data
+¦       00_dna.txt
+¦       00_ep3_dna.txt
+¦       00_fp3_dna.txt
+¦       00_mpo_dna.txt
+¦       00_tgp_dna.txt
+¦       01_easteregg_dna.txt
+¦       02_easteregg_dna_non_developers.txt
+¦       03_fp2_dna.txt
+¦       _dna_data.info
+¦       
++---domiciles
+¦   +---buildings
+¦   ¦       00_camp_buildings.txt
+¦   ¦       00_chinese_estate_buildings.txt
+¦   ¦       00_estate_buildings.txt
+¦   ¦       00_yurt_buildings.txt
+¦   ¦       10_japanese_manor_buildings.txt
+¦   ¦       _domicile_buildings.info
+¦   ¦       
+¦   L---types
+¦           00_domicile_types.txt
+¦           10_tgp_japan_domicile_types.txt
+¦           _domicile_types.info
+¦           
++---dynasties
+¦       00_deprecated_dynasties.txt
+¦       00_dynasties.txt
+¦       01_vanity_dynasties.txt
+¦       03_fp2_dynasties.txt
+¦       04_ep3_dynasties.txt
+¦       05_historical_character_dynasties.txt
+¦       05_tgp_dynasties.txt
+¦       09_mpo_dynasties.txt
+¦       
++---dynasty_houses
+¦       00_deprecated_dynasty_houses.txt
+¦       00_dynasty_houses.txt
+¦       99_historical_character_houses.txt
+¦       ep3_dynasty_houses.txt
+¦       tgp_dynasty_houses.txt
+¦       
++---dynasty_house_mottos
+¦       00_mottos.txt
+¦       _mottos.info
+¦       
++---dynasty_house_motto_inserts
+¦       00_inserts.txt
+¦       _inserts.info
+¦       
++---dynasty_legacies
+¦       82_tgp_legacies.txt
+¦       83_ep3_legacies.txt
+¦       92_mpo_legacies.txt
+¦       94_ce1_legacies.txt
+¦       95_fp3_legacies.txt
+¦       96_fp2_legacies.txt
+¦       97_ep1_legacies.txt
+¦       98_fp1_legacies.txt
+¦       99_legacies.txt
+¦       _dynasty_legacies.info
+¦       
++---dynasty_perks
+¦       00_dynasty_perks.txt
+¦       01_ep1_dynasty_perks.txt
+¦       01_ep2_dynasty_perks.txt
+¦       01_fp1_dynasty_perks.txt
+¦       03_fp2_dynasty_perks.txt
+¦       03_fp3_dynasty_perks.txt
+¦       05_ce1_dynasty_perks.txt
+¦       06_ep3_dynasty_perks.txt
+¦       07_mpo_dynasty_perks.txt
+¦       08_tgp_dynasty_perks.txt
+¦       _dynasty_perks.info
+¦       
++---effect_localization
+¦       00_activity_effects.txt
+¦       00_additional_effects.txt
+¦       00_ce1_effects.txt
+¦       00_character_effects.txt
+¦       00_council_effects.txt
+¦       00_county_effects.txt
+¦       00_culture_effect.txt
+¦       00_custom_effects.txt
+¦       00_dynasty_effects.txt
+¦       00_faction_effects.txt
+¦       00_fp3_effects.txt
+¦       00_landed_title_effects.txt
+¦       00_legend_effects.txt
+¦       00_maa_effects.txt
+¦       00_perk_effects.txt
+¦       00_province_effects.txt
+¦       00_religion_effects.txt
+¦       00_scheme_effects.txt
+¦       00_secret_effects.txt
+¦       00_title_effects.txt
+¦       00_travel_effects.txt
+¦       00_vassal_effects.txt
+¦       00_war_effects.txt
+¦       01_ep1_effects.txt
+¦       01_fp1_effects.txt
+¦       02_ep1_effects.txt
+¦       03_fp2_effects.txt
+¦       04_ep2_diarchy_effects.txt
+¦       04_ep2_effects.txt
+¦       05_bp2_hostage_effects.txt
+¦       07_ep3_effects.txt
+¦       08_tgp_effects.txt
+¦       09_situation_effects.txt
+¦       10_ach_effects.txt
+¦       10_tgp_effects.txt
+¦       _effect_localization.info
+¦       
++---epidemics
+¦       00_epidemics.txt
+¦       _epidemics.info
+¦       
++---ethnicities
+¦       00_ethnicities_debug.txt
+¦       00_ethnicities_templates.txt
+¦       00_ethnicities_vanity_characters.txt
+¦       01_ethnicities_african.txt
+¦       01_ethnicities_arab.txt
+¦       01_ethnicities_asian.txt
+¦       01_ethnicities_asian_ainu.txt
+¦       01_ethnicities_asian_austronesian.txt
+¦       01_ethnicities_asian_han_chinese.txt
+¦       01_ethnicities_asian_japanese.txt
+¦       01_ethnicities_asian_malay.txt
+¦       01_ethnicities_asian_manchu_korean.txt
+¦       01_ethnicities_asian_mongol.txt
+¦       01_ethnicities_asian_tibetan.txt
+¦       01_ethnicities_byzantine.txt
+¦       01_ethnicities_caucasian.txt
+¦       01_ethnicities_circumpolar.txt
+¦       01_ethnicities_default_morphs.txt
+¦       01_ethnicities_east_african.txt
+¦       01_ethnicities_indian.txt
+¦       01_ethnicities_mediterranean.txt
+¦       01_ethnicities_papuan.txt
+¦       01_ethnicities_slavic.txt
+¦       01_ethnicities_turkic.txt
+¦       01_ethnicities_west_turkic.txt
+¦       
++---event_2d_effects
+¦       event_2d_effects.txt
+¦       _event_2d_effects.info
+¦       
++---event_backgrounds
+¦       01_event_backgrounds.txt
+¦       activity_backgrounds.txt
+¦       _event_backgrounds.info
+¦       
++---event_themes
+¦       00_event_themes.txt
+¦       ep2_tournament_themes.txt
+¦       _event_themes.info
+¦       
++---event_transitions
+¦       debug_test_transitions.txt
+¦       ep2_tournament_transitions.txt
+¦       ep3_chariot_race_transitions.txt
+¦       _event_transitions.info
+¦       
++---factions
+¦       00_factions.txt
+¦       00_nation_fracturing_faction.txt
+¦       00_nomadic_faction.txt
+¦       00_peasant_faction_new.txt
+¦       00_populist_faction.txt
+¦       10_tgp_factions.txt
+¦       _factions.info
+¦       
++---flavorization
+¦       00_flavorization.txt
+¦       00_title_holders.txt
+¦       01_domicile.txt
+¦       02_vassal_contracts.txt
+¦       10_tgp_flavorization.txt
+¦       10_tgp_japan_flavorization.txt
+¦       10_tgp_korea_flavorization.txt
+¦       11_tgp_china_flavorization.txt
+¦       _flavourization.info
+¦       
++---focuses
+¦       00_education_focuses.txt
+¦       00_lifestyle_focuses.txt
+¦       00_test_focuses.txt
+¦       _focuses.info
+¦       
++---game_concepts
+¦       00_game_concepts.txt
+¦       01_bp1_game_concepts.txt
+¦       01_bp2_game_concepts.txt
+¦       01_bp3_game_concepts.txt
+¦       01_ep1_game_concepts.txt
+¦       01_fp1_game_concepts.txt
+¦       03_fp2_game_concepts.txt
+¦       03_fp3_game_concepts.txt
+¦       04_ep2_game_concepts.txt
+¦       05_bp2_game_concepts.txt
+¦       06_ce1_game_concepts.txt
+¦       07_ep3_game_concepts.txt
+¦       ach_game_concepts.txt
+¦       mpo_game_concepts.txt
+¦       tgp_game_concepts.txt
+¦       
++---game_rules
+¦       00_game_rules.txt
+¦       _game_rules.info
+¦       
++---genes
+¦       00_genes_color.txt
+¦       01_genes_morph.txt
+¦       02_genes_accessories_misc.txt
+¦       03_genes_special_accessories_hairstyles.txt
+¦       04_genes_special_accessories_beards.txt
+¦       05_genes_special_accessories_clothes.txt
+¦       06_genes_special_accessories_headgear.txt
+¦       07_genes_special_accessories_misc.txt
+¦       08_genes_special_visual_traits.txt
+¦       09_genes_special_makeup.txt
+¦       10_genes_special_misc.txt
+¦       _genes.info
+¦       
++---governments
+¦       00_government_types.txt
+¦       01_japan_government_types.txt
+¦       _governments.info
+¦       
++---graphical_unit_types
+¦       00_graphical_unit_types.txt
+¦       _graphical_unit_types.info
+¦       
++---great_projects
+¦   L---types
+¦           00_great_project_types.txt
+¦           00_ministry_projects.txt
+¦           00_natural_disasters.txt
+¦           _great_project_types.info
+¦           
++---guest_system
+¦       00_guest_system.txt
+¦       
++---holdings
+¦       00_holdings.txt
+¦       _holdings.info
+¦       
++---hook_types
+¦       00_hook_types.txt
+¦       _hooks.info
+¦       
++---house_aspirations
+¦       00_admin_house_powers.txt
+¦       10_tgp_celestial_house_powers.txt
+¦       10_tgp_japan_house_aspirations.txt
+¦       tgp_mandala_devaraja_aspects.txt
+¦       _house_aspiration.info
+¦       
++---house_relation_types
+¦       00_house_relations.txt
+¦       _house_relation.info
+¦       
++---house_unities
+¦       00_house_unities.txt
+¦       _house_unities.info
+¦       
++---important_actions
+¦       00_action_take_decision_or_interaction.txt
+¦       00_activity_actions.txt
+¦       00_artifact_actions.txt
+¦       00_diarchy_actions.txt
+¦       00_dynasty_actions.txt
+¦       00_education_actions.txt
+¦       00_inheritance_actions.txt
+¦       00_lifestyle.txt
+¦       00_marriage_actions.txt
+¦       00_mercenaries_actions.txt
+¦       00_personal_actions.txt
+¦       00_raid.txt
+¦       00_reactive_advice.txt
+¦       00_reactive_advice_japan.txt
+¦       00_reactive_advice_playtest.txt
+¦       00_realm_actions.txt
+¦       00_temp_actions.txt
+¦       00_title_actions.txt
+¦       00_war_actions.txt
+¦       01_bp1_actions.txt
+¦       01_ep1_actions.txt
+¦       01_ep1_reactive_advice.txt
+¦       01_fp1_actions.txt
+¦       03_fp2_actions.txt
+¦       03_fp2_reactive_advice.txt
+¦       04_ep2_actions.txt
+¦       05_bp2_actions.txt
+¦       05_fp3_actions.txt
+¦       06_ce1_actions.txt
+¦       07_ep3_actions.txt
+¦       09_mpo_actions.txt
+¦       contract_actions.txt
+¦       tgp_actions.txt
+¦       _important_actions.info
+¦       
++---inspirations
+¦       00_inspirations.txt
+¦       _inspirations.info
+¦       
++---landed_titles
+¦       00_landed_titles.txt
+¦       01_japan.txt
+¦       01_japan_noble_family.txt
+¦       01_korea_noble_family.txt
+¦       01_other_noble_family.txt
+¦       02_china.txt
+¦       03_seasia.txt
+¦       04_china_noble_families.txt
+¦       05_goryeo.txt
+¦       06_philippines.txt
+¦       _landed_titles.info
+¦       
++---laws
+¦       00_realm_laws.txt
+¦       00_succession_laws.txt
+¦       01_title_succession_laws.txt
+¦       02_admininistrative_laws.txt
+¦       03_imperial_policies.txt
+¦       _laws.info
+¦       
++---lease_contracts
+¦       00_theocracy_lease.txt
+¦       _lease_contracts.info
+¦       
++---legends
+¦   +---chronicles
+¦   ¦       00_chronicles.txt
+¦   ¦       _chronicles.info
+¦   ¦       
+¦   +---legend_seeds
+¦   ¦       00_legend_seeds.txt
+¦   ¦       _legend_seeds.info
+¦   ¦       
+¦   L---legend_types
+¦           00_legends.txt
+¦           _legends.info
+¦           
++---legitimacy
+¦       00_legitimacy.txt
+¦       _legitimacy.info
+¦       
++---lifestyles
+¦       00_lifestyles.txt
+¦       _lifestyles.info
+¦       
++---lifestyle_perks
+¦       00_diplomacy_1_foreign_affairs_tree_perks.txt
+¦       00_diplomacy_2_majesty_tree_perks.txt
+¦       00_diplomacy_3_family_tree_perks.txt
+¦       00_intrigue_1_skulduggery_tree_perks.txt
+¦       00_intrigue_2_temptation_tree_perks.txt
+¦       00_intrigue_3_intimidation_tree_perks.txt
+¦       00_learning_1_medicine_tree_perks.txt
+¦       00_learning_2_scholarship_tree_perks.txt
+¦       00_learning_3_theology_tree_perks.txt
+¦       00_martial_1_strategy_tree_perks.txt
+¦       00_martial_2_authority_tree_perks.txt
+¦       00_martial_3_chivalry_tree_perks.txt
+¦       00_stewardship_1_wealth_tree_perks.txt
+¦       00_stewardship_2_domain_tree_perks.txt
+¦       00_stewardship_3_duty_tree_perks.txt
+¦       00_wanderer_1_surveyor_tree_perks.txt
+¦       00_wanderer_2_wayfarer_tree_perks.txt
+¦       00_wanderer_3_voyager_tree_perks.txt
+¦       _lifestyle_perks.info
+¦       
++---men_at_arms_types
+¦       00_cultural_maa_types.txt
+¦       00_fp3_maa_types.txt
+¦       00_holy_order_maa_types.txt
+¦       00_maa_types.txt
+¦       00_regional_maa_types.txt
+¦       01_accolade_maa_types.txt
+¦       01_fp1_maa_types.txt
+¦       07_ep3_maa_types.txt
+¦       09_mpo_maa_types.txt
+¦       10_tgp_maa_types.txt
+¦       _men_at_arms_types.info
+¦       
++---messages
+¦       00_messages.txt
+¦       01_activity_messages.txt
+¦       01_alliance_messages.txt
+¦       01_artifact_messages.txt
+¦       01_character_messages.txt
+¦       01_childhood_messages.txt
+¦       01_council_messages.txt
+¦       01_court_messages.txt
+¦       01_court_position_messages.txt
+¦       01_culture_messages.txt
+¦       01_currency_messages.txt
+¦       01_death_messages.txt
+¦       01_diarch_messages.txt
+¦       01_domain_messages.txt
+¦       01_dynasty_messages.txt
+¦       01_faction_messages.txt
+¦       01_family_messages.txt
+¦       01_hook_messages.txt
+¦       01_law_messages.txt
+¦       01_marriage_messages.txt
+¦       01_multiplayer_messages.txt
+¦       01_relationship_messages.txt
+¦       01_religious_messages.txt
+¦       01_scheme_messages.txt
+¦       01_secret_messages.txt
+¦       01_skill_messages.txt
+¦       01_struggle_messages.txt
+¦       01_title_messages.txt
+¦       01_travel_messages.txt
+¦       01_vassal_messages.txt
+¦       01_war_messages.txt
+¦       02_ep1_messages.txt
+¦       04_ep2_messages.txt
+¦       04_fp3_messages.txt
+¦       05_bp2_messages.txt
+¦       06_ce1_messages.txt
+¦       07_ep3_messages.txt
+¦       09_mpo_messages.txt
+¦       tgp_messages.txt
+¦       _messages.info
+¦       
++---message_filter_types
+¦       00_message_filter_types.txt
+¦       _message_filter_types.info
+¦       
++---message_group_types
+¦       00_message_group_types.txt
+¦       _message_group_types.info
+¦       
++---modifiers
+¦       00_activity_feast_modifiers.txt
+¦       00_activity_hold_court_modifiers.txt
+¦       00_activity_hunt_modifiers.txt
+¦       00_activity_petition_modifiers.txt
+¦       00_activity_pilgrimage_modifiers.txt
+¦       00_activity_playdate_modifiers.txt
+¦       00_activity_roaming_modifiers.txt
+¦       00_activity_tournament_modifiers.txt
+¦       00_activity_tours_modifiers.txt
+¦       00_activity_tour_modifiers.txt
+¦       00_activity_wedding_modifiers.txt
+¦       00_artifact_modifiers.txt
+¦       00_basic_modifiers.txt
+¦       00_befriend_scheme_modifiers.txt
+¦       00_bookmark_modifiers.txt
+¦       00_bp1_modifiers_dan.txt
+¦       00_bp2_yearly_4_modifiers.txt
+¦       00_chancellor_task_modifiers.txt
+¦       00_claim_throne_modifiers.txt
+¦       00_councillor_spouse_modifiers.txt
+¦       00_counsel_modifiers.txt
+¦       00_county_corruption_modifiers.txt
+¦       00_county_festival_modifiers.txt
+¦       00_county_modifiers.txt
+¦       00_court_chaplain_task_modifiers.txt
+¦       00_court_event_modifiers_claudia.txt
+¦       00_court_modifiers_james.txt
+¦       00_court_position_modifiers.txt
+¦       00_court_scheme_modifiers.txt
+¦       00_debug_modifiers.txt
+¦       00_diarchy_modifiers.txt
+¦       00_diplomacy_lifestyle_modifiers.txt
+¦       00_ep2_travel_modifiers.txt
+¦       00_event_modifiers.txt
+¦       00_fabricate_hook_modifiers.txt
+¦       00_generic_scheme_modifiers.txt
+¦       00_governance_lifestyle_modifiers.txt
+¦       00_health_modifiers.txt
+¦       00_historical_artifact_modifiers.txt
+¦       00_holy_order_modifiers.txt
+¦       00_intrigue_lifestyle_modifiers.txt
+¦       00_intrigue_lifestyle_modifiers_2.txt
+¦       00_intrigue_scheme_modifiers.txt
+¦       00_laamp_modifiers.txt
+¦       00_learning_lifestyle_modifiers.txt
+¦       00_learning_lifestyle_modifiers_2.txt
+¦       00_marshal_task_modifiers.txt
+¦       00_martial_lifestyle_modifiers.txt
+¦       00_martial_lifestyle_modifiers_2.txt
+¦       00_murder_scheme_modifiers.txt
+¦       00_nickname_modifiers.txt
+¦       00_parent_modifiers.txt
+¦       00_party_baron_modifiers.txt
+¦       00_perk_modifiers.txt
+¦       00_personal_scheme_modifiers.txt
+¦       00_prison_modifiers.txt
+¦       00_province_modifiers.txt
+¦       00_relationship_modifiers.txt
+¦       00_religion_modifiers.txt
+¦       00_romance_character_modifiers.txt
+¦       00_scheme_modifiers.txt
+¦       00_seduce_character_modifiers.txt
+¦       00_seduce_scheme_modifiers.txt
+¦       00_sibling_modifiers.txt
+¦       00_single_combat_modifiers.txt
+¦       00_spymaster_task_modifiers.txt
+¦       00_steward_task_modifiers.txt
+¦       00_story_cycle_murders_at_court_modifiers.txt
+¦       00_story_cycle_mystical_animal_modifiers.txt
+¦       00_story_cycle_pet_animal_modifiers.txt
+¦       00_stress_effect_modifiers.txt
+¦       00_sway_scheme_modifiers.txt
+¦       00_trait_modifiers.txt
+¦       00_travel_modifiers.txt
+¦       00_travel_modifiers_oltner.txt
+¦       00_tutorial_modifiers.txt
+¦       00_unity_modifiers.txt
+¦       00_wanderer_lifestyle_modifiers.txt
+¦       00_war_and_combat_modifiers.txt
+¦       00_yearly_event_modifiers.txt
+¦       01_court_grandeur_modifiers.txt
+¦       01_dlc_bp1_filippa_modifiers.txt
+¦       01_dlc_bp1_modifiers.txt
+¦       01_dlc_bp1_modifiers_chad.txt
+¦       01_dlc_bp1_modifiers_claudia.txt
+¦       01_dlc_bp2_yearly_1_modifiers.txt
+¦       01_dlc_ep1_modifiers.txt
+¦       01_dlc_fp1_modifiers.txt
+¦       01_dlc_fp3_modifiers.txt
+¦       01_dlc_roco_modifiers_bianca.txt
+¦       01_dlc_roco_modifiers_george.txt
+¦       01_dlc_roco_modifiers_joe.txt
+¦       01_dlc_xp1_county_modifiers.txt
+¦       01_inventory_modifiers.txt
+¦       03_dlc_fp2_modifiers.txt
+¦       04_bp2_modifiers_3.txt
+¦       04_ep2_modifiers.txt
+¦       04_ep2_modifiers_james.txt
+¦       04_ep2_modifiers_jason.txt
+¦       05_bp2_modfiers.txt
+¦       05_bp2_modifiers.txt
+¦       06_ce1_modifiers.txt
+¦       07_ep3_laamp_flavor_modifiers.txt
+¦       07_ep3_modifiers.txt
+¦       07_ep3_modifiers_admin.txt
+¦       08_beth_nahrian_decision_modifiers.txt
+¦       08_bp3_modifiers.txt
+¦       09_ce2_modifiers.txt
+¦       09_mpo_kurultai_modifiers.txt
+¦       09_mpo_modifiers.txt
+¦       09_mpo_modifiers_2.txt
+¦       09_mpo_modifiers_anna.txt
+¦       09_mpo_modifiers_nerge.txt
+¦       09_mpo_modifiers_settlement_issues.txt
+¦       09_mpo_modifiers_veronica.txt
+¦       10_ach_az_modifiers.txt
+¦       10_ach_coronation_modifiers.txt
+¦       10_ach_klank_modifiers.txt
+¦       10_ach_modifiers.txt
+¦       10_ach_oath_modifiers.txt
+¦       10_tgp_az_modifiers.txt
+¦       10_tgp_japan_modifiers.txt
+¦       10_tgp_modifiers.txt
+¦       10_tgp_natural_disasters_modifiers.txt
+¦       10_tgp_tai_migration_modifiers.txt
+¦       11_bfj_festival_modifiers.txt
+¦       11_tgp_mandala_scheme_modifiers.txt
+¦       12_debug_story_cycle_modifiers.txt
+¦       decision_modifiers.txt
+¦       tgp_mandala_modifiers.txt
+¦       tgp_tribute_mission_modifiers.txt
+¦       _modifiers.info
+¦       
++---modifier_definition_formats
+¦       00_culture_definitions.txt
+¦       00_definitions.txt
+¦       00_government_definitions.txt
+¦       00_holding_definitions.txt
+¦       00_lifestyle_definitions.txt
+¦       00_region_definitions.txt
+¦       00_religion_definitions.txt
+¦       00_scheme_definitions.txt
+¦       00_subject_definitions.txt
+¦       00_terrain_definitions.txt
+¦       00_travel_definitions.txt
+¦       00_unit_definitions.txt
+¦       00_vassal_stance_definitions.txt
+¦       _definitions.info
+¦       
++---modifier_icons
+¦       00_modifier_icons.txt
+¦       
++---named_colors
+¦       culture_colors.txt
+¦       default_colors.txt
+¦       
++---nicknames
+¦       00_nicknames.txt
+¦       01_bp1_nicknames.txt
+¦       01_bp2_nicknames.txt
+¦       01_fp3_nicknames.txt
+¦       01_roco_nicknames.txt
+¦       03_fp2_nicknames.txt
+¦       04_ep2_nicknames.txt
+¦       06_ce1_nicknames.txt
+¦       07_ep3_nicknames.txt
+¦       10_tgp_nicknames.txt
+¦       _nicknames.info
+¦       
++---on_action
+¦   ¦   accolade_on_actions.txt
+¦   ¦   alliance_on_actions.txt
+¦   ¦   army_on_actions.txt
+¦   ¦   barter_on_actions.txt
+¦   ¦   birthday.txt
+¦   ¦   bp2_on_actions.txt
+¦   ¦   ce1_on_actions.txt
+¦   ¦   character_levels.txt
+¦   ¦   childhood_on_actions.txt
+¦   ¦   child_birth_on_actions.txt
+¦   ¦   clan_events_on_actions.txt
+¦   ¦   combat_on_actions.txt
+¦   ¦   confederation_on_actions.txt
+¦   ¦   conqueror_on_actions.txt
+¦   ¦   councillor_on_actions.txt
+¦   ¦   county_on_actions.txt
+¦   ¦   courtier_guest_management_on_actions.txt
+¦   ¦   court_events.txt
+¦   ¦   court_grandeur_on_actions.txt
+¦   ¦   court_maintenance_on_actions.txt
+¦   ¦   court_position_on_action.txt
+¦   ¦   court_type_on_actions.txt
+¦   ¦   culture_on_actions.txt
+¦   ¦   death.txt
+¦   ¦   decision_on_actions.txt
+¦   ¦   diarchy_on_action.txt
+¦   ¦   domicile_on_actions.txt
+¦   ¦   dynastic_cycle_on_actions.txt
+¦   ¦   dynasty_on_actions.txt
+¦   ¦   ep1_inspirations_on_actions.txt
+¦   ¦   ep3_on_actions.txt
+¦   ¦   faction_on_actions.txt
+¦   ¦   fp1_on_actions.txt
+¦   ¦   fp2_on_actions.txt
+¦   ¦   fp3_on_actions.txt
+¦   ¦   game_start.txt
+¦   ¦   governance_on_actions.txt
+¦   ¦   health_on_actions.txt
+¦   ¦   holy_order_on_actions.txt
+¦   ¦   hook_on_actions.txt
+¦   ¦   inventory_on_actions.txt
+¦   ¦   knight_on_actions.txt
+¦   ¦   mandate_on_actions.txt
+¦   ¦   marriage_concubinage.txt
+¦   ¦   mercenary_on_actions.txt
+¦   ¦   player_select_destiny_on_actions.txt
+¦   ¦   prison_on_actions.txt
+¦   ¦   province_on_actions.txt
+¦   ¦   realm_maintenance_on_actions.txt
+¦   ¦   religion_on_actions.txt
+¦   ¦   royal_court_acquisition.txt
+¦   ¦   ruler_designer.txt
+¦   ¦   scheme_on_actions.txt
+¦   ¦   stress_coping_decisions_on_actions.txt
+¦   ¦   stress_on_actions.txt
+¦   ¦   struggle_on_actions.txt
+¦   ¦   task_contract_on_actions.txt
+¦   ¦   title_on_actions.txt
+¦   ¦   traits_on_actions.txt
+¦   ¦   travel_on_actions.txt
+¦   ¦   tutorial.txt
+¦   ¦   war_on_actions.txt
+¦   ¦   witch_on_actions.txt
+¦   ¦   yearly_groups_on_actions.txt
+¦   ¦   yearly_on_actions.txt
+¦   ¦   _on_actions.info
+¦   ¦   
+¦   +---activities
+¦   ¦       activities_on_actions.txt
+¦   ¦       coronation_on_actions.txt
+¦   ¦       debate_on_actions.txt
+¦   ¦       feast_on_actions.txt
+¦   ¦       festival_on_actions.txt
+¦   ¦       hold_court_on_actions.txt
+¦   ¦       hunt_on_actions.txt
+¦   ¦       imperial_examination_on_actions.txt
+¦   ¦       journey_on_actions.txt
+¦   ¦       pilgrimage_on_actions.txt
+¦   ¦       playdate_on_actions.txt
+¦   ¦       roaming_on_actions.txt
+¦   ¦       survey_on_actions.txt
+¦   ¦       
+¦   +---dlc
+¦   ¦   +---bp2
+¦   ¦   ¦       bp2_adult_education_on_action.txt
+¦   ¦   ¦       bp2_destiny_child_on_action.txt
+¦   ¦   ¦       bp2_hostage_on_actions.txt
+¦   ¦   ¦       bp2_pet_rock_on_actions.txt
+¦   ¦   ¦       
+¦   ¦   +---ce1
+¦   ¦   ¦       ce1_funeral_on_actions.txt
+¦   ¦   ¦       
+¦   ¦   +---ep1
+¦   ¦   ¦       ep1_court_language_on_actions.txt
+¦   ¦   ¦       ep1_inspiration_on_actions.txt
+¦   ¦   ¦       ep1_pay_homage_on_actions.txt
+¦   ¦   ¦       ep1_petition_liege_on_actions.txt
+¦   ¦   ¦       
+¦   ¦   +---ep2
+¦   ¦   ¦       ep2_tournament_on_actions.txt
+¦   ¦   ¦       ep2_tour_on_actions.txt
+¦   ¦   ¦       ep2_wedding_on_actions.txt
+¦   ¦   ¦       
+¦   ¦   +---ep3
+¦   ¦   ¦       camp_party_on_action.txt
+¦   ¦   ¦       chariot_race_on_action.txt
+¦   ¦   ¦       el_cid_story_cycle_on_action.txt
+¦   ¦   ¦       governorship_confirmation_on_action.txt
+¦   ¦   ¦       grand_ambitions_story_cycle_on_action.txt
+¦   ¦   ¦       harrying_of_the_north_on_action.txt
+¦   ¦   ¦       story_adventurer_ai_contract.txt
+¦   ¦   ¦       violet_poet_on_action.txt
+¦   ¦   ¦       
+¦   ¦   +---fp2
+¦   ¦   ¦       fp2_other_decision_on_actions.txt
+¦   ¦   ¦       
+¦   ¦   +---mpo
+¦   ¦   ¦       mpo_on_actions_2.txt
+¦   ¦   ¦       mpo_season_events_on_actions.txt
+¦   ¦   ¦       mpo_the_great_steppe_on_actions.txt
+¦   ¦   ¦       
+¦   ¦   L---tgp
+¦   ¦           tgp_china_minister_on_action.txt
+¦   ¦           tgp_china_yearly_on_actions.txt
+¦   ¦           tgp_japan_poetry_on_actions.txt
+¦   ¦           tgp_japan_yearly_on_actions.txt
+¦   ¦           tgp_mandala_on_actions.txt
+¦   ¦           tgp_mandala_yearly_on_actions.txt
+¦   ¦           tgp_natural_disaster_on_actions.txt
+¦   ¦           tgp_pledge_loyalty_to_liege_on_actions.txt
+¦   ¦           tgp_silk_road_on_actions.txt
+¦   ¦           tgp_tribute_mission_on_actions.txt
+¦   ¦           
+¦   +---lifestyles
+¦   ¦       diplomacy_lifestyle_on_actions.txt
+¦   ¦       general_lifestyle_on_actions.txt
+¦   ¦       intrigue_lifestyle_on_actions.txt
+¦   ¦       learning_lifestyle_on_actions.txt
+¦   ¦       martial_lifestyle_on_actions.txt
+¦   ¦       stewardship_lifestyle_on_actions.txt
+¦   ¦       wanderer_lifestyle_on_actions.txt
+¦   ¦       
+¦   +---relations
+¦   ¦       bishop_on_actions.txt
+¦   ¦       jester_on_actions.txt
+¦   ¦       parent_on_actions.txt
+¦   ¦       relation_on_actions.txt
+¦   ¦       sibling_on_actions.txt
+¦   ¦       spouse_on_actions.txt
+¦   ¦       vassal_on_actions.txt
+¦   ¦       
+¦   +---schemes
+¦   ¦       abduct_on_actions.txt
+¦   ¦       befriend_on_actions.txt
+¦   ¦       claim_throne_on_actions.txt
+¦   ¦       coerce_and_leverage_contribution_on_actions.txt
+¦   ¦       coerce_tributary_on_actions.txt
+¦   ¦       court_on_actions.txt
+¦   ¦       disbelieve_mandala_on_actions.txt
+¦   ¦       elope_on_actions.txt
+¦   ¦       fabricate_hook_on_actions.txt
+¦   ¦       learn_language_on_actions.txt
+¦   ¦       murder_on_actions.txt
+¦   ¦       seduce_on_actions.txt
+¦   ¦       steal_back_artifact_on_actions.txt
+¦   ¦       steal_herd_on_actions.txt
+¦   ¦       study_confucian_classics_on_actions.txt
+¦   ¦       sway_on_actions.txt
+¦   ¦       
+¦   L---story_cycles
+¦           ep3_story_cycle_admin_eunuch_on_actions.txt
+¦           mpo_story_cycle_temujin_flavor.txt
+¦           story_cycle_cat_on_actions.txt
+¦           story_cycle_dog_on_actions.txt
+¦           story_cycle_doppelganger_on_actions.txt
+¦           story_cycle_eagle_on_actions.txt
+¦           story_cycle_foreign_raised_reformer_on_actions.txt
+¦           story_cycle_hostage_loyalty_on_actions.txt
+¦           story_cycle_house_feud_on_actions.txt
+¦           story_cycle_hunt_mystical_animal_on_actions.txt
+¦           story_cycle_imaginary_friend_on_actions.txt
+¦           story_cycle_murders_at_court_on_actions.txt
+¦           story_cycle_party_baron_on_actions.txt
+¦           story_cycle_peasant_affair_on_actions.txt
+¦           story_cycle_roman_restoration_on_actions.txt
+¦           story_cycle_statecraft_lifestyle_respected_liege_on_actions.txt
+¦           story_cycle_sycophant_on_actions.txt
+¦           story_cycle_tax_rivalry_on_actions.txt
+¦           story_cycle_turkic_tribe_on_actions.txt
+¦           story_cycle_unity_decisions_on_actions.txt
+¦           story_cycle_visited_by_ghosts_on_actions.txt
+¦           story_cycle_warhorse_on_actions.txt
+¦           story_cycle_witch_trial_on_actions.txt
+¦           
++---opinion_modifiers
+¦       00_activity_feast_opinions.txt
+¦       00_activity_festival_opinions.txt
+¦       00_activity_hunt_opinions.txt
+¦       00_activity_pilgrimage_opinions.txt
+¦       00_activity_playdate_opinions.txt
+¦       00_activity_system_opinons.txt
+¦       00_birth_opinions.txt
+¦       00_childhood_opinions.txt
+¦       00_claim_throne_opinions.txt
+¦       00_council_opinions.txt
+¦       00_council_task_opinions.txt
+¦       00_court_events_opinions_linnea.txt
+¦       00_crime_and_prison_opinions.txt
+¦       00_decision_opinions.txt
+¦       00_doctrinal_crime_opinions.txt
+¦       00_dynasty_opinions.txt
+¦       00_education_opinions.txt
+¦       00_election_opinions.txt
+¦       00_fabricate_hook_opinions.txt
+¦       00_friendship_opinions.txt
+¦       00_holy_order_opinions.txt
+¦       00_intrigue_scheme_opinions.txt
+¦       00_lifestyle_governance_opinions.txt
+¦       00_lifestyle_intrigue_opinions.txt
+¦       00_lifestyle_medicine_opinions.txt
+¦       00_lifestyle_statecraft_opinions.txt
+¦       00_lifestyle_wanderer_opinions.txt
+¦       00_lover_opinions.txt
+¦       00_marriage_opinions.txt
+¦       00_martial_lifestyle_opinions.txt
+¦       00_opinion_modifiers.txt
+¦       00_peasant_affair_opinions.txt
+¦       00_poetry_opinions.txt
+¦       00_prison_opinions.txt
+¦       00_regional_opinions.txt
+¦       00_religious_opinions.txt
+¦       00_rival_opinions.txt
+¦       00_romance_and_adultery_opinions.txt
+¦       00_scheme_befriend_opinions.txt
+¦       00_scheme_seduce_opinion.txt
+¦       00_scheme_sway_opinions.txt
+¦       00_sibling_opinions.txt
+¦       00_spouse_opinions.txt
+¦       00_stress_effect_opinions.txt
+¦       00_struggle_opinions.ola.txt
+¦       00_title_opinions.txt
+¦       00_travel_opinions.txt
+¦       00_vassal_promise_opinions.txt
+¦       00_war_opinions.txt
+¦       01_dlc_bp1_filippa_opinions.txt
+¦       01_dlc_bp1_opinions.txt
+¦       01_dlc_bp2_yearly_1_opinions.txt
+¦       01_dlc_ep1_opinions.txt
+¦       01_dlc_fp1_opinions.txt
+¦       01_dlc_fp3_opinions.txt
+¦       01_roco_opinions.txt
+¦       02_dlc_bp1_opinions.txt
+¦       03_dlc_fp2_opinions.txt
+¦       04_dlc_ep2_filippa_opinions.txt
+¦       04_dlc_ep2_opinions.txt
+¦       05_dlc_bp2_opinions.txt
+¦       06_dlc_ep3_opinions.txt
+¦       09_mpo_opinions.txt
+¦       10_ach_opinions.txt
+¦       10_dlc_tgp_japan_opinions.txt
+¦       10_dlc_tgp_opinions.txt
+¦       tgp_imperial_examination_opinions.txt
+¦       tgp_mandala_opinions.txt
+¦       tgp_treasury_opinions.txt
+¦       tgp_tribute_mission_opinions.txt
+¦       _opinions.info
+¦       
++---playable_difficulty_infos
+¦       00_playable_difficulty_infos.txt
+¦       _playable_difficulty_infos.info
+¦       
++---pool_character_selectors
+¦       00_auto_characters.txt
+¦       00_city.txt
+¦       00_clergy.txt
+¦       00_herders.txt
+¦       00_holy_order.txt
+¦       00_mercenary.txt
+¦       _pool_character_selectors.info
+¦       
++---portrait_types
+¦       00_human_types.txt
+¦       
++---province_terrain
+¦       00_province_terrain.txt
+¦       01_province_properties.txt
+¦       
++---raids
+¦   L---intents
+¦           raid_intents.info
+¦           raid_intents.txt
+¦           
++---religion
+¦   ¦   great_holy_wars.info
+¦   ¦   
+¦   +---doctrine_group_types
+¦   ¦       00_doctrine_group_types.txt
+¦   ¦       _doctrine_group_types.info
+¦   ¦       
+¦   +---doctrine_types
+¦   ¦       10_doctrines_religions.txt
+¦   ¦       20_doctrines.txt
+¦   ¦       20_doctrines_islam.txt
+¦   ¦       20_doctrines_judaism.txt
+¦   ¦       20_doctrines_zoroastrianism.txt
+¦   ¦       30_core_tenets.txt
+¦   ¦       40_doctrines_special.txt
+¦   ¦       _doctrine_types.info
+¦   ¦       
+¦   +---holy_site_types
+¦   ¦       00_holy_site_types.txt
+¦   ¦       _holy_site_types.info
+¦   ¦       
+¦   +---religion_family_types
+¦   ¦       00_religion_family_types.txt
+¦   ¦       _religion_family_types.info
+¦   ¦       
+¦   L---religion_types
+¦           00_akom.txt
+¦           00_aluk.txt
+¦           00_baltic.txt
+¦           00_basque_paganism.txt
+¦           00_bilikuism.txt
+¦           00_bimoism.txt
+¦           00_bon.txt
+¦           00_buddhism.txt
+¦           00_christianity.txt
+¦           00_confucianism.txt
+¦           00_dayawism.txt
+¦           00_donyipoloism.txt
+¦           00_dualism.txt
+¦           00_finno_ugric.txt
+¦           00_germanic.txt
+¦           00_hantuism.txt
+¦           00_hellenism.txt
+¦           00_hinduism.txt
+¦           00_hmongism.txt
+¦           00_islam.txt
+¦           00_jainism.txt
+¦           00_judaism.txt
+¦           00_kaharingan.txt
+¦           00_kamuyism.txt
+¦           00_kushitism.txt
+¦           00_magyarism.txt
+¦           00_moism.txt
+¦           00_muism.txt
+¦           00_mundhumism.txt
+¦           00_north_african.txt
+¦           00_paganism.txt
+¦           00_qiangic.txt
+¦           00_satsana_phi.txt
+¦           00_shamanism.txt
+¦           00_shintoism.txt
+¦           00_siberian.txt
+¦           00_slavic.txt
+¦           00_taoism.txt
+¦           00_tengrism.txt
+¦           00_tolotang.txt
+¦           00_utaki.txt
+¦           00_waaqism.txt
+¦           00_west_african.txt
+¦           00_west_african_bori.txt
+¦           00_west_african_orisha.txt
+¦           00_west_african_roog.txt
+¦           00_yazidi.txt
+¦           00_zoroastrianism.txt
+¦           00_zunism.txt
+¦           _religion_types.info
+¦           
++---ruler_objective_advice_types
+¦       00_tutorial_advice.txt
+¦       _ruler_objective_advice_types.info
+¦       
++---schemes
+¦   +---agent_types
+¦   ¦       agent_types.txt
+¦   ¦       _agent_types.info
+¦   ¦       
+¦   +---pulse_actions
+¦   ¦       general_scheme_pulse_actions.txt
+¦   ¦       _pulse_actions.info
+¦   ¦       
+¦   +---scheme_countermeasures
+¦   ¦       00_basic_countermeasures.txt
+¦   ¦       _scheme_countermeasures.info
+¦   ¦       
+¦   L---scheme_types
+¦           abduct_scheme.txt
+¦           befriend_scheme.txt
+¦           challenge_status_scheme.txt
+¦           claim_throne_scheme.txt
+¦           coerce_contribution_scheme.txt
+¦           coerce_tributary_scheme.txt
+¦           convert_to_witchcraft_scheme.txt
+¦           court_scheme.txt
+¦           damage_legitimacy_scheme.txt
+¦           depose_scheme.txt
+¦           diarch_schemes.txt
+¦           disbelieve_mandala_scheme.txt
+¦           elope_scheme.txt
+¦           ep3_dispute_border_scheme.txt
+¦           ep3_found_despotate_scheme.txt
+¦           ep3_ingratiate_family_scheme.txt
+¦           ep3_prepare_fire_dromons_scheme.txt
+¦           ep3_raid_estate_scheme.txt
+¦           ep3_subsume_province_scheme.txt
+¦           ep3_teach_governor_scheme.txt
+¦           expand_power_base_scheme.txt
+¦           fabricate_hook_scheme.txt
+¦           foster_legitimacy_scheme.txt
+¦           generate_claim_scheme.txt
+¦           laamp_base_contract_schemes.txt
+¦           laamp_extra_contract_schemes.txt
+¦           learn_language_scheme.txt
+¦           leverage_contribution_scheme.txt
+¦           murder_scheme.txt
+¦           promote_scheme.txt
+¦           seduce_scheme.txt
+¦           seize_realm_scheme.txt
+¦           slander_scheme.txt
+¦           steal_back_artifact_scheme.txt
+¦           steal_herd_scheme.txt
+¦           sway_scheme.txt
+¦           tgp_coup_ceremonial_liege.txt
+¦           tgp_dynastic_cycle_schemes.txt
+¦           tgp_mentoring_scheme.txt
+¦           tgp_study_scheme.txt
+¦           _schemes.info
+¦           
++---scripted_animations
+¦       00_scripted_animations.txt
+¦       _scripted_animations.info
+¦       
++---scripted_character_templates
+¦       00_court_character_templates.txt
+¦       00_court_position_templates.txt
+¦       00_foundling_templates.txt
+¦       00_fund_inspiration_character_templates.txt
+¦       00_hold_court_character_templates.txt
+¦       00_holy_order_character_templates.txt
+¦       00_invader_templates.txt
+¦       00_knight_templates.txt
+¦       00_lifestyle_friend_templates.txt
+¦       00_mongol_templates.txt
+¦       00_mystic_templates.txt
+¦       00_officials_templates.txt
+¦       00_peasants_template.txt
+¦       00_peasant_faction_leader_template.txt
+¦       00_peasant_leader_templates.txt
+¦       00_physician_character_template.txt
+¦       00_pool_repopulation_character_templates.txt
+¦       00_priest_character_template.txt
+¦       00_saharan_nomad_template.txt
+¦       00_scholar_template.txt
+¦       00_scripted_character_templates.txt
+¦       00_soldier_character_templates.txt
+¦       00_terrain_specialist_templates.txt
+¦       01_bp1_character_templates.txt
+¦       01_bp1_filippa_character_templates.txt
+¦       01_bp2_character_templates.txt
+¦       01_ep1_character_templates.txt
+¦       01_fp1_character_templates.txt
+¦       01_tgp_japan_character_templates.txt
+¦       03_fp2_character_templates.txt
+¦       04_ep2_accolade_character_templates.txt
+¦       04_ep2_character_templates.txt
+¦       04_ep2_character_templates_james.txt
+¦       04_ep2_james_character_templates.txt
+¦       04_fp3_character_templates.txt
+¦       05_bp2_character_templates.txt
+¦       05_ce1_character_templates.txt
+¦       06_ce1_character_templates.txt
+¦       07_ep3_character_templates.txt
+¦       09_mpo_character_templates.txt
+¦       10_ach_character_templates.txt
+¦       tgp_character_templates.txt
+¦       
++---scripted_costs
+¦       00_costs.txt
+¦       
++---scripted_effects
+¦       00_accolades_scripted_effects.txt
+¦       00_achievement_effects.txt
+¦       00_activity_effects.txt
+¦       00_administrative_effects.txt
+¦       00_adultery_effects.txt
+¦       00_adventure_effects.txt
+¦       00_ai_budget_effects.txt
+¦       00_ai_conqueror_effects.txt
+¦       00_ai_value_effects.txt
+¦       00_alert_actions_effects.txt
+¦       00_almohad_invasion_effects.txt
+¦       00_animal_effects.txt
+¦       00_antiquarian_artifact_improvement_effects.txt
+¦       00_bastard_effects.txt
+¦       00_board_game_effects.txt
+¦       00_bookmark_effects.txt
+¦       00_bp1_artifact_creation_effects.txt
+¦       00_building_effects.txt
+¦       00_camp_officer_effects.txt
+¦       00_casus_belli_effects.txt
+¦       00_childhood_effects.txt
+¦       00_commander_effects.txt
+¦       00_compliment_effects.txt
+¦       00_councillor_effects.txt
+¦       00_county_corruption_effects.txt
+¦       00_courtier_guest_management_effects.txt
+¦       00_court_position_effects.txt
+¦       00_culture_effects.txt
+¦       00_custom_loc_effects.txt
+¦       00_death_management_effects.txt
+¦       00_debug_and_shortcut_effects.txt
+¦       00_decisions_effects.txt
+¦       00_diarchy_scripted_effects.txt
+¦       00_diplomacy_lifestyle_effects.txt
+¦       00_diplomacy_perk_effects.txt
+¦       00_dummy_gender_effects.txt
+¦       00_education_effects.txt
+¦       00_ep1_artifact_creation_effects.txt
+¦       00_ep1_artifact_effects.txt
+¦       00_ep1_court_type_effects.txt
+¦       00_ep1_hold_court_effects.txt
+¦       00_ep1_inspiration_effects.txt
+¦       00_ep1_inspiration_effects_sean.txt
+¦       00_ep3_decision_effects.txt
+¦       00_experience_effects.txt
+¦       00_faction_effects.txt
+¦       00_feast_scripted_effects.txt
+¦       00_flavorization_effects.txt
+¦       00_funeral_scripted_effects.txt
+¦       00_game_rule_effects.txt
+¦       00_governance_lifestyle_effects.txt
+¦       00_historical_characters_scripted_effects.txt
+¦       00_history_effects.txt
+¦       00_holy_order_effects.txt
+¦       00_hook_effects.txt
+¦       00_hunt_effects.txt
+¦       00_interaction_effects.txt
+¦       00_intercourse_effects.txt
+¦       00_intrigue_lifestyle_effects.txt
+¦       00_intrigue_perk_effects.txt
+¦       00_journey_effects.txt
+¦       00_laamp_effects.txt
+¦       00_learning_lifestyle_effects.txt
+¦       00_lifestyle_focus_effects.txt
+¦       00_lover_effects.txt
+¦       00_major_decisions_scripted_effects.txt
+¦       00_major_decisions_scripted_effects_2.txt
+¦       00_major_decisions_scripted_effects_3.txt
+¦       00_marriage_effects.txt
+¦       00_marriage_interaction_effects.txt
+¦       00_martial_lifestyle_effects.txt
+¦       00_men_at_arms_effects.txt
+¦       00_mongol_invasion_effects.txt
+¦       00_murder_effects.txt
+¦       00_music_effects.txt
+¦       00_nickname_effects.txt
+¦       00_parent_effects.txt
+¦       00_personality_trait_effects.txt
+¦       00_personal_details_effects.txt
+¦       00_petition_liege_effects.txt
+¦       00_pilgrimage_effects.txt
+¦       00_playdate_scripted_effects.txt
+¦       00_poetry_effects.txt
+¦       00_pool_effects.txt
+¦       00_pregnancy_effects.txt
+¦       00_prison_effects.txt
+¦       00_realm_effects.txt
+¦       00_regional_scripted_effects.txt
+¦       00_relation_effects.txt
+¦       00_religion_effects.txt
+¦       00_religious_interaction_effects.txt
+¦       00_roaming_effects.txt
+¦       00_romance_effects.txt
+¦       00_scheme_scripted_effects.txt
+¦       00_scripted_effects.txt
+¦       00_secret_effects.txt
+¦       00_setup_tests_effect.txt
+¦       00_sibling_effects.txt
+¦       00_single_combat_effects.txt
+¦       00_skill_effects.txt
+¦       00_spouse_effects.txt
+¦       00_stewardship_lifestyle_effects.txt
+¦       00_stewardship_perk_effects.txt
+¦       00_story_cycle_same_gender_pen_pal_effects.txt
+¦       00_stress_effects.txt
+¦       00_task_contract_scripted_effects.txt
+¦       00_tax_rivalry_effects.txt
+¦       00_title_effects.txt
+¦       00_travel_effects.txt
+¦       00_tributary_setup_effects.txt
+¦       00_unity_effects.txt
+¦       00_wanderer_lifestyle_effects.txt
+¦       00_wanderer_perk_effects.txt
+¦       00_war_effects.txt
+¦       00_while_loop_effects.txt
+¦       00_witch_effects.txt
+¦       00_yearly_event_effects.txt
+¦       01_building_upgrade_effects.txt
+¦       01_dlc_bp1_filippa_scripted_effects.txt
+¦       01_dlc_fp1_scripted_effects.txt
+¦       01_dlc_fp3_scripted_effects.txt
+¦       01_ep1_court_artifact_creation_effects.txt
+¦       01_ep1_court_event_effects.txt
+¦       01_ep1_interaction_scripted_effects.txt
+¦       01_exp1_historical_artifacts_creation_effect.txt
+¦       02_dlc_ep1_decision_scripted_effects.txt
+¦       02_ep2_artifact_effects.txt
+¦       03_bp1_haunted_by_ghosts_effects.txt
+¦       03_bp1_scripted_effects.txt
+¦       03_bp2_scripted_effects.txt
+¦       03_dlc_fp2_scripted_effects.txt
+¦       03_dlc_fp3_artifact_creation_effects.txt
+¦       03_dlc_fp3_scripted_effects.txt
+¦       04_dlc_ep2_tournament_effects.txt
+¦       04_dlc_ep2_tour_effects.txt
+¦       04_dlc_ep2_wedding_effects.txt
+¦       05_bp2_hostage_effects.txt
+¦       05_dlc_bp2_effects.txt
+¦       05_dlc_fp3_scripted_effects.txt
+¦       06_dlc_ce1_epidemics_effects.txt
+¦       06_dlc_ce1_legend_effects.txt
+¦       06_dlc_ce1_legitimacy_effects.txt
+¦       06_dlc_ce1_leg_b_effects.txt
+¦       07_dlc_ep3_scripted_effects.txt
+¦       07_dlc_ep3_story_cycle_adventurer_ai_scripted_effects.txt
+¦       07_frankokratia_scripted_effects.txt
+¦       08_bp3_effects.txt
+¦       09_dlc_mpo_scripted_effects.txt
+¦       09_mpo_greatest_of_khans_effects.txt
+¦       09_mpo_settlement_issue_effects.txt
+¦       10_ach_effects.txt
+¦       10_dlc_tgp_dynastic_cycle_scripted_effects.txt
+¦       10_dlc_tgp_house_bloc_scripted_effects.txt
+¦       10_dlc_tgp_house_relation_scripted_effects.txt
+¦       10_dlc_tgp_japan_scripted_effects.txt
+¦       10_dlc_tgp_korea_scripted_effects.txt
+¦       10_dlc_tgp_natural_disaster_scripted_effects.txt
+¦       10_dlc_tgp_scripted_effects.txt
+¦       10_dlc_tgp_silk_road_scripted_effects.txt
+¦       20_health_balancing_effects.txt
+¦       20_health_effects.txt
+¦       easteregg_historical_artifact_creation_effects.txt
+¦       tgp_debate_scripted_effects.txt
+¦       tgp_imperial_examination_scripted_effects.txt
+¦       tgp_mandala_scripted_effects.txt
+¦       tgp_tribute_mission_scripted_effects.txt
+¦       
++---scripted_guis
+¦       00_character.txt
+¦       00_religion.txt
+¦       ce1_funeral_scripted_guis.txt
+¦       ep2_activities.txt
+¦       knight_permissions_sguis.txt
+¦       tgp_examination.txt
+¦       tgp_scripted_guis.txt
+¦       
++---scripted_lists
+¦       00_scripted_lists.txt
+¦       
++---scripted_modifiers
+¦       00_activity_scripted_modifiers.txt
+¦       00_ai_value_modifiers.txt
+¦       00_building_modifiers.txt
+¦       00_character_selection_scripted_modifiers.txt
+¦       00_councillor_scripted_modifiers.txt
+¦       00_decisions_scripted_modifiers.txt
+¦       00_diarchy_scripted_modifiers.txt
+¦       00_elective_successions_scripted_modifiers.txt
+¦       00_ep1_amenities_modifiers.txt
+¦       00_ep1_artifact_modifiers.txt
+¦       00_ep1_inspiration_modifiers.txt
+¦       00_faction_modifiers.txt
+¦       00_hold_court_modifiers.txt
+¦       00_lifestyle_scripted_modifiers.txt
+¦       00_marriage_scripted_modifiers.txt
+¦       00_military_scripted_modifiers.txt
+¦       00_perk_modifiers.txt
+¦       00_portrait_modifiers.txt
+¦       00_religion_scripted_modifiers.txt
+¦       00_romance_and_seduction_scripted_modifiers.txt
+¦       00_scheme_scripted_modifiers.txt
+¦       00_scripted_relations_scripted_modifiers.txt
+¦       00_single_combat_scripted_modifiers.txt
+¦       00_spouse_scripted_modifiers.txt
+¦       00_statecraft_lifestyle_scripted_modifiers.txt
+¦       00_trait_specific_scripted_modifiers.txt
+¦       00_voter_strength_scripted_modifiers.txt
+¦       00_weather_modifiers.txt
+¦       00_yearly_events_scripted_modifiers.txt
+¦       01_bp1_scripted_modifiers.txt
+¦       01_fp1_scripted_modifiers.txt
+¦       02_ep1_scripted_modifiers.txt
+¦       03_fp2_scripted_modifiers.txt
+¦       04_ep2_scripted_modifiers.txt
+¦       05_bp2_scripted_modifiers.txt
+¦       05_fp3_scripted_modifiers.txt
+¦       07_ep3_scripted_modifiers.txt
+¦       09_mpo_scripted_modifiers.txt
+¦       10_ach_scripted_modifiers.txt
+¦       10_tgp_faction_modifiers.txt
+¦       10_tgp_japan_modifiers.txt
+¦       10_tgp_scripted_modifiers.txt
+¦       tgp_mandala_scripted_modifiers.txt
+¦       _scripted_modifiers.info
+¦       
++---scripted_relations
+¦       00_scripted_relations.txt
+¦       _scripted_relations.info
+¦       
++---scripted_rules
+¦       00_rules.txt
+¦       
++---scripted_triggers
+¦       00_activity_triggers.txt
+¦       00_adultery_triggers.txt
+¦       00_ai_acceptance_triggers.txt
+¦       00_ai_value_triggers.txt
+¦       00_artifact_triggers.txt
+¦       00_auto_character_triggers.txt
+¦       00_available_for_events_triggers.txt
+¦       00_bastard_triggers.txt
+¦       00_birth_triggers.txt
+¦       00_board_game_scripted_triggers.txt
+¦       00_building_requirement_triggers.txt
+¦       00_childhood_triggers.txt
+¦       00_clan_triggers.txt
+¦       00_clothing_triggers.txt
+¦       00_coa_triggers.txt
+¦       00_commander_triggers.txt
+¦       00_compliment_triggers.txt
+¦       00_councillor_triggers.txt
+¦       00_county_corruption_triggers.txt
+¦       00_courtier_guest_management_triggers.txt
+¦       00_court_position_triggers.txt
+¦       00_court_role_triggers.txt
+¦       00_court_scheme_triggers.txt
+¦       00_crime_triggers.txt
+¦       00_crypto_religionist_triggers.txt
+¦       00_cultural_heritage_triggers.txt
+¦       00_cultural_triggers.txt
+¦       00_death_management_triggers.txt
+¦       00_diarchy_scripted_triggers.txt
+¦       00_distance_triggers.txt
+¦       00_dynasty_triggers.txt
+¦       00_economic_triggers.txt
+¦       00_education_triggers.txt
+¦       00_elective_triggers.txt
+¦       00_faction_triggers.txt
+¦       00_family_triggers.txt
+¦       00_feast_activity_triggers.txt
+¦       00_food_scripted_triggers.txt
+¦       00_funeral_and_body_disposal_triggers.txt
+¦       00_game_rule_triggers.txt
+¦       00_general_trait_triggers.txt
+¦       00_generic_event_sensibility_triggers.txt
+¦       00_generic_struggle_scripted_triggers.txt
+¦       00_government_triggers.txt
+¦       00_great_holy_war_triggers.txt
+¦       00_has_dlc_scripted_triggers.txt
+¦       00_hunt_triggers.txt
+¦       00_illustration_triggers.txt
+¦       00_important_actions_triggers.txt
+¦       00_interaction_triggers.txt
+¦       00_journey_triggers.txt
+¦       00_laamp_triggers.txt
+¦       00_law_triggers.txt
+¦       00_legal_triggers.txt
+¦       00_lifestyle_perk_triggers.txt
+¦       00_lifestyle_triggers.txt
+¦       00_major_decision_triggers.txt
+¦       00_marriage_triggers.txt
+¦       00_military_triggers.txt
+¦       00_opinion_scripted_triggers.txt
+¦       00_personality_trait_triggers.txt
+¦       00_personality_triggers.txt
+¦       00_pet_triggers.txt
+¦       00_physical_appearance_triggers.txt
+¦       00_pilgrimage_triggers.txt
+¦       00_playdate_activity_triggers.txt
+¦       00_province_triggers.txt
+¦       00_relation_triggers.txt
+¦       00_religious_triggers.txt
+¦       00_rich_presence_triggers.txt
+¦       00_roaming_activity_triggers.txt
+¦       00_romance_and_seduction_triggers.txt
+¦       00_scheme_befriend_triggers.txt
+¦       00_scheme_triggers.txt
+¦       00_scripted_rule_triggers.txt
+¦       00_scripted_triggers.txt
+¦       00_secret_triggers.txt
+¦       00_secret_type_triggers.txt
+¦       00_sibling_triggers.txt
+¦       00_single_combat_scripted_triggers.txt
+¦       00_statecraft_lifestyle_triggers.txt
+¦       00_stress_triggers.txt
+¦       00_succession_triggers.txt
+¦       00_task_contract_triggers.txt
+¦       00_terrain_triggers.txt
+¦       00_title_triggers.txt
+¦       00_travel_triggers.txt
+¦       00_tutorial_triggers.txt
+¦       00_vassal_stance_triggers.txt
+¦       00_war_and_peace_triggers.txt
+¦       00_weather_triggers.txt
+¦       00_witch_triggers.txt
+¦       01_bp1_filippa_scripted_triggers.txt
+¦       01_building_upgrade_triggers.txt
+¦       01_fp1_scripted_triggers.txt
+¦       02_ep1_scripted_triggers.txt
+¦       03_bp1_scripted_triggers.txt
+¦       03_bp2_scripted_triggers.txt
+¦       03_fp2_scripted_triggers.txt
+¦       04_ep2_accolade_triggers.txt
+¦       04_ep2_tournament_triggers.txt
+¦       04_ep2_tour_triggers.txt
+¦       04_ep2_wedding_triggers.txt
+¦       05_bp2_hostage_triggers.txt
+¦       05_bp2_scripted_triggers.txt
+¦       05_bp2_triggers.txt
+¦       06_bp3_triggers.txt
+¦       06_ce1_epidemic_triggers.txt
+¦       06_ce1_legend_triggers.txt
+¦       06_ce1_legitimacy_triggers.txt
+¦       06_fp3_scripted_triggers.txt
+¦       07_ep3_petition_triggers.txt
+¦       07_ep3_triggers.txt
+¦       07_frankokratia_triggers.txt
+¦       08_bp3_triggers.txt
+¦       09_mpo_greatest_of_khans_triggers.txt
+¦       09_mpo_settlement_issue_triggers.txt
+¦       10_ach_scripted_triggers.txt
+¦       10_tgp_dynastic_cycle_triggers.txt
+¦       10_tgp_house_bloc_triggers.txt
+¦       10_tgp_house_relation_triggers.txt
+¦       10_tgp_japan_triggers.txt
+¦       10_tgp_korea_triggers.txt
+¦       10_tgp_natural_disaster_triggers.txt
+¦       10_tgp_triggers.txt
+¦       20_health_balancing_triggers.txt
+¦       20_health_triggers.txt
+¦       great_project_triggers.txt
+¦       mpo_scripted_triggers.txt
+¦       music_triggers.txt
+¦       tgp_imperial_examination_triggers.txt
+¦       tgp_mandala_task_contract_triggers.txt
+¦       tgp_mandala_triggers.txt
+¦       tgp_silk_road_triggers.txt
+¦       tgp_tribute_mission_triggers.txt
+¦       
++---script_values
+¦       00_activity_values.txt
+¦       00_age_values.txt
+¦       00_ai_values.txt
+¦       00_artifact_values.txt
+¦       00_basic_values.txt
+¦       00_bastardy_values.txt
+¦       00_building_values.txt
+¦       00_character_legacy_values.txt
+¦       00_character_values.txt
+¦       00_combat_values.txt
+¦       00_contract_script_values.txt
+¦       00_council_values.txt
+¦       00_county_control_values.txt
+¦       00_county_fertility.txt
+¦       00_court_amenities_values.txt
+¦       00_court_grandeur_values.txt
+¦       00_court_position_values.txt
+¦       00_culture_values.txt
+¦       00_decision_values.txt
+¦       00_diarchy_values.txt
+¦       00_difficulty_values.txt
+¦       00_distance_values.txt
+¦       00_dlc_fp3_script_values.txt
+¦       00_dynasty_values.txt
+¦       00_education_values.txt
+¦       00_ep1_artifact_values.txt
+¦       00_ep1_script_values.txt
+¦       00_faction_values.txt
+¦       00_game_rule_values.txt
+¦       00_goverment_values.txt
+¦       00_governance_lifestyle_values.txt
+¦       00_hold_court_values.txt
+¦       00_holy_order_values.txt
+¦       00_interaction_values.txt
+¦       00_intrigue_lifestyle_values.txt
+¦       00_invasion_values.txt
+¦       00_law_values.txt
+¦       00_legitimacy_values.txt
+¦       00_lifestyle_values.txt
+¦       00_memory_values.txt
+¦       00_men_at_arms_values.txt
+¦       00_mongol_values.txt
+¦       00_poetry_values.txt
+¦       00_prison_values.txt
+¦       00_regional_values.txt
+¦       00_relation_values.txt
+¦       00_scheme_values.txt
+¦       00_scholarship_lifestyle_values.txt
+¦       00_single_combat_values.txt
+¦       00_stress_values.txt
+¦       00_struggle_values.txt
+¦       00_suggestion_values.txt
+¦       00_title_tiers_values.txt
+¦       00_trait_values.txt
+¦       00_travel_values.txt
+¦       00_unity_values.txt
+¦       00_visit_settlement_values.txt
+¦       00_war_values.txt
+¦       01_character_weighting_values.txt
+¦       01_dlc_bp1_script_values.txt
+¦       01_dlc_bp2_script_values.txt
+¦       01_dlc_fp1_script_values.txt
+¦       01_dynamic_values.txt
+¦       01_starting_values.txt
+¦       02_dlc_ep1_script_values.txt
+¦       02_religion_values.txt
+¦       02_ruler_designer_values.txt
+¦       02_vassal_values.txt
+¦       03_dlc_fp2_script_values.txt
+¦       04_ep2_accolade_values.txt
+¦       04_ep2_hunt_values.txt
+¦       04_ep2_tournament_values.txt
+¦       04_ep2_tour_values.txt
+¦       04_ep2_wedding_values.txt
+¦       05_bp2_hostage_values.txt
+¦       06_ce1_epidemics_values.txt
+¦       06_ce1_legends_values.txt
+¦       07_ep3_values.txt
+¦       08_bp3_values.txt
+¦       09_mpo_domicile_values.txt
+¦       09_mpo_the_great_steppe_values.txt
+¦       09_mpo_values.txt
+¦       10_ach_values.txt
+¦       10_dlc_tgp_china_values.txt
+¦       10_health_values.txt
+¦       10_tgp_dynastic_cycle_values.txt
+¦       10_tgp_japan_values.txt
+¦       50_major_decision_values.txt
+¦       50_pilgrimage_values.txt
+¦       50_province_values.txt
+¦       50_tribal_values.txt
+¦       99_casus_belli_values.txt
+¦       99_chancellor_values.txt
+¦       99_court_chaplain_values.txt
+¦       99_debug_values.txt
+¦       99_kurultai_values.txt
+¦       99_marshal_values.txt
+¦       99_spouse_councillor_values.txt
+¦       99_spymaster_values.txt
+¦       99_steward_values.txt
+¦       99_vizier_councillor_values.txt
+¦       court_events_values.txt
+¦       destiny_score_interest_value.txt
+¦       tgp_debate_values.txt
+¦       tgp_festival_values.txt
+¦       tgp_great_project_values.txt
+¦       tgp_imperial_examination_values.txt
+¦       tgp_japan_values.txt
+¦       tgp_mandala_values.txt
+¦       tgp_natural_disaster_values.txt
+¦       tgp_tribute_mission_values.txt
+¦       tgp_values.txt
+¦       tutorial_values.txt
+¦       _script_values.info
+¦       
++---secret_types
+¦       00_bastard_secrets.txt
+¦       00_secret_types.txt
+¦       dynastic_cycle_secrets.txt
+¦       _secret_types.info
+¦       
++---situation
+¦   +---catalysts
+¦   ¦       10_tgp_dynastic_cycle_catalysts.txt
+¦   ¦       10_tgp_natural_disaster_catalysts.txt
+¦   ¦       10_tgp_silk_road_catalysts.txt
+¦   ¦       catalysts.txt
+¦   ¦       mpo_the_great_steppe_catalysts.txt
+¦   ¦       _catalysts.info
+¦   ¦       
+¦   +---situations
+¦   ¦       debug_situation.txt
+¦   ¦       game_extra_nomads_arabs.txt
+¦   ¦       game_extra_nomads_horn.txt
+¦   ¦       game_extra_nomads_sahel.txt
+¦   ¦       game_extra_nomads_sami.txt
+¦   ¦       game_extra_nomads_tibet.txt
+¦   ¦       tgp_dynastic_cycle.txt
+¦   ¦       tgp_natural_disaster.txt
+¦   ¦       tgp_silk_road.txt
+¦   ¦       the_great_steppe.txt
+¦   ¦       _situations.info
+¦   ¦       
+¦   L---situation_group_types
+¦           00_situation_group_types.txt
+¦           _situation_group_types.info
+¦           
++---story_cycles
+¦       book_translation_story_cycle.txt
+¦       bp1_story_cycle_doppelganger.txt
+¦       bp1_story_cycle_sycophant.txt
+¦       bp1_story_cycle_visited_by_angry_ghosts.txt
+¦       bp2_child_of_destiny_story_cycle.txt
+¦       bp2_hostage_loyalty_story.txt
+¦       bp2_story_cycle_foreign_raised_reformer.txt
+¦       bp2_story_cycle_imaginary_friend.txt
+¦       bp2_story_cycle_pet_rock.txt
+¦       ce1_story_cycle_black_death.txt
+¦       ce1_story_cycle_plague_witch_hunt.txt
+¦       commission_epic_story_cycle.txt
+¦       debug_test_story_cycle.txt
+¦       ep2_story_cycle_mysterious_journal.txt
+¦       ep3_story_cycle_admin_eunuch.txt
+¦       ep3_story_cycle_adventurer_ai_contract.txt
+¦       ep3_story_cycle_el_cid.txt
+¦       ep3_story_cycle_frankokratia.txt
+¦       ep3_story_cycle_grand_ambitions.txt
+¦       ep3_story_cycle_harrying_of_the_north.txt
+¦       ep3_story_cycle_hasan_sabbah.txt
+¦       ep3_story_cycle_restoring_rome.txt
+¦       ep3_story_cycle_violet_poet.txt
+¦       fp3_story_cycle_turkic_tribe.txt
+¦       fp3_story_cycle_zanj_rebellion.txt
+¦       mpo_story_cycle_greatest_of_khans.txt
+¦       mpo_story_cycle_temujin_flavor.txt
+¦       story_cycle_almohad_invasion.txt
+¦       story_cycle_conqueror.txt
+¦       story_cycle_house_feud.txt
+¦       story_cycle_hunt_mystical_animal.txt
+¦       story_cycle_infidelity_confrontation.txt
+¦       story_cycle_lyonese_monk.txt
+¦       story_cycle_mongol_invasion.txt
+¦       story_cycle_murders_at_court.txt
+¦       story_cycle_party_baron.txt
+¦       story_cycle_peasant_affair.txt
+¦       story_cycle_pet_cat.txt
+¦       story_cycle_pet_dog.txt
+¦       story_cycle_pet_eagle.txt
+¦       story_cycle_pledge_loyalty_to_liege_overdue.txt
+¦       story_cycle_restored_roman_provinces.txt
+¦       story_cycle_seljuk_invasion.txt
+¦       story_cycle_statecraft_lifestyle_respected_liege.txt
+¦       story_cycle_stewardship_duty_mediation.txt
+¦       story_cycle_take_mandate_of_heaven.txt
+¦       story_cycle_tax_rivalry.txt
+¦       story_cycle_unity_decisions.txt
+¦       story_cycle_warfare_lifestyle_soldier_friend.txt
+¦       story_cycle_warfare_lifestyle_warhorse.txt
+¦       tgp_story_cycle_mandala.txt
+¦       tgp_story_cycle_tai_migrations.txt
+¦       _story_cycles.info
+¦       
++---struggle
+¦   +---catalysts
+¦   ¦       catalysts.txt
+¦   ¦       _catalysts.info
+¦   ¦       
+¦   L---struggles
+¦           iberian_struggle_script.txt
+¦           persian_struggle_script.txt
+¦           _struggles.info
+¦           
++---subject_contracts
+¦   +---contracts
+¦   ¦       administrative.txt
+¦   ¦       celestial.txt
+¦   ¦       clan.txt
+¦   ¦       default_tributary.txt
+¦   ¦       feudal.txt
+¦   ¦       herder.txt
+¦   ¦       japan_administrative.txt
+¦   ¦       mandala.txt
+¦   ¦       meritocratic.txt
+¦   ¦       nomad.txt
+¦   ¦       republic.txt
+¦   ¦       special_contracts.txt
+¦   ¦       theocratic.txt
+¦   ¦       tribal.txt
+¦   ¦       wanua.txt
+¦   ¦       _subject_contracts.info
+¦   ¦       
+¦   L---groups
+¦           subject_contract_groups.txt
+¦           _subject_contract_groups.info
+¦           
++---succession_appointment
+¦       admin_emperor.txt
+¦       admin_governor.txt
+¦       celestial_governor.txt
+¦       celestial_minister.txt
+¦       japanese_admin_governor.txt
+¦       japanese_admin_regent.txt
+¦       meritocratic_governor.txt
+¦       meritocratic_regent.txt
+¦       _succession_appointment.info
+¦       
++---succession_election
+¦       00_feudal_elective.txt
+¦       01_princely_elective.txt
+¦       02_gaelic_elective.txt
+¦       04_saxon_elective.txt
+¦       05_scandinavian_elective.txt
+¦       06_tribal_elective.txt
+¦       09_confederation_elective.txt
+¦       _succession_election.info
+¦       
++---suggestions
+¦       01_suggestions.txt
+¦       _suggestions.info
+¦       
++---task_contracts
+¦       admin_contracts.txt
+¦       laamp_base_contracts.txt
+¦       laamp_extra_contracts.txt
+¦       laamp_nm_contracts.txt
+¦       laamp_transport_contracts.txt
+¦       nomads_migration_contracts.txt
+¦       tgp_admin_contracts.txt
+¦       tgp_admin_contracts_tova.txt
+¦       tgp_admin_military_contracts.txt
+¦       tgp_mandala_contracts.txt
+¦       tgp_natural_disaster_contracts.txt
+¦       _task_contracts.info
+¦       
++---tax_slots
+¦   +---obligations
+¦   ¦       clan_tax_collector.txt
+¦   ¦       _tax_obligation.info
+¦   ¦       
+¦   L---types
+¦           00_tax_slot_types.txt
+¦           _tax_slot_type.info
+¦           
++---terrain_types
+¦       00_terrains.txt
+¦       _terrains.info
+¦       
++---traits
+¦       00_traits.txt
+¦       old_trait_indexes.lookup
+¦       trait_conversion.lookup
+¦       _traits.info
+¦       
++---travel
+¦   +---point_of_interest_types
+¦   ¦       travel_point_of_interest_types.txt
+¦   ¦       _travel_point_of_interest_types.info
+¦   ¦       
+¦   L---travel_options
+¦           travel_options.txt
+¦           travel_options_modifiers.txt
+¦           _travel_options.info
+¦           
++---trigger_localization
+¦       00_achievement_triggers.txt
+¦       00_adultery_triggers.txt
+¦       00_building_requirement_triggers.txt
+¦       00_building_triggers.txt
+¦       00_character_relation_triggers.txt
+¦       00_character_script_list_triggers.txt
+¦       00_character_triggers.txt
+¦       00_culture_triggers.txt
+¦       00_custom_triggers.txt
+¦       00_debug_triggers.txt
+¦       00_dlc_triggers.txt
+¦       00_doctrine_triggers.txt
+¦       00_dynasty_triggers.txt
+¦       00_faction_triggers.txt
+¦       00_ghw_triggers.txt
+¦       00_government_triggers.txt
+¦       00_holy_order_triggers.txt
+¦       00_landed_title_triggers.txt
+¦       00_law_triggers.txt
+¦       00_legend_triggers.txt
+¦       00_lifestyle_triggers.txt
+¦       00_logic_triggers.txt
+¦       00_province_script_list_triggers.txt
+¦       00_province_triggers.txt
+¦       00_religion_triggers.txt
+¦       00_scheme_script_list_triggers.txt
+¦       00_scope_comparison_triggers_l_english.txt
+¦       00_script_list_triggers.txt
+¦       00_secret_script_list_triggers.txt
+¦       00_secret_triggers.txt
+¦       00_travel_triggers.txt
+¦       00_tutorial_triggers.txt
+¦       00_unity_triggers.txt
+¦       00_war_triggers.txt
+¦       01_character_interaction_triggers.txt
+¦       01_decision_triggers.txt
+¦       01_fp1_achievement_triggers.txt
+¦       02_ep1_achievement_triggers.txt
+¦       02_ep1_royal_court_triggers.txt
+¦       03_fp2_struggle_triggers.txt
+¦       04_ep2_diarchy_triggers.txt
+¦       04_fp3_struggle_triggers.txt
+¦       05_ep2_achievement_triggers.txt
+¦       06_bp2_hostage_triggers.txt
+¦       07_ce1_achievement_triggers.txt
+¦       08_ep3_admin_triggers.txt
+¦       08_ep3_laamp_triggers.txt
+¦       09_mpo_achievement_triggers.txt
+¦       09_mpo_triggers.txt
+¦       ce1_legend_triggers.txt
+¦       tgp_triggers.txt
+¦       _trigger_localization.info
+¦       
++---tutorial_lessons
+¦       00_ep4_japan_reactive_advice.txt
+¦       00_ep4_playtest_intro.txt
+¦       00_tutorial_lessons_basics.txt
+¦       00_tutorial_lessons_china.txt
+¦       00_tutorial_lessons_reactive.txt
+¦       00_tutorial_lessons_war.txt
+¦       01_ep1_tutorial_lessons_reactive.txt
+¦       03_fp2_tutorial_lessons_reactive.txt
+¦       07_ep3_tutorial_lessons_reactive.txt
+¦       _tutorial_lesson.info
+¦       
++---tutorial_lesson_chains
+¦       00_tutorial_lesson_chains.txt
+¦       _tutorial_lesson_chains.info
+¦       
+L---vassal_stances
+        00_vassal_stances.txt
+        _vassal_stances.info
+        
