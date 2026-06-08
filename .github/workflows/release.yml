@@ -7,6 +7,11 @@ on:
   push:
     tags:
       - 'v*'
+  # Чтобы кнопка "Create release" в UI сама запускала сборку.
+  # ВАЖНО: событие release срабатывает только если этот workflow лежит на
+  # дефолтной ветке (main). До слияния в main работает лишь push-тег и ручной запуск.
+  release:
+    types: [published]
   workflow_dispatch:
 
 permissions:
