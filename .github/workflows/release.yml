@@ -21,13 +21,17 @@ jobs:
       - name: Build mod zip
         run: bash tools/build_release.sh
 
-      # Любой запуск (в т.ч. ручной "Run workflow") оставляет скачиваемый ZIP
-      # на странице прогона: Actions → выбрать run → раздел Artifacts.
+      # Любой запуск (в т.ч. ручной "Run workflow") оставляет готовый к установке
+      # мод на странице прогона: Actions → выбрать run → раздел Artifacts →
+      # скачать "Mormal-AI-mod". Внутри — папка Mormal-AI/ и Mormal-AI.mod,
+      # которые кладутся прямо в каталог mod/ игры (один распак, без вложенных zip).
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: Mormal-AI-mod
-          path: dist/*.zip
+          path: |
+            build/Mormal-AI
+            build/Mormal-AI.mod
 
       # Релиз создаётся ТОЛЬКО при пуше тега vX.Y.Z (не при ручном запуске).
       - name: Attach zip to release
