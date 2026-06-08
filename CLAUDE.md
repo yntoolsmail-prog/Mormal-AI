@@ -26,21 +26,29 @@ common/
   defines/
     00_mormal_ai.txt                # НАШИ переопределения define ИИ (главный редактируемый файл)
   modifiers/                        # зарезервировано под переопределения модификаторов (баффы навыков и т.п.)
+    README.txt                      # пока только заметка-заглушка; реальных переопределений ещё нет
 vanilla/                            # ЭТАЛОН из игры — НЕ РЕДАКТИРОВАТЬ
   00_ai.txt                         #   -> ванильный common/defines/00_ai.txt   (блок NAI)
-  00_defines.txt                    #   -> ванильный common/defines/00_defines.txt
-  00_basic_modifiers.txt            #   -> ванильный common/modifiers/00_basic_modifiers.txt
+  00_defines.txt                    #   -> ванильный common/defines/00_defines.txt   (блоки NMilitary, NDynasty и т.п.: цена/содержание солдат, престиж, размеры полков)
+  00_basic_modifiers.txt            #   -> ванильный common/modifiers/00_basic_modifiers.txt (вкл. блоки сложности: скидки ИИ на латников/наёмников/постройки)
+  scripted_effects/
+    00_ai_budget_effects.txt        #   -> ванильный common/scripted_effects/* : ai_budget_manipulation_effect — КАК ИИ двигает золото между корзинами (war chest / long_term / short_term) по личности; ДОКАЗЫВАЕТ, что здания(слоты)+латники из short_term, новые холдинги+феодализация из long_term
   scripted_values/                  #   -> ванильный common/scripted_values/* (справка для скриптовой фазы)
-    00_ai_values.txt                #      БЮДЖЕТ ИИ: war chest, расход на латников (min/ideal/max)
+    00_ai_values.txt                #      БЮДЖЕТ ИИ: war chest, расход на латников (min/ideal/max), «латники или здание»
+    00_men_at_arms_values.txt       #      цены найма/содержания латников по типам, веса выбора типа, провизия
+    00_suggestion_values.txt        #      рекомендованное число полков латников (ярус − 1)
     00_interaction_values.txt       #      выкуп/вассализация/принятие интеракций
     00_war_values.txt               #      перемирия, сила сторон, ai_strength_multiplier, is_ai
     00_combat_values.txt            #      боевые вспомогательные значения
     01_character_weighting_values.txt #    веса важности персонажей (пленные/убитые)
     03_dlc_fp2_script_values.txt    #      FP2: покупка перемирия, помощь в войне, прочее
     05_bp2_hostage_values.txt       #      ценность заложников, личностные множители ИИ
+    _INDEX_all_value_files.txt      #      индекс ВСЕХ value-файлов игры (что в каком лежит) — навигация, чтобы знать, какой ванильный файл дозапросить
 docs/
   AI_CURRENT_STATE.md               # как ИИ ведёт себя сейчас (базлайн)
   AI_ECONOMY.md                     # сводный разбор экономики ИИ + пошаговый пример
+  AI_BUDGET_WALKTHROUGH.md          # глоссарий ВСЕХ функций бюджета + проход счёта 0→5000
+  AI_MERCENARIES.md                 # механика найма наёмников ИИ + числовой пример
   AI_TUNING_PLAN.md                 # рычаги, текущие значения и план
 CLAUDE.md                           # этот файл
 README.md                           # установка и обзор для игрока
@@ -70,6 +78,11 @@ README.md                           # установка и обзор для и
 **попроси у владельца репозитория**, он найдёт и положит его. Не выдумывай
 содержимое ванильных файлов по памяти; работай только с тем, что реально лежит в
 `vanilla/`.
+
+Чтобы понять, **в каком** ванильном `scripted_values`-файле искать нужную
+механику (и какой файл дозапросить), сверься с
+`vanilla/scripted_values/_INDEX_all_value_files.txt` — это оглавление всех
+value-файлов игры с кратким описанием содержимого каждого.
 
 ## Как CK3 читает эти файлы
 
@@ -126,7 +139,13 @@ README.md                           # установка и обзор для и
 ## Быстрая ориентация для новой задачи
 
 - Хочешь поменять поведение ИИ? → правь `common/defines/00_mormal_ai.txt`.
-- Нужно дефолтное значение или смысл ключа? → грепай `vanilla/00_ai.txt`
-  (комментарий `### Brief:` над ключом объясняет его).
+- Нужно дефолтное значение или смысл ключа define? → грепай `vanilla/00_ai.txt`
+  или `vanilla/00_defines.txt` (комментарий `### Brief:` над ключом объясняет его).
+- Экономика наёма/содержания латников, цены по типам? → `vanilla/00_men_at_arms_values.txt`;
+  бюджетные доли дохода и логика «латники или здание» → `vanilla/scripted_values/00_ai_values.txt`;
+  рекомендованное число полков → `vanilla/scripted_values/00_suggestion_values.txt`.
+- Не знаешь, в каком value-файле искать механику? → `vanilla/scripted_values/_INDEX_all_value_files.txt`.
 - Планируешь или фиксируешь решения по тюнингу? → `docs/AI_TUNING_PLAN.md`.
 - Нужно понять, как ИИ ведёт себя сейчас? → `docs/AI_CURRENT_STATE.md`.
+- Сводный разбор экономики ИИ (казна, бюджет, латники, постройки)? → `docs/AI_ECONOMY.md`.
+- Как ИИ нанимает наёмников (пороги, расчёт силы, пример)? → `docs/AI_MERCENARIES.md`.

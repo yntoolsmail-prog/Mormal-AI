@@ -6,3 +6,7 @@ Thumbs.db
 
 # Артефакты лаунчера CK3 (не коммитим машинно-локальные описатели)
 /Mormal-AI.mod
+
+# Артефакты сборки релиза (tools/build_release.sh)
+/build/
+/dist/

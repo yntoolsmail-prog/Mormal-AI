@@ -1,0 +1,29 @@
+name: Build mod release
+
+# Собирает устанавливаемый ZIP мода и прикрепляет его к GitHub Release.
+# Триггер: пуш тега вида v0.1.0  (или ручной запуск через "Run workflow").
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build mod zip
+        run: bash tools/build_release.sh
+
+      - name: Attach zip to release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.zip
+          generate_release_notes: true
