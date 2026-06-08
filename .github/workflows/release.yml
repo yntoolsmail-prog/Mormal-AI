@@ -21,6 +21,15 @@ jobs:
       - name: Build mod zip
         run: bash tools/build_release.sh
 
+      # Любой запуск (в т.ч. ручной "Run workflow") оставляет скачиваемый ZIP
+      # на странице прогона: Actions → выбрать run → раздел Artifacts.
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mormal-AI-mod
+          path: dist/*.zip
+
+      # Релиз создаётся ТОЛЬКО при пуше тега vX.Y.Z (не при ручном запуске).
       - name: Attach zip to release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
