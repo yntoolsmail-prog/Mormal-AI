@@ -35,15 +35,17 @@ cp descriptor.mod "$STAGE/"
 mkdir -p "$STAGE/.metadata"
 cp .metadata/metadata.json "$STAGE/.metadata/"
 
-# --- Контент: ТОЛЬКО реальные переопределения -------------------------------
-#  Намеренно НЕ копируем:
-#   - vanilla/        (справочное зеркало, игре не нужно)
-#   - common/task.md  (рабочий документ)
-#   - common/modifiers/README.txt (.txt в common/modifiers/ движок распарсил бы
-#                                   как модификатор → ошибка в error.log)
-mkdir -p "$STAGE/common/defines" "$STAGE/common/script_values"
-cp common/defines/*.txt       "$STAGE/common/defines/"
-cp common/script_values/*.txt "$STAGE/common/script_values/"
+# --- Контент: ВСЁ из common/, кроме dev-файлов (авто-подтягивание новых правок) -
+#  Берём всю папку common/ целиком — любые новые переопределения (новые подпапки,
+#  новые файлы) попадают в релиз сами, скрипт править не нужно.
+#  Затем выкидываем то, что игре не нужно / сломает парсинг:
+#   - *.md         — рабочие документы (common/task.md и пр.)
+#   - README.txt   — заметки-заглушки (.txt в common/modifiers/ движок принял бы
+#                    за определение модификатора → ошибка в error.log)
+#  (vanilla/ не копируем вообще — это справочное зеркало, не часть мода.)
+cp -r common "$STAGE/common"
+find "$STAGE/common" -type f \( -name '*.md' -o -name 'README.txt' \) -delete
+find "$STAGE/common" -type d -empty -delete
 
 # --- Внешний описатель лаунчера ---------------------------------------------
 cat > "$BUILD/${FOLDER}.mod" <<EOF
