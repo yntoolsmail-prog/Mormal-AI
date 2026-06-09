@@ -47,6 +47,22 @@ cp -r common "$STAGE/common"
 find "$STAGE/common" -type f \( -name '*.md' -o -name 'README.txt' \) -delete
 find "$STAGE/common" -type d -empty -delete
 
+# CK3 ждёт скрипт-файлы в UTF-8 с BOM (иначе предупреждения lexer в error.log).
+# Гарантируем BOM на всех .txt мода (идемпотентно) — даже если в исходнике забыли.
+if command -v python3 >/dev/null 2>&1; then
+	python3 - "$STAGE/common" <<'PY'
+import os, sys
+bom = b'\xef\xbb\xbf'
+for dp, _, fs in os.walk(sys.argv[1]):
+    for n in fs:
+        if n.endswith(".txt"):
+            p = os.path.join(dp, n)
+            d = open(p, "rb").read()
+            if not d.startswith(bom):
+                open(p, "wb").write(bom + d)
+PY
+fi
+
 # --- Внешний описатель лаунчера ---------------------------------------------
 cat > "$BUILD/${FOLDER}.mod" <<EOF
 version="$VERSION"
