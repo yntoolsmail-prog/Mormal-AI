@@ -1,0 +1,115 @@
+# =============================================================================
+#  Mormal AI — порог РОСПУСКА профессиональных латников (золото), база 0.6 → 0.7
+# =============================================================================
+#  ai_men_at_arms_expense_gold_max — доля ДОХОДА (золота), выше которой ИИ начинает
+#  РАСПУСКАТЬ латников. Сдвигаем базу 0.6 → 0.7: феодал/клан держат полки чуть
+#  дольше и реже сваливаются в цикл «нанял → распустил → нанял» на колебаниях дохода.
+#
+#  AI-only по своей природе: это ИИ-функция бюджета (игрок распускает латников
+#  вручную, к нему не применяется).
+#
+#  Семейство `_gold_*` используют феодал/клан/республика и т.п. КОЧЕВНИКИ тоже на
+#  золоте, но у них в конце стоит перекрытие `value = 3` (admin/nomadic при
+#  debt_level<=2) → база на них почти не влияет (распускают только в долгах).
+#
+#  Файл "zz_..." грузится ПОСЛЕ "00_ai_values.txt" → перекрывает функцию.
+#  Это ПОЛНАЯ копия ванильной функции (vanilla/scripted_values/00_ai_values.txt:1779)
+#  с изменённой только базой — при обновлении CK3 сверять с ванилью.
+# =============================================================================
+
+ai_men_at_arms_expense_gold_max = {
+	value = {
+		value = 0.7                                  # ваниль 0.6 | держать латников чуть дольше до роспуска (феодал/клан)
+		desc = "default value"
+	}
+	if = {
+		limit = {
+			culture ?= {
+				has_cultural_era_or_later = culture_era_high_medieval
+			}
+			primary_title ?= {
+				tier >= tier_kingdom
+			}
+		}
+		add = {
+			desc = "significant ruler, high medieval"
+			value = 0.2
+		}
+	}
+	if = {
+		limit = {
+			culture ?= {
+				has_cultural_era_or_later = culture_era_late_medieval
+			}
+			primary_title ?= {
+				tier >= tier_kingdom
+			}
+		}
+		add = {
+			desc = "significant ruler, late medieval"
+			value = 0.2
+		}
+	}
+	if = {
+		limit = {
+			culture ?= {
+				has_cultural_era_or_later = culture_era_high_medieval
+			}
+			primary_title ?= {
+				tier < tier_kingdom
+			}
+		}
+		add = {
+			desc = "lesser ruler, high medieval"
+			value = 0.05
+		}
+	}
+	if = {
+		limit = {
+			culture ?= {
+				has_cultural_era_or_later = culture_era_late_medieval
+			}
+			primary_title ?= {
+				tier < tier_kingdom
+			}
+		}
+		add = {
+			desc = "lesser ruler, late medieval"
+			value = 0.1
+		}
+	}
+	if = {
+		limit = {
+			has_character_flag = vassal_directive_build_maa
+			vassal_is_valid_and_follows_directive_trigger = { VASSAL = this LIEGE = liege }
+		}
+		add = {
+			desc = ai_directive
+			value = 0.1
+		}
+	}
+	if = {
+		limit = {
+			government_allows = administrative
+			NOT = { vassal_contract_has_flag = admin_theme_civilian }
+		}
+		add = {
+			desc = ai_admin_vassal
+			value = 0.3
+		}
+	}
+
+	min = 0
+	max = 0.9
+
+	if = {
+		limit = {
+			OR = {
+				government_allows = administrative
+				government_has_flag = government_is_nomadic
+			}
+			debt_level <= 2
+		}
+		value = 3
+	}
+}
