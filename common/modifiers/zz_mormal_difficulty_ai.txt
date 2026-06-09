@@ -41,7 +41,8 @@ hard_difficulty = {
 	mercenary_hire_cost_mult = -0.3
 	men_at_arms_maintenance = -0.25
 
-	herd_gain_mult = 0.25   # Mormal AI: +25% прироста стада ИИ-кочевнику — аналог их levy_reinforcement_rate=+1, которого орда не получает
+	herd_gain_mult = 0.4                 # Mormal AI: +40% прироста стада ИИ-кочевнику (аналог их levy_reinforcement_rate=+1)
+	county_fertility_growth_mult = 0.25  # Mormal AI: пастбища тучнеют быстрее → больше стада уже в раннюю игру (только формы со стадом)
 }
 
 ### Ванильный блок very_hard_difficulty (vanilla/00_basic_modifiers.txt:349-364) + наша строка
@@ -61,5 +62,6 @@ very_hard_difficulty = {
 	men_at_arms_maintenance = -0.5
 	led_by_owner_extra_advantage_add = 10
 
-	herd_gain_mult = 0.5   # Mormal AI: +50% прироста стада ИИ-кочевнику — аналог их levy_reinforcement_rate=+3, которого орда не получает
+	herd_gain_mult = 0.75                # Mormal AI: +75% прироста стада ИИ-кочевнику (аналог их levy_reinforcement_rate=+3)
+	county_fertility_growth_mult = 0.5   # Mormal AI: пастбища тучнеют быстрее → больше стада уже в раннюю игру (только формы со стадом)
 }
