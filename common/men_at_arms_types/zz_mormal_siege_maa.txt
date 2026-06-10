@@ -1,0 +1,164 @@
+# =============================================================================
+#  Mormal AI — осадные латники: вес чанка = уровень обычной тяж. пехоты
+#  (решение владельца, task.md разд. 5)
+# =============================================================================
+#  ПРОБЛЕМА. Роспуск-обновление (REGIMENT_OBSOLETION) — штатная механика:
+#  ИИ распускает худший полк и заменяет лучшим, к late game армии сходятся
+#  к лучшим типам. Её НЕ трогаем. Баг в том, что «самым слабым» всегда
+#  выходит осадный (damage=0, нет ai_quality: онагр 320 против 540+ у боевых),
+#  а осадный полк нельзя распустить целиком — часть чанков нужна по
+#  ratio-условию (1 осадный на 5 обычных) → ИИ крутит «распустил осадный
+#  чанк → докупил → распустил» бесконечно, сжигая золото.
+#
+#  РЕШЕНИЕ. Поднять вес осадного чанка добавкой ai_quality до уровня ОБЫЧНОЙ
+#  тяжёлой пехоты (armored_footmen: 32×10 + 22×10 = 540). Тогда при полном
+#  лимите жертвой выбора «самый слабый» становятся лёгкая пехота (306) и
+#  лучники (350) — их полки штатно заменяются на лучшие, это и есть нужное
+#  поведение. Осадные из зоны роспуска выходят. ВАЖНО: вес осадных НЕ должен
+#  приближаться к топовым типам (латная конница 1410) — иначе «лучшим
+#  доступным» станет осадный и роспуск начнёт пилить боевых (обратный цикл).
+#  540–580 — середина шкалы, запас до топа огромный.
+#
+#  ai_quality читается ТОЛЬКО ИИ (оценка «купить/распустить») — баланс боя и
+#  игрок не затронуты. Количество осадных по-прежнему держит ratio-счётчик.
+#  Лесенка 540 < 560 < 580 < 720 (бомбарда, не тронута) сохраняет ваниль-
+#  порядок предпочтения «новее = лучше» внутри осадных.
+#
+#  Тип перекрывается ЦЕЛИКОМ, поэтому ниже полные копии onager/mangonel/
+#  trebuchet из vanilla/men_at_arms_types/00_maa_types.txt (CK3 1.19);
+#  отличие от ванили — только блок ai_quality (помечен # MORMAL).
+#  Бомбарда не включена: её родной вес 0.6×1000+120 = 720 уже средний+.
+#
+#  КАЛИБРОВКА ПО ПЛЕЙТЕСТУ (точную шкалу движок может масштабировать на
+#  размер пачки/цену — из файлов не видно):
+#   - цикл остался на осадных (всё ещё «самые слабые») → добавку поднять;
+#   - ИИ перестал заменять/распускать ЛЮБЫЕ полки при полном лимите или
+#     начал пилить боевых → добавку снизить.
+# =============================================================================
+
+onager = {
+	type = siege_weapon
+	fights_in_main_phase = no
+
+	damage = 0
+	toughness = 12
+
+	siege_tier = 1
+	siege_value = 0.2
+
+	can_recruit = {
+		culture = {
+			has_innovation = innovation_catapult
+			NOR = {
+				has_cultural_pillar = heritage_chinese
+				has_cultural_pillar = heritage_korean
+				has_cultural_pillar = heritage_japonic
+			}
+		}
+		NOR = {
+			government_has_flag = government_is_nomadic
+			government_has_flag = government_is_herder
+		}
+	}
+
+	should_show_when_unavailable = {
+		government_allows = subject_men_at_arms
+	}
+
+	buy_cost = { gold = onager_recruitment_cost }
+	low_maintenance_cost = { gold = onager_low_maint_cost }
+	high_maintenance_cost = { gold = onager_high_maint_cost }
+	provision_cost = @provisions_cost_special_cheap
+
+	# MORMAL: 320 родных + 220 = 540 — уровень обычной тяж. пехоты (шапка файла)
+	ai_quality = { value = 220 }
+
+	stack = 10
+	allowed_in_hired_troops = no
+}
+
+mangonel = {
+	type = siege_weapon
+	fights_in_main_phase = no
+
+	damage = 0
+	toughness = 12
+
+	siege_tier = 2
+	siege_value = 0.3
+
+	can_recruit = {
+		culture = {
+			has_innovation = innovation_mangonel
+			NOR = {
+				has_cultural_pillar = heritage_chinese
+				has_cultural_pillar = heritage_korean
+				has_cultural_pillar = heritage_japonic
+			}
+		}
+		NOR = {
+			government_has_flag = government_is_nomadic
+			government_has_flag = government_is_herder
+		}
+	}
+
+	should_show_when_unavailable = {
+		government_allows = subject_men_at_arms
+		culture = { has_cultural_era_or_later = culture_era_early_medieval }
+	}
+
+	buy_cost = { gold = mangonel_recruitment_cost }
+	low_maintenance_cost = { gold = mangonel_low_maint_cost }
+	high_maintenance_cost = { gold = mangonel_high_maint_cost }
+	provision_cost = @provisions_cost_special_moderate
+
+	# MORMAL: 420 родных + 140 = 560 — чуть выше онагра, лесенка сохранена (шапка файла)
+	ai_quality = { value = 140 }
+
+	stack = 10
+	allowed_in_hired_troops = no
+}
+
+trebuchet = {
+	type = siege_weapon
+	fights_in_main_phase = no
+
+	damage = 0
+	toughness = 12
+
+	siege_tier = 3
+	siege_value = 0.4
+
+	can_recruit = {
+		culture = {
+			has_innovation = innovation_trebuchet
+			NOR = {
+				has_cultural_pillar = heritage_chinese
+				has_cultural_pillar = heritage_korean
+				has_cultural_pillar = heritage_japonic
+			}
+		}
+		NOR = {
+			government_has_flag = government_is_nomadic
+			government_has_flag = government_is_herder
+		}
+
+	}
+
+	should_show_when_unavailable = {
+		government_allows = subject_men_at_arms
+		culture = { has_cultural_era_or_later = culture_era_high_medieval }
+	}
+
+	buy_cost = { gold = trebuchet_recruitment_cost }
+	low_maintenance_cost = { gold = trebuchet_low_maint_cost }
+	high_maintenance_cost = { gold = trebuchet_high_maint_cost }
+	provision_cost = @provisions_cost_special_expensive
+
+	# MORMAL: 520 родных + 60 = 580 — чуть выше мангонели, лесенка сохранена (шапка файла)
+	ai_quality = { value = 60 }
+
+	stack = 10
+	allowed_in_hired_troops = no
+
+}
