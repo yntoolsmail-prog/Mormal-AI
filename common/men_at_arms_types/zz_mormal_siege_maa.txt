@@ -1,0 +1,239 @@
+# =============================================================================
+#  Mormal AI — осадные латники: анти-цикл «докупил ↔ распустил» (task.md разд. 5)
+# =============================================================================
+#  Тип латников перекрывается ЦЕЛИКОМ (как именованные блоки модификаторов),
+#  поэтому ниже — полные копии onager/mangonel/trebuchet/bombard из
+#  vanilla/men_at_arms_types/00_maa_types.txt (CK3 1.19). Единственное
+#  отличие от ванили — добавлен блок ai_quality (помечен # MORMAL).
+#
+#  ЗАЧЕМ. Подтверждено плейтестом владельца: когда свободные слоты остались
+#  только в осадном полку, ИИ при свободном бюджете докупает осадные СВЕРХ
+#  спроса ratio-логики (SUBTRACT=3 / PER=5), на полном лимите obsoletion
+#  распускает «слабейший» (осадный, damage=0, score без ai_quality ≈ только
+#  siege_value×1000 + toughness×10 на stack=10) → слот свободен → докупает →
+#  бесконечный цикл, золото жжётся на повторный buy_cost.
+#
+#  МЕХАНИЗМ ПРАВКИ. ai_quality — script value в скоупе персонажа, читается
+#  ТОЛЬКО ИИ при оценке «купить/распустить» (игрока не трогает). Пока осадного
+#  полка нет — добавка 0, т.е. первый полк и спрос-покупки («Siege will always
+#  be the first sub-regiment purchased», vanilla/00_ai.txt:639) не задеты.
+#  Как только осадный полк существует, score ДОКУПКИ уводится глубоко в минус —
+#  отсекается именно фоллбэк «куплю в свободный слот, потому что больше нечего»
+#  (прецедент ванили: wigman с ai_quality = -100 ИИ не закупает).
+#
+#  ИСХОДЫ ПЛЕЙТЕСТА (движковая семантика из файлов не выводится):
+#   (G)  ИИ держит осадные ровно по спросу, лишние не докупает, цикл мёртв,
+#        в осадном полку остаются пустые слоты — успех.
+#   (B1) ИИ держит ровно 1 осадный чанк и не доливает до спроса — значит
+#        спрос-покупка тоже фильтруется по score → ОТКАТИТЬ файл.
+#   (B2) Цикл живёт как раньше — значит отрицательный score покупку не
+#        блокирует → ОТКАТИТЬ файл, тема возвращается в task.md.
+#  Первая проверка — error.log: если триггер number_maa_regiments_of_base_type
+#  не существует под этим именем, лог скажет об этом сразу (тогда пробовать
+#  number_maa_regiments_of_type по каждому типу).
+#
+#  Кочевой осадный тип torch_bearers (09_mpo_maa_types.txt) намеренно НЕ
+#  тронут: у орды экономика латников другая (стадо/золото, роспуск почти
+#  выключен ветками _gold_ max=3) — отдельная тема после этого плейтеста.
+# =============================================================================
+
+onager = {
+	type = siege_weapon
+	fights_in_main_phase = no
+
+	damage = 0
+	toughness = 12
+
+	siege_tier = 1
+	siege_value = 0.2
+
+	can_recruit = {
+		culture = {
+			has_innovation = innovation_catapult
+			NOR = {
+				has_cultural_pillar = heritage_chinese
+				has_cultural_pillar = heritage_korean
+				has_cultural_pillar = heritage_japonic
+			}
+		}
+		NOR = {
+			government_has_flag = government_is_nomadic
+			government_has_flag = government_is_herder
+		}
+	}
+
+	should_show_when_unavailable = {
+		government_allows = subject_men_at_arms
+	}
+
+	buy_cost = { gold = onager_recruitment_cost }
+	low_maintenance_cost = { gold = onager_low_maint_cost }
+	high_maintenance_cost = { gold = onager_high_maint_cost }
+	provision_cost = @provisions_cost_special_cheap
+
+	# MORMAL: анти-цикл — докупка осадных сверх первого полка отсекается (шапка файла)
+	ai_quality = {
+		value = 0
+		if = {
+			limit = {
+				number_maa_regiments_of_base_type = { type = siege_weapon value >= 1 }
+			}
+			add = -1000
+		}
+	}
+
+	stack = 10
+	allowed_in_hired_troops = no
+}
+
+mangonel = {
+	type = siege_weapon
+	fights_in_main_phase = no
+
+	damage = 0
+	toughness = 12
+
+	siege_tier = 2
+	siege_value = 0.3
+
+	can_recruit = {
+		culture = {
+			has_innovation = innovation_mangonel
+			NOR = {
+				has_cultural_pillar = heritage_chinese
+				has_cultural_pillar = heritage_korean
+				has_cultural_pillar = heritage_japonic
+			}
+		}
+		NOR = {
+			government_has_flag = government_is_nomadic
+			government_has_flag = government_is_herder
+		}
+	}
+
+	should_show_when_unavailable = {
+		government_allows = subject_men_at_arms
+		culture = { has_cultural_era_or_later = culture_era_early_medieval }
+	}
+
+	buy_cost = { gold = mangonel_recruitment_cost }
+	low_maintenance_cost = { gold = mangonel_low_maint_cost }
+	high_maintenance_cost = { gold = mangonel_high_maint_cost }
+	provision_cost = @provisions_cost_special_moderate
+
+	# MORMAL: анти-цикл — докупка осадных сверх первого полка отсекается (шапка файла)
+	ai_quality = {
+		value = 0
+		if = {
+			limit = {
+				number_maa_regiments_of_base_type = { type = siege_weapon value >= 1 }
+			}
+			add = -1000
+		}
+	}
+
+	stack = 10
+	allowed_in_hired_troops = no
+}
+
+trebuchet = {
+	type = siege_weapon
+	fights_in_main_phase = no
+
+	damage = 0
+	toughness = 12
+
+	siege_tier = 3
+	siege_value = 0.4
+
+	can_recruit = {
+		culture = {
+			has_innovation = innovation_trebuchet
+			NOR = {
+				has_cultural_pillar = heritage_chinese
+				has_cultural_pillar = heritage_korean
+				has_cultural_pillar = heritage_japonic
+			}
+		}
+		NOR = {
+			government_has_flag = government_is_nomadic
+			government_has_flag = government_is_herder
+		}
+
+	}
+
+	should_show_when_unavailable = {
+		government_allows = subject_men_at_arms
+		culture = { has_cultural_era_or_later = culture_era_high_medieval }
+	}
+
+	buy_cost = { gold = trebuchet_recruitment_cost }
+	low_maintenance_cost = { gold = trebuchet_low_maint_cost }
+	high_maintenance_cost = { gold = trebuchet_high_maint_cost }
+	provision_cost = @provisions_cost_special_expensive
+
+	# MORMAL: анти-цикл — докупка осадных сверх первого полка отсекается (шапка файла)
+	ai_quality = {
+		value = 0
+		if = {
+			limit = {
+				number_maa_regiments_of_base_type = { type = siege_weapon value >= 1 }
+			}
+			add = -1000
+		}
+	}
+
+	stack = 10
+	allowed_in_hired_troops = no
+
+}
+
+bombard = {
+	type = siege_weapon
+	fights_in_main_phase = no
+
+	damage = 0
+	toughness = 12
+
+	siege_tier = 4
+	siege_value = 0.6
+
+	can_recruit = {
+		culture = {
+			has_cultural_parameter = unlock_late_medieval_gunpowder_units
+			NOR = {
+				has_cultural_pillar = heritage_chinese
+				has_cultural_pillar = heritage_korean
+				has_cultural_pillar = heritage_japonic
+			}
+		}
+		NOR = {
+			government_has_flag = government_is_nomadic
+			government_has_flag = government_is_herder
+		}
+	}
+
+	should_show_when_unavailable = {
+		government_allows = subject_men_at_arms
+		culture = { has_cultural_era_or_later = culture_era_late_medieval }
+	}
+
+	buy_cost = { gold = bombard_recruitment_cost }
+	low_maintenance_cost = { gold = bombard_low_maint_cost }
+	high_maintenance_cost = { gold = bombard_high_maint_cost }
+	provision_cost = @provisions_cost_special_bankrupting
+
+	# MORMAL: анти-цикл — докупка осадных сверх первого полка отсекается (шапка файла)
+	ai_quality = {
+		value = 0
+		if = {
+			limit = {
+				number_maa_regiments_of_base_type = { type = siege_weapon value >= 1 }
+			}
+			add = -1000
+		}
+	}
+
+	stack = 10
+	allowed_in_hired_troops = no
+}
