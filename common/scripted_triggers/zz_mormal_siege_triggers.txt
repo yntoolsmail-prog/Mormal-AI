@@ -1,206 +1,25 @@
 ﻿# =============================================================================
-#  Mormal AI — scripted-триггеры осадного гейта (v9.1)
+#  Mormal AI — осадный гейт v10: запрет ИИ нанимать осадные СВЕРХ желания движка
 # =============================================================================
-#  v9.1: починка после плейтеста «ИИ вообще не нанимает осадные»:
-#   - amount >= N  →  amount = N (документированный синтаксис calc_true_if:
-#     «не меньше N истинных»; форма с >= под подозрением как нераспознанная,
-#     нераспознанный триггер = false = вечный запрет — ровно симптом);
-#   - в can_recruit вместо trigger_if теперь OR { is_ai = no  гейт } (старейший
-#     гарантированный синтаксис).
+#  v10: лесенка calc_true_if (v9/v9.1, счёт в полках) ПОЛНОСТЬЮ заменена счётом
+#  в ЧАНКАХ (zz_mormal_siege_chunk_values.txt) — по приказу владельца: строго
+#  движковая формула 1-й после 3 обычных чанков, далее каждые +5.
 #
-#  mormal_normal_maa_regiments_at_least_trigger ( COUNT = N ):
-#    «у персонажа >= N полков ОБЫЧНЫХ (не осадных) латников».
-#    Прямого триггера суммы полков в скрипте нет; сумму даёт calc_true_if:
-#    для каждого базового типа перечислены ступени "полков типа >= k" (k=1..12),
-#    число истинных ступеней = число полков этого типа (с насыщением на 12),
-#    amount = N означает «истинно не меньше N» = сумма по типам >= N.
-#    Триггер number_maa_regiments_of_base_type — ванильный, character-scope
-#    (образец: vanilla/scripted_values/00_men_at_arms_values.txt:716+).
-#    Перечислены все НЕосадные базовые типы из файлов 1.19.
-#
-#  mormal_ai_siege_recruit_gate_trigger:
-#    разрешение ИИ нанять ЕЩЁ ОДИН осадный полк по формуле спроса движка
-#    (vanilla/00_ai.txt:639-653): k-й осадный при обычных >= 3 + 5*(k-1):
-#    1-й — с 3, 2-й — с 8, 3-й — с 13, 4-й — с 18; 5-й+ запрещён.
-#    Счёт осадных — по базовому типу siege_weapon (ловит и унаследованные).
-#
-#  ВНИМАНИЕ (для следующей итерации): в каких единицах считает
-#  number_maa_regiments_of_base_type — ПОЛКИ или ЧАНКИ (суб-полки) — из файлов
-#  не выводится (движковый триггер). Формула движка — в чанках. Если плейтест
-#  покажет «первый осадный есть, второго нет у заведомо больших армий» —
-#  единицы = полки, пороги 8/13/18 завышены; точный счёт чанков возможен через
-#  every_maa_regiment + maa_max_troops_count (ванильный образец:
-#  vanilla/scripted_values/09_mpo_values.txt:2165) — потребуется выдержка из
-#  triggers.log по словам maa/regiment для выбора лучшего пути.
+#  Сравнение: ванильный триггер number_maa_regiments_of_base_type, правая часть
+#  — script value (образец таких сравнений: vanilla/scripted_values/
+#  09_mpo_domicile_values.txt:31-34, herd >= yurt_..._cost_tier_2).
+#  ЕДИНИЦЫ триггера движком не документированы в файлах (полки или чанки):
+#   - если ЧАНКИ — гейт точный: держать ровно desired, блок строго сверх;
+#   - если ПОЛКИ — гейт только МЯГЧЕ (полков <= чанков), родную механику
+#     не задевает ни в каком случае; многополковых «нарушителей» (3 полка
+#     онагров) режет всё равно.
 # =============================================================================
-
-mormal_normal_maa_regiments_at_least_trigger = {
-	calc_true_if = {
-		amount = $COUNT$
-		number_maa_regiments_of_base_type = { type = skirmishers value >= 1 }
-		number_maa_regiments_of_base_type = { type = skirmishers value >= 2 }
-		number_maa_regiments_of_base_type = { type = skirmishers value >= 3 }
-		number_maa_regiments_of_base_type = { type = skirmishers value >= 4 }
-		number_maa_regiments_of_base_type = { type = skirmishers value >= 5 }
-		number_maa_regiments_of_base_type = { type = skirmishers value >= 6 }
-		number_maa_regiments_of_base_type = { type = skirmishers value >= 7 }
-		number_maa_regiments_of_base_type = { type = skirmishers value >= 8 }
-		number_maa_regiments_of_base_type = { type = skirmishers value >= 9 }
-		number_maa_regiments_of_base_type = { type = skirmishers value >= 10 }
-		number_maa_regiments_of_base_type = { type = skirmishers value >= 11 }
-		number_maa_regiments_of_base_type = { type = skirmishers value >= 12 }
-		number_maa_regiments_of_base_type = { type = archers value >= 1 }
-		number_maa_regiments_of_base_type = { type = archers value >= 2 }
-		number_maa_regiments_of_base_type = { type = archers value >= 3 }
-		number_maa_regiments_of_base_type = { type = archers value >= 4 }
-		number_maa_regiments_of_base_type = { type = archers value >= 5 }
-		number_maa_regiments_of_base_type = { type = archers value >= 6 }
-		number_maa_regiments_of_base_type = { type = archers value >= 7 }
-		number_maa_regiments_of_base_type = { type = archers value >= 8 }
-		number_maa_regiments_of_base_type = { type = archers value >= 9 }
-		number_maa_regiments_of_base_type = { type = archers value >= 10 }
-		number_maa_regiments_of_base_type = { type = archers value >= 11 }
-		number_maa_regiments_of_base_type = { type = archers value >= 12 }
-		number_maa_regiments_of_base_type = { type = pikemen value >= 1 }
-		number_maa_regiments_of_base_type = { type = pikemen value >= 2 }
-		number_maa_regiments_of_base_type = { type = pikemen value >= 3 }
-		number_maa_regiments_of_base_type = { type = pikemen value >= 4 }
-		number_maa_regiments_of_base_type = { type = pikemen value >= 5 }
-		number_maa_regiments_of_base_type = { type = pikemen value >= 6 }
-		number_maa_regiments_of_base_type = { type = pikemen value >= 7 }
-		number_maa_regiments_of_base_type = { type = pikemen value >= 8 }
-		number_maa_regiments_of_base_type = { type = pikemen value >= 9 }
-		number_maa_regiments_of_base_type = { type = pikemen value >= 10 }
-		number_maa_regiments_of_base_type = { type = pikemen value >= 11 }
-		number_maa_regiments_of_base_type = { type = pikemen value >= 12 }
-		number_maa_regiments_of_base_type = { type = heavy_infantry value >= 1 }
-		number_maa_regiments_of_base_type = { type = heavy_infantry value >= 2 }
-		number_maa_regiments_of_base_type = { type = heavy_infantry value >= 3 }
-		number_maa_regiments_of_base_type = { type = heavy_infantry value >= 4 }
-		number_maa_regiments_of_base_type = { type = heavy_infantry value >= 5 }
-		number_maa_regiments_of_base_type = { type = heavy_infantry value >= 6 }
-		number_maa_regiments_of_base_type = { type = heavy_infantry value >= 7 }
-		number_maa_regiments_of_base_type = { type = heavy_infantry value >= 8 }
-		number_maa_regiments_of_base_type = { type = heavy_infantry value >= 9 }
-		number_maa_regiments_of_base_type = { type = heavy_infantry value >= 10 }
-		number_maa_regiments_of_base_type = { type = heavy_infantry value >= 11 }
-		number_maa_regiments_of_base_type = { type = heavy_infantry value >= 12 }
-		number_maa_regiments_of_base_type = { type = light_cavalry value >= 1 }
-		number_maa_regiments_of_base_type = { type = light_cavalry value >= 2 }
-		number_maa_regiments_of_base_type = { type = light_cavalry value >= 3 }
-		number_maa_regiments_of_base_type = { type = light_cavalry value >= 4 }
-		number_maa_regiments_of_base_type = { type = light_cavalry value >= 5 }
-		number_maa_regiments_of_base_type = { type = light_cavalry value >= 6 }
-		number_maa_regiments_of_base_type = { type = light_cavalry value >= 7 }
-		number_maa_regiments_of_base_type = { type = light_cavalry value >= 8 }
-		number_maa_regiments_of_base_type = { type = light_cavalry value >= 9 }
-		number_maa_regiments_of_base_type = { type = light_cavalry value >= 10 }
-		number_maa_regiments_of_base_type = { type = light_cavalry value >= 11 }
-		number_maa_regiments_of_base_type = { type = light_cavalry value >= 12 }
-		number_maa_regiments_of_base_type = { type = heavy_cavalry value >= 1 }
-		number_maa_regiments_of_base_type = { type = heavy_cavalry value >= 2 }
-		number_maa_regiments_of_base_type = { type = heavy_cavalry value >= 3 }
-		number_maa_regiments_of_base_type = { type = heavy_cavalry value >= 4 }
-		number_maa_regiments_of_base_type = { type = heavy_cavalry value >= 5 }
-		number_maa_regiments_of_base_type = { type = heavy_cavalry value >= 6 }
-		number_maa_regiments_of_base_type = { type = heavy_cavalry value >= 7 }
-		number_maa_regiments_of_base_type = { type = heavy_cavalry value >= 8 }
-		number_maa_regiments_of_base_type = { type = heavy_cavalry value >= 9 }
-		number_maa_regiments_of_base_type = { type = heavy_cavalry value >= 10 }
-		number_maa_regiments_of_base_type = { type = heavy_cavalry value >= 11 }
-		number_maa_regiments_of_base_type = { type = heavy_cavalry value >= 12 }
-		number_maa_regiments_of_base_type = { type = archer_cavalry value >= 1 }
-		number_maa_regiments_of_base_type = { type = archer_cavalry value >= 2 }
-		number_maa_regiments_of_base_type = { type = archer_cavalry value >= 3 }
-		number_maa_regiments_of_base_type = { type = archer_cavalry value >= 4 }
-		number_maa_regiments_of_base_type = { type = archer_cavalry value >= 5 }
-		number_maa_regiments_of_base_type = { type = archer_cavalry value >= 6 }
-		number_maa_regiments_of_base_type = { type = archer_cavalry value >= 7 }
-		number_maa_regiments_of_base_type = { type = archer_cavalry value >= 8 }
-		number_maa_regiments_of_base_type = { type = archer_cavalry value >= 9 }
-		number_maa_regiments_of_base_type = { type = archer_cavalry value >= 10 }
-		number_maa_regiments_of_base_type = { type = archer_cavalry value >= 11 }
-		number_maa_regiments_of_base_type = { type = archer_cavalry value >= 12 }
-		number_maa_regiments_of_base_type = { type = camel_cavalry value >= 1 }
-		number_maa_regiments_of_base_type = { type = camel_cavalry value >= 2 }
-		number_maa_regiments_of_base_type = { type = camel_cavalry value >= 3 }
-		number_maa_regiments_of_base_type = { type = camel_cavalry value >= 4 }
-		number_maa_regiments_of_base_type = { type = camel_cavalry value >= 5 }
-		number_maa_regiments_of_base_type = { type = camel_cavalry value >= 6 }
-		number_maa_regiments_of_base_type = { type = camel_cavalry value >= 7 }
-		number_maa_regiments_of_base_type = { type = camel_cavalry value >= 8 }
-		number_maa_regiments_of_base_type = { type = camel_cavalry value >= 9 }
-		number_maa_regiments_of_base_type = { type = camel_cavalry value >= 10 }
-		number_maa_regiments_of_base_type = { type = camel_cavalry value >= 11 }
-		number_maa_regiments_of_base_type = { type = camel_cavalry value >= 12 }
-		number_maa_regiments_of_base_type = { type = elephant_cavalry value >= 1 }
-		number_maa_regiments_of_base_type = { type = elephant_cavalry value >= 2 }
-		number_maa_regiments_of_base_type = { type = elephant_cavalry value >= 3 }
-		number_maa_regiments_of_base_type = { type = elephant_cavalry value >= 4 }
-		number_maa_regiments_of_base_type = { type = elephant_cavalry value >= 5 }
-		number_maa_regiments_of_base_type = { type = elephant_cavalry value >= 6 }
-		number_maa_regiments_of_base_type = { type = elephant_cavalry value >= 7 }
-		number_maa_regiments_of_base_type = { type = elephant_cavalry value >= 8 }
-		number_maa_regiments_of_base_type = { type = elephant_cavalry value >= 9 }
-		number_maa_regiments_of_base_type = { type = elephant_cavalry value >= 10 }
-		number_maa_regiments_of_base_type = { type = elephant_cavalry value >= 11 }
-		number_maa_regiments_of_base_type = { type = elephant_cavalry value >= 12 }
-		number_maa_regiments_of_base_type = { type = gunpowder value >= 1 }
-		number_maa_regiments_of_base_type = { type = gunpowder value >= 2 }
-		number_maa_regiments_of_base_type = { type = gunpowder value >= 3 }
-		number_maa_regiments_of_base_type = { type = gunpowder value >= 4 }
-		number_maa_regiments_of_base_type = { type = gunpowder value >= 5 }
-		number_maa_regiments_of_base_type = { type = gunpowder value >= 6 }
-		number_maa_regiments_of_base_type = { type = gunpowder value >= 7 }
-		number_maa_regiments_of_base_type = { type = gunpowder value >= 8 }
-		number_maa_regiments_of_base_type = { type = gunpowder value >= 9 }
-		number_maa_regiments_of_base_type = { type = gunpowder value >= 10 }
-		number_maa_regiments_of_base_type = { type = gunpowder value >= 11 }
-		number_maa_regiments_of_base_type = { type = gunpowder value >= 12 }
-		number_maa_regiments_of_base_type = { type = peasant_militia value >= 1 }
-		number_maa_regiments_of_base_type = { type = peasant_militia value >= 2 }
-		number_maa_regiments_of_base_type = { type = peasant_militia value >= 3 }
-		number_maa_regiments_of_base_type = { type = peasant_militia value >= 4 }
-		number_maa_regiments_of_base_type = { type = peasant_militia value >= 5 }
-		number_maa_regiments_of_base_type = { type = peasant_militia value >= 6 }
-		number_maa_regiments_of_base_type = { type = peasant_militia value >= 7 }
-		number_maa_regiments_of_base_type = { type = peasant_militia value >= 8 }
-		number_maa_regiments_of_base_type = { type = peasant_militia value >= 9 }
-		number_maa_regiments_of_base_type = { type = peasant_militia value >= 10 }
-		number_maa_regiments_of_base_type = { type = peasant_militia value >= 11 }
-		number_maa_regiments_of_base_type = { type = peasant_militia value >= 12 }
-		number_maa_regiments_of_base_type = { type = nomadic_horde value >= 1 }
-		number_maa_regiments_of_base_type = { type = nomadic_horde value >= 2 }
-		number_maa_regiments_of_base_type = { type = nomadic_horde value >= 3 }
-		number_maa_regiments_of_base_type = { type = nomadic_horde value >= 4 }
-		number_maa_regiments_of_base_type = { type = nomadic_horde value >= 5 }
-		number_maa_regiments_of_base_type = { type = nomadic_horde value >= 6 }
-		number_maa_regiments_of_base_type = { type = nomadic_horde value >= 7 }
-		number_maa_regiments_of_base_type = { type = nomadic_horde value >= 8 }
-		number_maa_regiments_of_base_type = { type = nomadic_horde value >= 9 }
-		number_maa_regiments_of_base_type = { type = nomadic_horde value >= 10 }
-		number_maa_regiments_of_base_type = { type = nomadic_horde value >= 11 }
-		number_maa_regiments_of_base_type = { type = nomadic_horde value >= 12 }
-	}
-}
 
 mormal_ai_siege_recruit_gate_trigger = {
-	OR = {
-		AND = {	# покупка 1-го осадного: нужно >= 3 обычных
-			NOT = { number_maa_regiments_of_base_type = { type = siege_weapon value >= 1 } }
-			mormal_normal_maa_regiments_at_least_trigger = { COUNT = 3 }
-		}
-		AND = {	# покупка 2-го осадного: нужно >= 8 обычных
-			NOT = { number_maa_regiments_of_base_type = { type = siege_weapon value >= 2 } }
-			mormal_normal_maa_regiments_at_least_trigger = { COUNT = 8 }
-		}
-		AND = {	# покупка 3-го осадного: нужно >= 13 обычных
-			NOT = { number_maa_regiments_of_base_type = { type = siege_weapon value >= 3 } }
-			mormal_normal_maa_regiments_at_least_trigger = { COUNT = 13 }
-		}
-		AND = {	# покупка 4-го осадного: нужно >= 18 обычных
-			NOT = { number_maa_regiments_of_base_type = { type = siege_weapon value >= 4 } }
-			mormal_normal_maa_regiments_at_least_trigger = { COUNT = 18 }
+	NOT = {
+		number_maa_regiments_of_base_type = {
+			type = siege_weapon
+			value >= mormal_ai_siege_gate_close_value
 		}
 	}
 }
