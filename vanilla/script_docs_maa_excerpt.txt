@@ -1,0 +1,62 @@
+Выдержка из script_docs (effects.log / triggers.log), CK3 1.19, предоставлена
+владельцем 2026-06-11. Всё по латникам (maa). НЕ РЕДАКТИРОВАТЬ — справка.
+
+=== ЭФФЕКТЫ ===
+
+create_maa_regiment — Create MaA regiment for a ruler. If title is set, MaA will be created as title troops
+  scope:ruler = {
+    create_maa_regiment = light_footmen
+    create_maa_regiment = {
+      type = light_footmen        # mutually exclusive with type_of
+      type_of = scope:maa_regiment
+      check_can_recruit = no
+      title = scope:title
+      size = 5
+    }
+  }
+
+change_maa_regiment_size — Change size of MaA regiment BY the specified value.
+  Extra troops are deleted, by default new troops will have to reinforce, unless reinforce = yes
+  scope:regiment = { change_maa_regiment_size = scope:change_by }
+  scope:regiment = { change_maa_regiment_size = { size = 5 reinforce = yes } }
+
+change_maa_troops_count — Change current troops count (can't exceed max)
+destroy_maa_regiment — Destroy MaA regiment (не работает на полки наёмников/орденов)
+  scope:regiment = { destroy_maa_regiment = yes }
+
+Итераторы (character): every_/ordered_/random_/any_maa_regiment
+  ordered_maa_regiment = { limit = {...} order_by = script_value position = int
+    min = int max = script_value check_range_bounds = no <effects> }
+Титульные: *_controlled_title_maa_regiment, *_owned_title_maa_regiment, *_title_maa_regiment
+Армия: *_army_maa_regiment (include_hired = yes по умолчанию)
+transfer_owned_maa_control / transfer_title_maa_ownership / transfer_title_maa
+
+=== ТРИГГЕРЫ (character scope) ===
+
+can_create_maa = <тип>          — может ли создать тип
+has_access_to_maa = <тип>       — есть ли доступ к типу (без данников)
+maa_regiments_count             — число ЛИЧНЫХ полков
+maa_regiments_max_count         — максимум личных полков
+number_of_maa_regiments         — число полков латников
+number_of_stationed_maa_regiments
+number_maa_regiments_of_base_type / number_maa_regiments_of_type — «value amount of MaA»
+number_maa_soldiers_of_base_type / number_maa_soldiers_of_type   — солдат типа
+max_number_maa_soldiers_of_base_type / _of_type                  — макс. солдат типа
+number_title_maa_regiments_of_type
+character_men_at_arms_expense_gold/prestige/treasury_relative — доля расходов на латников от дохода
+monthly/yearly_character_men_at_arms_expense_gold/prestige/treasury
+
+=== ТРИГГЕРЫ (regiment scope) ===
+
+is_maa_type = <тип>             — точный тип полка
+is_unit_type = <базовый тип>    — БАЗОВЫЙ тип полка (skirmishers, siege_weapon, ...)
+maa_size                        — ЧИСЛО СУБ-ПОЛКОВ (чанков) в полку
+maa_current_troops_count        — текущие солдаты полка
+maa_max_troops_count            — макс. солдаты полка
+is_personal_maa_regiment / is_regular_maa_regiment / is_title_maa_regiment
+is_event_maa_regiment / is_hired_maa_regiment
+is_raised / is_maa_in_combat / can_upgrade_maa
+
+=== ТРИГГЕРЫ (army / combat_side) ===
+army_number_maa_regiments / _of_base_type / _of_type
+has_maa_of_type = onager (combat_side)

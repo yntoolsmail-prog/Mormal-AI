@@ -1,0 +1,17 @@
+﻿# =============================================================================
+#  Mormal AI — подключение годового тримера осадных (v11)
+#  on_action-файлы АДДИТИВНЫ: добавление в yearly_playable_pulse не трогает
+#  ванильные подписки. Сам эффект — scripted_effects/zz_mormal_siege_effects.txt.
+#  ПРОВЕРКА: если тример не срабатывает и error.log молчит — запросить у
+#  владельца vanilla/on_action/yearly_on_actions.txt (сверить имя пульса).
+# =============================================================================
+
+yearly_playable_pulse = {
+	on_actions = { mormal_siege_trim_pulse }
+}
+
+mormal_siege_trim_pulse = {
+	effect = {
+		mormal_siege_trim_yearly_effect = yes
+	}
+}

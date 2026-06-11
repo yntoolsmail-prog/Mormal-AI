@@ -1,0 +1,62 @@
+﻿# =============================================================================
+#  Mormal AI — годовой тример осадных излишков (v11, схема А по решению владельца)
+# =============================================================================
+#  ИСТОРИЯ ВОПРОСА (task.md разд. 5): любые запреты найма через can_recruit
+#  обнуляют «желаемое» движка и включают вечный цикл найм↔роспуск (доказано
+#  плейтестами v9.1/v10.2/v10.3 — вес 5000 цикл НЕ остановил: число осадных
+#  движок ведёт контуром пропорции, мимо очков качества). Поэтому can_recruit
+#  возвращён в ваниль НАВСЕГДА, а излишки СВЕРХ желаемого срезает этот пульс.
+#
+#  Раз в год (yearly_playable_pulse) у ИИ-правителя (кроме кочевников/гердеров):
+#  если осадных чанков > желаемого по формуле движка (1 после 3 обычных, далее
+#  каждые +5) — срезаем излишек: самый крупный осадный полк либо уничтожается
+#  целиком (если он не больше излишка), либо уменьшается ровно на излишек.
+#  За один год срезается не больше одного полка — у злостных нарушителей
+#  излишек сходит за 2-3 года (документированное ограничение реализации).
+#  Поднятые/воюющие полки не трогаем (is_raised/is_maa_in_combat) — срежем
+#  в мирный год.
+#
+#  Синтаксис эффектов/триггеров — script_docs (vanilla/script_docs_maa_excerpt.txt):
+#  ordered_maa_regiment, maa_size, is_unit_type, is_regular_maa_regiment,
+#  change_maa_regiment_size (меняет размер НА значение, лишние удаляются),
+#  destroy_maa_regiment.
+# =============================================================================
+
+mormal_siege_trim_yearly_effect = {
+	if = {
+		limit = {
+			is_ai = yes
+			NOR = {
+				government_has_flag = government_is_nomadic
+				government_has_flag = government_is_herder
+			}
+			mormal_siege_excess_chunks_value >= 1
+		}
+		save_temporary_scope_value_as = {
+			name = mormal_excess
+			value = mormal_siege_excess_chunks_value
+		}
+		save_temporary_scope_value_as = {
+			name = mormal_excess_neg
+			value = mormal_siege_excess_chunks_neg_value
+		}
+		ordered_maa_regiment = {
+			limit = {
+				is_unit_type = siege_weapon
+				is_regular_maa_regiment = yes
+				is_raised = no
+				is_maa_in_combat = no
+			}
+			order_by = maa_size
+			position = 0
+			check_range_bounds = no
+			if = {
+				limit = { maa_size <= scope:mormal_excess }
+				destroy_maa_regiment = yes
+			}
+			else = {
+				change_maa_regiment_size = scope:mormal_excess_neg
+			}
+		}
+	}
+}

@@ -1,271 +1,62 @@
 ﻿# =============================================================================
-#  Mormal AI — счёт ЧАНКОВ латников и порог закрытия осадного гейта (v10)
+#  Mormal AI — счёт чанков латников и желаемое число осадных (v11)
 # =============================================================================
-#  Желаемое движком число осадных ЧАНКОВ (vanilla/00_ai.txt:639-653):
-#      desired = 1 + floor( (обычные_чанки - @mormal_siege_first_after)
-#                            / @mormal_siege_per_extra ),  не меньше 0
-#  (первый осадный чанк после 3 обычных, далее по одному на каждые +5 — строго
-#  как у движка; константы вынесены в @ для подстройки).
+#  v11: переписано на движковые счётчики из script_docs (выдержка владельца:
+#  vanilla/script_docs_maa_excerpt.txt):
+#    maa_size      — число СУБ-ПОЛКОВ (чанков) полка (реджимент-скоуп);
+#    is_unit_type  — фильтр полка по БАЗОВОМУ типу.
+#  Таблицы stack по 90 типам и страховочные ветки v10 удалены — счёт точен
+#  для ВСЕХ типов игры, включая файлы, которых нет в vanilla/.
 #
-#  Гейт (схема владельца, v10.1): наём запрещён, как только осадных чанков
-#  >= желаемого; открыт, только пока осадных СТРОГО МЕНЬШЕ желаемого.
-#  v10.2: сравнение «осадные чанки < порог» идёт напрямую между нашими
-#  script value (mormal_siege_maa_chunks_value vs mormal_ai_siege_gate_close_value)
-#  — движковый триггер number_maa_regiments_of_base_type с недокументированными
-#  единицами из схемы изгнан (см. zz_mormal_siege_triggers.txt).
-#
-#  ЧАНК = солдаты полка / stack типа. maa_max_troops_count — ванильный
-#  реджимент-скоуп value (образец: vanilla/scripted_values/09_mpo_values.txt:2165);
-#  every_maa_regiment в character-скоупе — образец: 00_men_at_arms_values.txt:873.
-#  Таблица stack снята с ВСЕХ maa-файлов vanilla/ (90 типов: 60x100, 19x50,
-#  2x25 слоны, 9 осадных x10). Типы из отсутствующих у нас файлов игры ловит
-#  страховочная ветка «неизвестный тип» с щедрой оценкой /25 (переоценка
-#  обычных чанков = гейт мягче = родную механику не задевает; недооценка
-#  была бы опасна — поэтому делитель минимальный из боевых).
+#  Желаемое движком число осадных чанков (vanilla/00_ai.txt:639-653):
+#    desired = 1 + floor((обычные_чанки - @mormal_siege_first_after)
+#                         / @mormal_siege_per_extra), не меньше 0
+#  Считаются только обычные личные полки (is_regular_maa_regiment) — наёмные,
+#  титульные и событийные не в счёт.
 # =============================================================================
 
 @mormal_siege_first_after = 3
 @mormal_siege_per_extra = 5
 
-# Обычные (неосадные) чанки персонажа
 mormal_normal_maa_chunks_value = {
 	value = 0
 	every_maa_regiment = {
 		limit = {
-			OR = {
-				is_maa_type = huscarl
-				is_maa_type = landsknecht
-				is_maa_type = longbowmen
-				is_maa_type = goedendag
-				is_maa_type = chasseur
-				is_maa_type = picchieri
-				is_maa_type = praetorian
-				is_maa_type = caballero
-				is_maa_type = hobelar
-				is_maa_type = schiltron
-				is_maa_type = metsanvartija
-				is_maa_type = horse_archers
-				is_maa_type = ayyar
-				is_maa_type = mubarizun
-				is_maa_type = mulaththamun
-				is_maa_type = archers_of_the_nile
-				is_maa_type = paiks
-				is_maa_type = druzhina
-				is_maa_type = hussar
-				is_maa_type = horn_warrior
-				is_maa_type = bush_hunter
-				is_maa_type = shomer
-				is_maa_type = garudas
-				is_maa_type = khandayat
-				is_maa_type = mountaineer
-				is_maa_type = sahel_horsemen
-				is_maa_type = guinea_warrior
-				is_maa_type = sarawit
-				is_maa_type = abudrar
-				is_maa_type = zbrojnosh
-				is_maa_type = palace_guards
-				is_maa_type = shenbigong
-				is_maa_type = guanch_vaulter
-				is_maa_type = teulu
-				is_maa_type = light_footmen
-				is_maa_type = bowmen
-				is_maa_type = light_horsemen
-				is_maa_type = pikemen_unit
-				is_maa_type = armored_footmen
-				is_maa_type = crossbowmen
-				is_maa_type = handgunners
-				is_maa_type = house_guard
-				is_maa_type = pikemen_militia
-				is_maa_type = camel_rider
-				is_maa_type = akritai
-				is_maa_type = skoutatoi
-				is_maa_type = varangian_guards
-				is_maa_type = handpicked_faithful
-				is_maa_type = nomadic_riders
-				is_maa_type = steppe_raiders
-				is_maa_type = mangudai
-				is_maa_type = maturkan_warriors
-				is_maa_type = emishi_horse_archers
-				is_maa_type = warrior_monks
-				is_maa_type = fire_lancers
-				is_maa_type = gakgung_archers
-				is_maa_type = pesilat_warriors
-				is_maa_type = samurai
-				is_maa_type = black_armor_cavalry
-				is_maa_type = burenjia
-			}
+			is_regular_maa_regiment = yes
+			NOT = { is_unit_type = siege_weapon }
 		}
-		add = { add = maa_max_troops_count divide = 100 }
-	}
-	every_maa_regiment = {
-		limit = {
-			OR = {
-				is_maa_type = gendarme
-				is_maa_type = monaspa
-				is_maa_type = cataphract
-				is_maa_type = armored_horsemen
-				is_maa_type = ayrudzi
-				is_maa_type = conrois
-				is_maa_type = ballistrai
-				is_maa_type = maa_bandits
-				is_maa_type = maa_poachers
-				is_maa_type = maa_marauders
-				is_maa_type = maa_thieves
-				is_maa_type = kheshig
-				is_maa_type = heavy_horse_archers
-				is_maa_type = nomad_lancers
-				is_maa_type = cataphract_archers
-				is_maa_type = japanese_horse_archers
-				is_maa_type = zhanmadao_infantry
-				is_maa_type = tiefutu
-				is_maa_type = rocket_carts
-			}
-		}
-		add = { add = maa_max_troops_count divide = 50 }
-	}
-	every_maa_regiment = {
-		limit = {
-			OR = {
-				is_maa_type = war_elephant
-				is_maa_type = ballista_elephant
-			}
-		}
-		add = { add = maa_max_troops_count divide = 25 }
-	}
-	# страховка: тип не из нашей таблицы (maa-файлы игры, которых нет в vanilla/)
-	# — считаем щедро по минимальному боевому stack (см. шапку)
-	every_maa_regiment = {
-		limit = {
-			NOR = {
-				is_maa_type = huscarl
-				is_maa_type = landsknecht
-				is_maa_type = longbowmen
-				is_maa_type = goedendag
-				is_maa_type = chasseur
-				is_maa_type = picchieri
-				is_maa_type = praetorian
-				is_maa_type = caballero
-				is_maa_type = hobelar
-				is_maa_type = schiltron
-				is_maa_type = metsanvartija
-				is_maa_type = horse_archers
-				is_maa_type = ayyar
-				is_maa_type = mubarizun
-				is_maa_type = mulaththamun
-				is_maa_type = archers_of_the_nile
-				is_maa_type = paiks
-				is_maa_type = druzhina
-				is_maa_type = hussar
-				is_maa_type = horn_warrior
-				is_maa_type = bush_hunter
-				is_maa_type = shomer
-				is_maa_type = garudas
-				is_maa_type = khandayat
-				is_maa_type = mountaineer
-				is_maa_type = sahel_horsemen
-				is_maa_type = guinea_warrior
-				is_maa_type = sarawit
-				is_maa_type = abudrar
-				is_maa_type = zbrojnosh
-				is_maa_type = palace_guards
-				is_maa_type = shenbigong
-				is_maa_type = guanch_vaulter
-				is_maa_type = teulu
-				is_maa_type = light_footmen
-				is_maa_type = bowmen
-				is_maa_type = light_horsemen
-				is_maa_type = pikemen_unit
-				is_maa_type = armored_footmen
-				is_maa_type = crossbowmen
-				is_maa_type = handgunners
-				is_maa_type = house_guard
-				is_maa_type = pikemen_militia
-				is_maa_type = camel_rider
-				is_maa_type = akritai
-				is_maa_type = skoutatoi
-				is_maa_type = varangian_guards
-				is_maa_type = handpicked_faithful
-				is_maa_type = nomadic_riders
-				is_maa_type = steppe_raiders
-				is_maa_type = mangudai
-				is_maa_type = maturkan_warriors
-				is_maa_type = emishi_horse_archers
-				is_maa_type = warrior_monks
-				is_maa_type = fire_lancers
-				is_maa_type = gakgung_archers
-				is_maa_type = pesilat_warriors
-				is_maa_type = samurai
-				is_maa_type = black_armor_cavalry
-				is_maa_type = burenjia
-				is_maa_type = gendarme
-				is_maa_type = monaspa
-				is_maa_type = cataphract
-				is_maa_type = armored_horsemen
-				is_maa_type = ayrudzi
-				is_maa_type = conrois
-				is_maa_type = ballistrai
-				is_maa_type = maa_bandits
-				is_maa_type = maa_poachers
-				is_maa_type = maa_marauders
-				is_maa_type = maa_thieves
-				is_maa_type = kheshig
-				is_maa_type = heavy_horse_archers
-				is_maa_type = nomad_lancers
-				is_maa_type = cataphract_archers
-				is_maa_type = japanese_horse_archers
-				is_maa_type = zhanmadao_infantry
-				is_maa_type = tiefutu
-				is_maa_type = rocket_carts
-				is_maa_type = war_elephant
-				is_maa_type = ballista_elephant
-				is_maa_type = onager
-				is_maa_type = mangonel
-				is_maa_type = trebuchet
-				is_maa_type = bombard
-				is_maa_type = torch_bearers
-				is_maa_type = ballista
-				is_maa_type = cloud_ladder
-				is_maa_type = siege_tower
-				is_maa_type = cannon
-			}
-		}
-		add = { add = maa_max_troops_count divide = 25 }
+		add = maa_size
 	}
 }
 
-# Осадные чанки персонажа (все 9 осадных типов игры, у всех stack = 10)
 mormal_siege_maa_chunks_value = {
 	value = 0
 	every_maa_regiment = {
 		limit = {
-			OR = {
-				is_maa_type = onager
-				is_maa_type = mangonel
-				is_maa_type = trebuchet
-				is_maa_type = bombard
-				is_maa_type = torch_bearers
-				is_maa_type = ballista
-				is_maa_type = cloud_ladder
-				is_maa_type = siege_tower
-				is_maa_type = cannon
-			}
+			is_regular_maa_regiment = yes
+			is_unit_type = siege_weapon
 		}
-		add = { add = maa_max_troops_count divide = 10 }
+		add = maa_size
 	}
 }
 
-# Порог закрытия гейта = ЖЕЛАЕМОЕ движком (схема владельца, v10.1):
-#   наём запрещён, как только осадных >= желаемого; +5 обычных чанков →
-#   желаемое +1 → гейт открылся → ИИ нанял 1 → гейт закрылся.
-#   close = 1 + floor((обычные - @mormal_siege_first_after) / @mormal_siege_per_extra)
-# Проверка: 0-2 обычных -> 0 (осадные ИИ запрещены вовсе); 3-7 -> 1 (держать 1);
-# 8-12 -> 2; 13-17 -> 3; 18+ -> 4.
-# (v10 здесь был запас +1 — порог желаемое+1; убран по прямому приказу владельца.)
-mormal_ai_siege_gate_close_value = {
+# 0-2 обычных чанков -> 0; 3-7 -> 1; 8-12 -> 2; 13-17 -> 3; 18+ -> 4
+mormal_ai_siege_desired_chunks_value = {
 	value = mormal_normal_maa_chunks_value
 	subtract = @mormal_siege_first_after
 	divide = @mormal_siege_per_extra
 	floor = yes
 	add = 1
 	min = 0
+}
+
+mormal_siege_excess_chunks_value = {
+	value = mormal_siege_maa_chunks_value
+	subtract = mormal_ai_siege_desired_chunks_value
+	min = 0
+}
+
+mormal_siege_excess_chunks_neg_value = {
+	value = mormal_siege_excess_chunks_value
+	multiply = -1
 }
