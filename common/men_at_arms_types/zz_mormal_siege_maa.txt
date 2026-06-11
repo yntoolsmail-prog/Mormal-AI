@@ -1,6 +1,10 @@
 ﻿# =============================================================================
 #  Mormal AI — осадные латники v9: ваниль + жёсткий ИИ-гейт найма по формуле спроса
 # =============================================================================
+#  v9.1: вставка в can_recruit переведена с trigger_if на OR { is_ai = no … },
+#  в лесенке триггеров amount >= N заменён на amount = N — лечение симптома
+#  «ИИ вообще не нанимает осадные» (подозрение на нераспознанный синтаксис).
+#
 #  ИСТОРИЯ (детали — task.md разд. 5): v4–v8 управляли числом осадных весами
 #  (ai_quality +5000) и капом max_regiments = 1. Плейтесты показали:
 #   - веса дают цикл «распустил↔докупил» или спам — управлять числом полков
@@ -56,9 +60,9 @@ onager = {
 			government_has_flag = government_is_nomadic
 			government_has_flag = government_is_herder
 		}
-		# MORMAL v9: ИИ не нанимает осадные сверх формулы спроса (шапка файла)
-		trigger_if = {
-			limit = { is_ai = yes }
+		# MORMAL v9.1: ИИ не нанимает осадные сверх формулы спроса (шапка файла)
+		OR = {
+			is_ai = no
 			mormal_ai_siege_recruit_gate_trigger = yes
 		}
 	}
@@ -99,9 +103,9 @@ mangonel = {
 			government_has_flag = government_is_nomadic
 			government_has_flag = government_is_herder
 		}
-		# MORMAL v9: ИИ не нанимает осадные сверх формулы спроса (шапка файла)
-		trigger_if = {
-			limit = { is_ai = yes }
+		# MORMAL v9.1: ИИ не нанимает осадные сверх формулы спроса (шапка файла)
+		OR = {
+			is_ai = no
 			mormal_ai_siege_recruit_gate_trigger = yes
 		}
 	}
@@ -143,9 +147,9 @@ trebuchet = {
 			government_has_flag = government_is_nomadic
 			government_has_flag = government_is_herder
 		}
-		# MORMAL v9: ИИ не нанимает осадные сверх формулы спроса (шапка файла)
-		trigger_if = {
-			limit = { is_ai = yes }
+		# MORMAL v9.1: ИИ не нанимает осадные сверх формулы спроса (шапка файла)
+		OR = {
+			is_ai = no
 			mormal_ai_siege_recruit_gate_trigger = yes
 		}
 	}
@@ -187,9 +191,9 @@ bombard = {
 			government_has_flag = government_is_nomadic
 			government_has_flag = government_is_herder
 		}
-		# MORMAL v9: ИИ не нанимает осадные сверх формулы спроса (шапка файла)
-		trigger_if = {
-			limit = { is_ai = yes }
+		# MORMAL v9.1: ИИ не нанимает осадные сверх формулы спроса (шапка файла)
+		OR = {
+			is_ai = no
 			mormal_ai_siege_recruit_gate_trigger = yes
 		}
 	}
