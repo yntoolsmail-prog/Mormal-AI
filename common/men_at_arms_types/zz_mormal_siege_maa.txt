@@ -1,44 +1,36 @@
+﻿# =============================================================================
+#  Mormal AI — осадные латники v9: ваниль + жёсткий ИИ-гейт найма по формуле спроса
 # =============================================================================
-#  Mormal AI — осадные латники: 1 осадный полк, второй открывается ТРЕБУШЕТОМ
-#  (v8, схема владельца, task.md разд. 5)
-# =============================================================================
-#  УСТАНОВЛЕНО ПЛЕЙТЕСТАМИ (2026-06, важнее любых догадок по файлам):
-#   1. Ratio-счётчик (1 осадный на 5 обычных, vanilla/00_ai.txt:639-653) задаёт
-#      только МИНИМУМ/приоритет покупки, сверху количество НЕ ограничено —
-#      покупка идёт по общей оценке (score).
-#   2. Средний постоянный вес цикл «распустил↔докупил» не лечит; высокий без
-#      капа — спам онагров. Порог «бьёт топ у всех» ≈ +5000 (подтверждено).
-#   3. Роспуск-обновление (худший полк → лучший) — штатная механика, не трогаем.
-#   4. v7 (второй полк с империи) забракован плейтестом: слишком рано слишком
-#      много осадных.
+#  ИСТОРИЯ (детали — task.md разд. 5): v4–v8 управляли числом осадных весами
+#  (ai_quality +5000) и капом max_regiments = 1. Плейтесты показали:
+#   - веса дают цикл «распустил↔докупил» или спам — управлять числом полков
+#     весами нельзя;
+#   - max_regiments ИИ соблюдает ненадёжно (~80%; со временем появляются
+#     нарушители, нанимающие прямо сверх капа) — для ИИ-капов поле непригодно.
+#  v9 (схема владельца): ВСЁ это удалено, четыре типа возвращены к ванили
+#  байт-в-байт (vanilla/men_at_arms_types/00_maa_types.txt:312,422,522,564).
+#  ЕДИНСТВЕННОЕ изменение — в can_recruit добавлен блок «MORMAL v9»: ИИ не
+#  может нанять осадный полк сверх движковой формулы спроса (vanilla/00_ai.txt:
+#  639-653): 1-й осадный — при >= 3 обычных полков, далее каждый следующий
+#  при +5 обычных (2-й с 8, 3-й с 13, 4-й с 18). Ваниль покупает по этой
+#  формуле МИНИМУМ, но сверху не ограничивает — гейт превращает её в потолок.
+#  Проверка движковая, при каждой покупке — то, чем max_regiments не был.
+#  Сами триггеры — common/scripted_triggers/zz_mormal_siege_triggers.txt.
 #
-#  РЕШЕНИЕ v8: количество осадных полков ведёт ЭПОХА ОСАДНОЙ ТЕХНИКИ.
-#   - До требушета: топ-вес (+5000) только у ЛУЧШЕГО открытого яруса
-#     (онагр, пока нет мангонели; затем мангонель) → 1 осадный полк.
-#   - С инновации требушета: топ-вес у ДВУХ лучших открытых ярусов
-#     (требушет+мангонель; с бомбардой — бомбарда+требушет) → 2 полка.
-#   - Устаревшие ярусы → 0 (ваниль ~320–520) → «худший» → полк штатно
-#     распускается и заменяется боевым.
-#   - max_regiments = 1 на каждый тип (ваниль-прецедент: kheshig) — спам
-#     одного типа невозможен в принципе.
-#   - КОЧЕВНИКИ/ГЕРДЕРЫ исключены из бустов явным условием (их ванильные
-#     осадные — torch_bearers с damage=20 — не тронуты, у орды проблемы
-#     не было; ванильный can_recruit этих 4 типов орде и так запрещён,
-#     условие в ai_quality — страховка от экзотических путей доступа).
+#  Игрок НЕ затронут (is_ai = yes); баланс боя не тронут; кочевникам/гердерам
+#  эти 4 типа запрещает сам ванильный can_recruit (их torch_bearers не трогаем);
+#  Китай/Корея/Япония отсечены ванильным же условием наследия (их клоны-осадные
+#  из 10_tgp НЕ перекрыты — но гейт считает осадные по базовому типу
+#  siege_weapon, при необходимости тем же блоком накрываются и они).
 #
-#  ai_quality читается только ИИ — баланс боя не тронут. max_regiments —
-#  правило глобальное: у игрока тоже максимум 1 полк каждого осадного типа.
-#
-#  ПРОВЕРКА И ОТКАТ (v8):
-#   - УСПЕХ: цикл мёртв; до требушета у ИИ ровно 1 осадный полк лучшего
-#     яруса, после требушета — 2; замена боевых полков работает; орда
-#     ведёт себя как в ванили.
-#   - Переходные моменты (мангонель вытесняет онагр; бомбарда вытесняет
-#     мангонель): старый полк должен распуститься ЦЕЛИКОМ и замениться;
-#     если начнётся почанковый цикл на устаревшем типе — сообщить, есть
-#     лекарство (запрет найма устаревших через can_recruit + is_ai).
-#   - РИСК Б прежний: частые роспуски боевых («все на 20+ хуже лучшего»);
-#     если так — снизить 5000 до ~1500–2000.
+#  ПРОВЕРКА И ОТКАТ (v9):
+#   - УСПЕХ: ни у одного ИИ осадных полков больше формулы (герцог с 4 обычными
+#     — 1 осадный; король с 8+ — до 2); «нарушители» исчезли; цикл мёртв
+#     (распущенный сверхлимитный осадный не перенанимается — гейт не пускает).
+#   - РИСК: ИИ с < 3 обычными полками вообще без осад (по формуле так и
+#     задумано движком); если осад в мире станет слишком мало — ослабить
+#     пороги в zz_mormal_siege_triggers.txt (3/8/13/18 → 2/7/12/17 и т.п.).
+#   - Откат: удалить этот файл и zz_mormal_siege_triggers.txt = чистая ваниль.
 # =============================================================================
 
 onager = {
@@ -64,6 +56,11 @@ onager = {
 			government_has_flag = government_is_nomadic
 			government_has_flag = government_is_herder
 		}
+		# MORMAL v9: ИИ не нанимает осадные сверх формулы спроса (шапка файла)
+		trigger_if = {
+			limit = { is_ai = yes }
+			mormal_ai_siege_recruit_gate_trigger = yes
+		}
 	}
 
 	should_show_when_unavailable = {
@@ -74,25 +71,6 @@ onager = {
 	low_maintenance_cost = { gold = onager_low_maint_cost }
 	high_maintenance_cost = { gold = onager_high_maint_cost }
 	provision_cost = @provisions_cost_special_cheap
-
-	# MORMAL v8: топ-вес, пока онагр — лучший открытый ярус; кочевники исключены (шапка файла)
-	ai_quality = {
-		value = 0
-		if = {
-			limit = {
-				NOR = {
-					government_has_flag = government_is_nomadic
-					government_has_flag = government_is_herder
-				}
-				culture = { NOT = { has_innovation = innovation_mangonel } }
-			}
-			add = 5000
-		}
-	}
-
-	# MORMAL: жёсткий кап — 1 полк этого типа (ваниль-прецедент: kheshig).
-	# Правило глобальное: у игрока тоже максимум 1 полк каждого осадного типа.
-	max_regiments = 1
 
 	stack = 10
 	allowed_in_hired_troops = no
@@ -121,6 +99,11 @@ mangonel = {
 			government_has_flag = government_is_nomadic
 			government_has_flag = government_is_herder
 		}
+		# MORMAL v9: ИИ не нанимает осадные сверх формулы спроса (шапка файла)
+		trigger_if = {
+			limit = { is_ai = yes }
+			mormal_ai_siege_recruit_gate_trigger = yes
+		}
 	}
 
 	should_show_when_unavailable = {
@@ -132,26 +115,6 @@ mangonel = {
 	low_maintenance_cost = { gold = mangonel_low_maint_cost }
 	high_maintenance_cost = { gold = mangonel_high_maint_cost }
 	provision_cost = @provisions_cost_special_moderate
-
-	# MORMAL v8: топ-вес как лучшему (до требушета) или второму (эра требушета);
-	# с бомбардой уходит; кочевники исключены (шапка файла)
-	ai_quality = {
-		value = 0
-		if = {
-			limit = {
-				NOR = {
-					government_has_flag = government_is_nomadic
-					government_has_flag = government_is_herder
-				}
-				culture = { NOT = { has_cultural_parameter = unlock_late_medieval_gunpowder_units } }
-			}
-			add = 5000
-		}
-	}
-
-	# MORMAL: жёсткий кап — 1 полк этого типа (ваниль-прецедент: kheshig).
-	# Правило глобальное: у игрока тоже максимум 1 полк каждого осадного типа.
-	max_regiments = 1
 
 	stack = 10
 	allowed_in_hired_troops = no
@@ -180,7 +143,11 @@ trebuchet = {
 			government_has_flag = government_is_nomadic
 			government_has_flag = government_is_herder
 		}
-
+		# MORMAL v9: ИИ не нанимает осадные сверх формулы спроса (шапка файла)
+		trigger_if = {
+			limit = { is_ai = yes }
+			mormal_ai_siege_recruit_gate_trigger = yes
+		}
 	}
 
 	should_show_when_unavailable = {
@@ -193,28 +160,8 @@ trebuchet = {
 	high_maintenance_cost = { gold = trebuchet_high_maint_cost }
 	provision_cost = @provisions_cost_special_expensive
 
-	# MORMAL v8: с требушета разрешён второй осадный полк — требушет в топ-2 всегда;
-	# кочевники исключены (шапка файла)
-	ai_quality = {
-		value = 0
-		if = {
-			limit = {
-				NOR = {
-					government_has_flag = government_is_nomadic
-					government_has_flag = government_is_herder
-				}
-			}
-			add = 5000
-		}
-	}
-
-	# MORMAL: жёсткий кап — 1 полк этого типа (ваниль-прецедент: kheshig).
-	# Правило глобальное: у игрока тоже максимум 1 полк каждого осадного типа.
-	max_regiments = 1
-
 	stack = 10
 	allowed_in_hired_troops = no
-
 }
 
 bombard = {
@@ -240,6 +187,11 @@ bombard = {
 			government_has_flag = government_is_nomadic
 			government_has_flag = government_is_herder
 		}
+		# MORMAL v9: ИИ не нанимает осадные сверх формулы спроса (шапка файла)
+		trigger_if = {
+			limit = { is_ai = yes }
+			mormal_ai_siege_recruit_gate_trigger = yes
+		}
 	}
 
 	should_show_when_unavailable = {
@@ -251,24 +203,6 @@ bombard = {
 	low_maintenance_cost = { gold = bombard_low_maint_cost }
 	high_maintenance_cost = { gold = bombard_high_maint_cost }
 	provision_cost = @provisions_cost_special_bankrupting
-
-	# MORMAL v8: бомбарда — всегда лучший открытый ярус; кочевники исключены (шапка файла)
-	ai_quality = {
-		value = 0
-		if = {
-			limit = {
-				NOR = {
-					government_has_flag = government_is_nomadic
-					government_has_flag = government_is_herder
-				}
-			}
-			add = 5000
-		}
-	}
-
-	# MORMAL: жёсткий кап — 1 полк этого типа (ваниль-прецедент: kheshig).
-	# Правило глобальное: у игрока тоже максимум 1 полк каждого осадного типа.
-	max_regiments = 1
 
 	stack = 10
 	allowed_in_hired_troops = no
