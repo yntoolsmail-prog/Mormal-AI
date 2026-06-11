@@ -232,15 +232,18 @@ mormal_normal_maa_chunks_value = {
 	}
 }
 
-# Порог закрытия гейта = желаемое движком + 1 =
-#   2 + floor((обычные - @mormal_siege_first_after) / @mormal_siege_per_extra)
-# Проверка: 0-2 обычных -> 1 (держать 0); 3-7 -> 2 (держать 1); 8-12 -> 3
-# (держать 2); 13-17 -> 4 (держать 3); 18+ -> 5 (держать 4).
+# Порог закрытия гейта = ЖЕЛАЕМОЕ движком (схема владельца, v10.1):
+#   наём запрещён, как только осадных >= желаемого; +5 обычных чанков →
+#   желаемое +1 → гейт открылся → ИИ нанял 1 → гейт закрылся.
+#   close = 1 + floor((обычные - @mormal_siege_first_after) / @mormal_siege_per_extra)
+# Проверка: 0-2 обычных -> 0 (осадные ИИ запрещены вовсе); 3-7 -> 1 (держать 1);
+# 8-12 -> 2; 13-17 -> 3; 18+ -> 4.
+# (v10 здесь был запас +1 — порог желаемое+1; убран по прямому приказу владельца.)
 mormal_ai_siege_gate_close_value = {
 	value = mormal_normal_maa_chunks_value
 	subtract = @mormal_siege_first_after
 	divide = @mormal_siege_per_extra
 	floor = yes
-	add = 2
-	min = 1
+	add = 1
+	min = 0
 }
