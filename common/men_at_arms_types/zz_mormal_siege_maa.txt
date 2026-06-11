@@ -1,13 +1,11 @@
 ﻿# =============================================================================
 #  Mormal AI — осадные латники v9: ваниль + жёсткий ИИ-гейт найма по формуле спроса
 # =============================================================================
-#  v9.2 (по error.log и плейтесту v9.1 владельца):
-#   - добавлены файло-локальные @-константы provisions (без них Malformed token);
-#   - возвращён ai_quality = 5000 в новой роли: ЩИТ ОТ РОСПУСКА (не управление
-#     количеством — количество держит гейт). Плейтест v9.1: ИИ нанимал и тут же
-#     распускал единственный осадный при полном золоте и 10+ обычных чанках —
-#     это роспуск по устареванию (осадный с damage=0 всегда «худший» по очкам,
-#     на капе полков ИИ его распускает), гейт лечит только пере-найм.
+#  v9.3: ai_quality=5000 из v9.2 ОТКАЧЕН по приказу владельца (вес вносился без
+#  согласия; у игры есть родной щит — ИИ не распускает осадные ниже желаемого
+#  числа). Диагноз цикла v9.1 пересмотрен: цикл порождает САМ ГЕЙТ — см. task.md.
+#  Из v9.2 оставлены только @-константы provisions (починка Malformed token
+#  из error.log владельца — восстановление ванильного поведения, не изменение).
 #  v9.1: вставка в can_recruit переведена с trigger_if на OR { is_ai = no … },
 #  в лесенке триггеров amount >= N заменён на amount = N — лечение симптома
 #  «ИИ вообще не нанимает осадные» (подозрение на нераспознанный синтаксис).
@@ -92,13 +90,6 @@ onager = {
 	high_maintenance_cost = { gold = onager_high_maint_cost }
 	provision_cost = @provisions_cost_special_cheap
 
-	# MORMAL v9.2: ЩИТ ОТ РОСПУСКА. Осадный с damage=0 по очкам всегда «худший» —
-	# без веса ИИ на капе полков распускает его по правилу устаревания
-	# (NAI.REGIMENT_OBSOLETION_SCORE_DIFFERENCE, vanilla/00_ai.txt:655) и тут же
-	# перенанимает = цикл (плейтест v9.1). Вес количеством НЕ управляет —
-	# количество жёстко держит can_recruit-гейт, спам невозможен.
-	ai_quality = { value = 5000 }
-
 	stack = 10
 	allowed_in_hired_troops = no
 }
@@ -142,13 +133,6 @@ mangonel = {
 	low_maintenance_cost = { gold = mangonel_low_maint_cost }
 	high_maintenance_cost = { gold = mangonel_high_maint_cost }
 	provision_cost = @provisions_cost_special_moderate
-
-	# MORMAL v9.2: ЩИТ ОТ РОСПУСКА. Осадный с damage=0 по очкам всегда «худший» —
-	# без веса ИИ на капе полков распускает его по правилу устаревания
-	# (NAI.REGIMENT_OBSOLETION_SCORE_DIFFERENCE, vanilla/00_ai.txt:655) и тут же
-	# перенанимает = цикл (плейтест v9.1). Вес количеством НЕ управляет —
-	# количество жёстко держит can_recruit-гейт, спам невозможен.
-	ai_quality = { value = 5000 }
 
 	stack = 10
 	allowed_in_hired_troops = no
@@ -194,13 +178,6 @@ trebuchet = {
 	high_maintenance_cost = { gold = trebuchet_high_maint_cost }
 	provision_cost = @provisions_cost_special_expensive
 
-	# MORMAL v9.2: ЩИТ ОТ РОСПУСКА. Осадный с damage=0 по очкам всегда «худший» —
-	# без веса ИИ на капе полков распускает его по правилу устаревания
-	# (NAI.REGIMENT_OBSOLETION_SCORE_DIFFERENCE, vanilla/00_ai.txt:655) и тут же
-	# перенанимает = цикл (плейтест v9.1). Вес количеством НЕ управляет —
-	# количество жёстко держит can_recruit-гейт, спам невозможен.
-	ai_quality = { value = 5000 }
-
 	stack = 10
 	allowed_in_hired_troops = no
 }
@@ -244,13 +221,6 @@ bombard = {
 	low_maintenance_cost = { gold = bombard_low_maint_cost }
 	high_maintenance_cost = { gold = bombard_high_maint_cost }
 	provision_cost = @provisions_cost_special_bankrupting
-
-	# MORMAL v9.2: ЩИТ ОТ РОСПУСКА. Осадный с damage=0 по очкам всегда «худший» —
-	# без веса ИИ на капе полков распускает его по правилу устаревания
-	# (NAI.REGIMENT_OBSOLETION_SCORE_DIFFERENCE, vanilla/00_ai.txt:655) и тут же
-	# перенанимает = цикл (плейтест v9.1). Вес количеством НЕ управляет —
-	# количество жёстко держит can_recruit-гейт, спам невозможен.
-	ai_quality = { value = 5000 }
 
 	stack = 10
 	allowed_in_hired_troops = no
