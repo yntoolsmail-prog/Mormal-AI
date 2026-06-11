@@ -7,11 +7,12 @@
 #  (первый осадный чанк после 3 обычных, далее по одному на каждые +5 — строго
 #  как у движка; константы вынесены в @ для подстройки).
 #
-#  Гейт закрывается СТРОГО ВЫШЕ желаемого (порог = desired + 1):
-#  пока осадных <= желаемого, can_recruit для ИИ открыт → родная механика
-#  (донабор до желаемого + щит от роспуска ниже желаемого) НЕ ЗАТРОНУТА —
-#  урок v9.1: закрытый can_recruit обнуляет желаемое и выключает щит.
-#  Гейт бьёт только «нарушителей», нанимающих СВЕРХ желания движка.
+#  Гейт (схема владельца, v10.1): наём запрещён, как только осадных чанков
+#  >= желаемого; открыт, только пока осадных СТРОГО МЕНЬШЕ желаемого.
+#  v10.2: сравнение «осадные чанки < порог» идёт напрямую между нашими
+#  script value (mormal_siege_maa_chunks_value vs mormal_ai_siege_gate_close_value)
+#  — движковый триггер number_maa_regiments_of_base_type с недокументированными
+#  единицами из схемы изгнан (см. zz_mormal_siege_triggers.txt).
 #
 #  ЧАНК = солдаты полка / stack типа. maa_max_troops_count — ванильный
 #  реджимент-скоуп value (образец: vanilla/scripted_values/09_mpo_values.txt:2165);
@@ -229,6 +230,27 @@ mormal_normal_maa_chunks_value = {
 			}
 		}
 		add = { add = maa_max_troops_count divide = 25 }
+	}
+}
+
+# Осадные чанки персонажа (все 9 осадных типов игры, у всех stack = 10)
+mormal_siege_maa_chunks_value = {
+	value = 0
+	every_maa_regiment = {
+		limit = {
+			OR = {
+				is_maa_type = onager
+				is_maa_type = mangonel
+				is_maa_type = trebuchet
+				is_maa_type = bombard
+				is_maa_type = torch_bearers
+				is_maa_type = ballista
+				is_maa_type = cloud_ladder
+				is_maa_type = siege_tower
+				is_maa_type = cannon
+			}
+		}
+		add = { add = maa_max_troops_count divide = 10 }
 	}
 }
 
